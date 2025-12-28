@@ -675,7 +675,35 @@ Format as JSON:
     success: true
   };
 }
-
+ 
+  // Helper to extract wisdom from free-text AI responses
+function extractWisdomFromText(text) {
+  // Look for quotes or short profound statements
+  const lines = text.split('\n').filter(line => line.trim().length > 0);
+  
+  // Try to find a wisdom-like line (short, profound, maybe in quotes)
+  for (const line of lines) {
+    const trimmed = line.trim();
+    // Look for quotes
+    if ((trimmed.includes('"') && trimmed.length < 150) || 
+        (trimmed.length > 20 && trimmed.length < 120 && 
+         (trimmed.includes('wisdom') || trimmed.includes('teach') || 
+          trimmed.includes('learn') || trimmed.endsWith('.')))) {
+      return trimmed.replace(/"/g, '').replace(/^['"]|['"]$/g, '');
+    }
+  }
+  
+  // Fallback: first shortish line
+  for (const line of lines) {
+    if (line.length > 30 && line.length < 100) {
+      return line.trim();
+    }
+  }
+  
+  // Ultimate fallback
+  return "Ancient wisdom: The deepest truths often hide in plain sight.";
+}
+  
 async function getFallbackTranslation(textData) {
   // Ultimate fallback
   const wisdoms = [
