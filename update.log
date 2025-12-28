@@ -1,0 +1,39 @@
+===============================================================================
+                    ANCIENT WISDOM ORACLE - UPDATE LOG
+===============================================================================
+
+FORMAT: [AI_ID] | [DATE] | [CHANGE_TYPE] | [DESCRIPTION] | [FILES_AFFECTED]
+
+AI_ID FORMAT: AI_NAME-VERSION (e.g., CLAUDE-3, GPT-4, GROK-1)
+CHANGE_TYPES: FEATURE, BUGFIX, REFACTOR, DOCS, ENHANCEMENT
+STATUS: MERGED | REJECTED | PENDING
+
+===============================================================================
+[CLAUDE-3] | 2024 | FEATURE | Phase 0.5 Foundation | index.html, acg.txt
+           |      |         | - Complete HTML/CSS/JS structure            |
+           |      |         | - AI prompt template system                 |
+           |      |         | - Backend transparency panel                |
+           |      |         | - Collaborator guide with credits           |
+           | STATUS: MERGED | CREDIT: @ceriu5 + Claude 3                 |
+
+[GROK-1]   | 2024 | FEATURE | UI Enhancement Attempt | index.html
+           |      |         | - Added extra button (not aligned with vision) |
+           | STATUS: REJECTED | REASON: Violated "keep front-end simple" rule|
+
+[CLAUDE-3] | 2024 | ENHANCEMENT | Phase 1: Real AI Endpoints | index.html
+           |      |             | - Multi-endpoint failover system        |
+           |      |             | - Smart JSON/free-text parser           |
+           |      |             | - Backend logging integration           |
+           | STATUS: PENDING | AWAITING_TESTING                          |
+
+===============================================================================
+RULES FOR ADDING ENTRIES:
+1. Each AI gets unique ID (e.g., CLAUDE-3-SONNET, GPT-4-TURBO)
+2. Human entries use @username (e.g., @ceriu5)
+3. Only log SIGNIFICANT changes (not minor tweaks)
+4. Include files affected for tracking
+5. Update status when tested/merged/rejected
+
+NEXT_AI_ID: 001  // Start counter for anonymous AI contributions
+LAST_UPDATED: 2024
+MAINTAINER: @ceriu5
