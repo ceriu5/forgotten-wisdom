@@ -736,7 +736,8 @@ function displayTranslationResult(textData, result) {
     </div>
   `;
   
-  document.getElementById('wisdomText').textContent = result.quip;
+  document.getElementById('wisdomText').innerHTML = 
+    `${result.quip}<br><small style="color: #666; font-size: 0.7em;">${result.context || ''}</small>`;
   document.getElementById('wisdomResult').classList.remove('hidden');
   document.getElementById('aiStatus').textContent = 'Ready';
 }
