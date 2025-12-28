@@ -822,6 +822,30 @@ function useOwnApiKey() {
   document.getElementById('currentMethod').textContent = 'Your API Key';
 }
 
+// ===== AI COLLABORATION LOGGING =====
+function logAIContribution(aiId, changeType, description, filesAffected) {
+  const timestamp = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  const entry = `[${aiId}] | ${timestamp} | ${changeType} | ${description} | ${filesAffected}`;
+  
+  // For now, log to console and backend display
+  console.log(`📝 AI Contribution: ${entry}`);
+  
+  // Also add to backend process log for transparency
+  const processLog = document.getElementById('processLog');
+  if (processLog) {
+    processLog.innerHTML += `\n> 📝 AI_LOG: ${aiId} - ${description}`;
+    processLog.scrollTop = processLog.scrollHeight;
+  }
+  
+  // In Phase 2: This would send to backend to update UPDATE.log file
+  // fetch('/api/log-contribution', { method: 'POST', body: JSON.stringify({ entry }) });
+  
+  return entry;
+}
+
+// Initialize logging for current session
+logAIContribution('CLAUDE-3', 'ENHANCEMENT', 'Added AI collaboration logging system', 'index.html');
+  
 // ===== BACKEND VIEW FUNCTIONS =====
 function toggleBackendView() {
   const backend = document.getElementById('backendView');
