@@ -811,9 +811,13 @@ function toggleBackendView() {
   }
 }
 
-function updateBackendView(stage, textData, result) {
-  // Update source material
-  document.getElementById('sourceMaterial').textContent = JSON.stringify(textData, null, 2);
+// Update source material with potential link
+const sourceWithLink = {
+  ...textData,
+  // Add placeholder for AI-provided source
+  ai_provided_source: "(AI will provide source link here in future)"
+};
+document.getElementById('sourceMaterial').textContent = JSON.stringify(sourceWithLink, null, 2);
   
   // Update process log
   const now = new Date().toLocaleTimeString();
