@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgotten Wisdom | Home</title>
+    <style>
+        /* (Keep all the same beautiful CSS from the previous version) */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', serif; }
+        body { background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); color: #f0e6d2; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center; }
+        .container { max-width: 900px; width: 100%; background: rgba(15, 12, 41, 0.85); border-radius: 20px; padding: 40px; border: 1px solid rgba(138, 43, 226, 0.4); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); }
+        header { margin-bottom: 50px; }
+        h1 { font-size: 3.5rem; color: #b19cd9; margin-bottom: 15px; text-shadow: 0 0 10px rgba(177, 156, 217, 0.5); }
+        .subtitle { font-size: 1.3rem; color: #a0a0c0; margin-bottom: 10px; }
+        .author { color: #888; font-style: italic; margin-bottom: 40px; }
+        .systems { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin: 40px 0; }
+        .system-card { background: rgba(138, 43, 226, 0.1); border: 2px solid #8a2be2; border-radius: 15px; padding: 30px; width: 320px; text-decoration: none; color: #f0e6d2; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; }
+        .system-card:hover { background: rgba(138, 43, 226, 0.25); transform: translateY(-8px); box-shadow: 0 10px 25px rgba(138, 43, 226, 0.3); border-color: #9d4edd; }
+        .system-icon { font-size: 3.5rem; margin-bottom: 20px; }
+        .system-name { font-size: 1.8rem; color: #b19cd9; margin-bottom: 15px; }
+        .system-desc { color: #c0c0e0; line-height: 1.5; margin-bottom: 20px; flex-grow: 1; }
+        .tech-pill { display: inline-block; background: rgba(0, 0, 0, 0.3); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; color: #aaa; margin: 3px; }
+        footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: #777; font-size: 0.9rem; }
+        footer a { color: #8a2be2; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .container { padding: 25px; } h1 { font-size: 2.5rem; } .systems { gap: 20px; } .system-card { width: 100%; max-width: 350px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ Forgotten Wisdom ✨</h1>
+            <p class="subtitle">A Collection of Digital Divination Systems</p>
+            <p class="author">Crafted by Sarah FM</p>
+        </header>
+
+        <main>
+            <p style="margin-bottom: 30px; font-size: 1.1rem; color: #d0d0f0;">
+                Welcome. Choose a system to begin your exploration.
+            </p>
+
+            <div class="systems">
+                <!-- Oracle System Card -->
+                <a href="oracle/index.html" class="system-card"> <!-- Link to Oracle's PAGE -->
+                    <div class="system-icon">🔮</div>
+                    <div class="system-name">Sarah's Oracle</div>
+                    <p class="system-desc">
+                        A personal guidance and intuitive insight system. Draw cards, receive wisdom, and log your spiritual journey.
+                    </p>
+                    <div>
+                        <span class="tech-pill">Web Interface</span>
+                        <span class="tech-pill">Card System</span>
+                        <span class="tech-pill">Logging</span>
+                    </div>
+                </a>
+
+                <!-- Quadruple Goddess System Card -->
+                <a href="divination/index.html" class="system-card"> <!-- Link to Divination's PAGE -->
+                    <div class="system-icon">🧿</div>
+                    <div class="system-name">Quadruple Goddess</div>
+                    <p class="system-desc">
+                        Integrated divination system combining Geomancy, I Ching, Tarot, and Jafr. Version 3.5 with Hermetic synthesis.
+                    </p>
+                    <div>
+                        <span class="tech-pill">Python CLI</span>
+                        <span class="tech-pill">Geomancy</span>
+                        <span class="tech-pill">I Ching</span>
+                        <span class="tech-pill">Tarot</span>
+                        <span class="tech-pill">Hermetic</span>
+                    </div>
+                </a>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>
+                © 2025 Sarah FM. All systems are tools for introspection and personal growth.
+                <br>
+                <a href="https://github.com/ceriu5/forgotten-wisdom" target="_blank">View source on GitHub</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
