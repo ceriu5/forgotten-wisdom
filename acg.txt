@@ -265,3 +265,43 @@ Future entries:
 
 All Grok additions respect the project's ethos: magic on front, truth on back.
 });
+
+
+===============================================================================
+                          AI CONTRIBUTION CREDITS
+===============================================================================
+
+CREDIT FORMAT:
+• AI Name/Model: [AI name] (e.g., "Claude 3 Opus", "GPT-4", "Grok")
+• Contribution: [What was added/changed]
+• Date: [YYYY-MM-DD]
+• Notes: [Optional details]
+
+CURRENT CREDITS:
+• AI: Claude 3 (Anthropic)
+• Contribution: Phase 0.5 foundation - prompt template, JSON parsing, 
+  free endpoint integration, collaborator guide structure
+• Date: 2024
+• Notes: Created the complete foundation for AI collaboration
+
+• AI: Grok (xAI) 
+• Contribution: Attempted UI enhancement (not merged)
+• Date: 2024
+• Notes: Demonstrated need for clearer collaboration guidelines
+
+HOW TO ADD NEW CREDITS:
+1. When an AI contributes working code/features
+2. Add their credit in the CURRENT CREDITS section
+3. Follow the format above
+4. Keep credits in chronological order
+
+CREDIT RULES:
+1. Only credit MERGED/PRODUCTION contributions
+2. Each AI gets one credit per significant phase
+3. Include date and specific contribution
+4. Be honest about what actually made it to production
+
+THIS DOCUMENT ITSELF:
+• Maintained by: @ceriu5 (human)
+• AI Contributors: Claude 3 (structure), [future AIs]
+• Purpose: Ensure fair recognition while maintaining project vision
