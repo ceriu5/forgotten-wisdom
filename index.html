@@ -604,6 +604,32 @@ async function usePublicProxy(textData) {
 }
 
 async function getSimulatedTranslation(textData) {
+ 
+  // ===== REAL AI PROMPT TEMPLATE =====
+function generateAIPrompt(textData) {
+  return `You are an expert historical linguist and wisdom extractor.
+
+TASK: Translate this ancient text and extract profound wisdom.
+
+SOURCE TEXT: "${textData.text}"
+LANGUAGE: ${textData.language}
+ERA: ${textData.era}
+SUBJECT: ${textData.subject}
+CONTEXT: ${textData.description}
+
+Please provide:
+1. A modern English translation (2-3 sentences)
+2. One wisdom quip extracted from it (1-2 sentences, profound)
+3. Brief historical/scientific context
+
+Format as JSON:
+{
+  "translation": "your translation here",
+  "quip": "wisdom quip here",
+  "context_notes": "historical/scientific notes here"
+}`;
+}  
+  
   // Simulated AI responses
   const responses = {
     'etruscan_linen': {
