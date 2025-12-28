@@ -522,7 +522,7 @@ async function initiateTranslation() {
   `;
   
   document.getElementById('aiStatus').textContent = 'Processing...';
-  
+    
   // Select random text
   const textData = ANCIENT_TEXTS[Math.floor(Math.random() * ANCIENT_TEXTS.length)];
   currentTranslation = textData;
@@ -565,8 +565,10 @@ async function processWithCurrentMethod(textData) {
 }
 
 async function usePublicProxy(textData) {
-  // Try free public endpoint
+  // Try free public endpoint with our new prompt template
   try {
+    const prompt = generateAIPrompt(textData);
+    
     const response = await fetch('https://api.openai-proxy.org/v1/chat/completions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -574,9 +576,9 @@ async function usePublicProxy(textData) {
         model: 'gpt-3.5-turbo',
         messages: [{
           role: 'user',
-          content: `Translate this ancient ${textData.language} text and extract one wisdom quip: "${textData.text}"`
+          content: prompt
         }],
-        max_tokens: 150
+        max_tokens: 300
       })
     });
     
@@ -584,16 +586,28 @@ async function usePublicProxy(textData) {
       const data = await response.json();
       const aiText = data.choices[0].message.content;
       
-      // Parse response
-      const lines = aiText.split('\n');
-      const quip = lines.find(l => l.includes('"') || l.length < 100) || aiText;
-      
-      return {
-        quip: quip.trim(),
-        fullTranslation: aiText,
-        method: 'Public Proxy (GPT-3.5)',
-        success: true
-      };
+      // Try to parse as JSON
+      try {
+        const parsed = JSON.parse(aiText);
+        return {
+          quip: parsed.quip || aiText,
+          fullTranslation: parsed.translation || aiText,
+          context: parsed.context_notes || '',
+          method: 'Public Proxy (GPT-3.5)',
+          success: true,
+          rawResponse: aiText
+        };
+      } catch (e) {
+        // If not JSON, use as-is
+        return {
+          quip: extractWisdomFromText(aiText),
+          fullTranslation: aiText,
+          context: 'AI responded with free text',
+          method: 'Public Proxy (GPT-3.5)',
+          success: true,
+          rawResponse: aiText
+        };
+      }
     }
   } catch (error) {
     console.log('Public proxy failed:', error);
@@ -602,7 +616,7 @@ async function usePublicProxy(textData) {
   // Fallback to simulated
   return await getSimulatedTranslation(textData);
 }
-
+  
 async function getSimulatedTranslation(textData) {
  
   // ===== REAL AI PROMPT TEMPLATE =====
