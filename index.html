@@ -522,7 +522,7 @@ async function initiateTranslation() {
   `;
   
   document.getElementById('aiStatus').textContent = 'Processing...';
-    
+  
   // Select random text
   const textData = ANCIENT_TEXTS[Math.floor(Math.random() * ANCIENT_TEXTS.length)];
   currentTranslation = textData;
@@ -562,6 +562,31 @@ async function processWithCurrentMethod(textData) {
     default:
       return await getSimulatedTranslation(textData);
   }
+}
+
+// ===== REAL AI PROMPT TEMPLATE =====
+function generateAIPrompt(textData) {
+  return `You are an expert historical linguist and wisdom extractor.
+
+TASK: Translate this ancient text and extract profound wisdom.
+
+SOURCE TEXT: "${textData.text}"
+LANGUAGE: ${textData.language}
+ERA: ${textData.era}
+SUBJECT: ${textData.subject}
+CONTEXT: ${textData.description}
+
+Please provide:
+1. A modern English translation (2-3 sentences)
+2. One wisdom quip extracted from it (1-2 sentences, profound)
+3. Brief historical/scientific context
+
+Format as JSON:
+{
+  "translation": "your translation here",
+  "quip": "wisdom quip here",
+  "context_notes": "historical/scientific notes here"
+}`;
 }
 
 async function usePublicProxy(textData) {
@@ -616,67 +641,8 @@ async function usePublicProxy(textData) {
   // Fallback to simulated
   return await getSimulatedTranslation(textData);
 }
-  
-async function getSimulatedTranslation(textData) {
- 
-  // ===== REAL AI PROMPT TEMPLATE =====
-function generateAIPrompt(textData) {
-  return `You are an expert historical linguist and wisdom extractor.
 
-TASK: Translate this ancient text and extract profound wisdom.
-
-SOURCE TEXT: "${textData.text}"
-LANGUAGE: ${textData.language}
-ERA: ${textData.era}
-SUBJECT: ${textData.subject}
-CONTEXT: ${textData.description}
-
-Please provide:
-1. A modern English translation (2-3 sentences)
-2. One wisdom quip extracted from it (1-2 sentences, profound)
-3. Brief historical/scientific context
-
-Format as JSON:
-{
-  "translation": "your translation here",
-  "quip": "wisdom quip here",
-  "context_notes": "historical/scientific notes here"
-}`;
-}  
-  
-  // Simulated AI responses
-  const responses = {
-    'etruscan_linen': {
-      quip: "The Etruscans knew: What makes water holy isn't the blessing, but the vessel's willingness to hold it.",
-      translation: "This linen text describes ritual purification ceremonies. The words suggest concepts of cleanliness and ceremonial vessels used in funerary rites."
-    },
-    'linear_a': {
-      quip: "Minoan wisdom: The first written words were receipts—civilization began when we agreed what things were worth.",
-      translation: "Administrative record mentioning locations (Knossos, Phaistos) and quantities of stored goods or trade items."
-    },
-    'babylonian_stars': {
-      quip: "Babylonian astronomers observed: Time is the universe's way of making sure everything doesn't happen at once.",
-      translation: "Records the position of the Pleiades star cluster, used for agricultural and religious calendar keeping."
-    },
-    'rongorongo': {
-      quip: "Rapa Nui insight: A society that forgets how to read its own history is already carving its obituary in stone.",
-      translation: "The glyphs likely record genealogical information or astronomical knowledge important to Easter Island's civilization."
-    }
-  };
-  
-  const response = responses[textData.id] || {
-    quip: "Ancient wisdom: Some mysteries aren't meant to be solved, only contemplated.",
-    translation: "This text contains cultural knowledge that has been lost to time. Translation remains partial."
-  };
-  
-  return {
-    ...response,
-    method: 'Simulated AI',
-    success: true
-  };
-}
- 
-  // Helper to extract wisdom from free-text AI responses
+// Helper to extract wisdom from free-text AI responses
 function extractWisdomFromText(text) {
   // Look for quotes or short profound statements
   const lines = text.split('\n').filter(line => line.trim().length > 0);
@@ -703,7 +669,46 @@ function extractWisdomFromText(text) {
   // Ultimate fallback
   return "Ancient wisdom: The deepest truths often hide in plain sight.";
 }
+
+async function getSimulatedTranslation(textData) {
+  // Simulated AI responses
+  const responses = {
+    'etruscan_linen': {
+      quip: "The Etruscans knew: What makes water holy isn't the blessing, but the vessel's willingness to hold it.",
+      translation: "This linen text describes ritual purification ceremonies. The words suggest concepts of cleanliness and ceremonial vessels used in funerary rites.",
+      context_notes: "Etruscan burial practices emphasized purification rituals for the soul's journey to the afterlife."
+    },
+    'linear_a': {
+      quip: "Minoan wisdom: The first written words were receipts—civilization began when we agreed what things were worth.",
+      translation: "Administrative record mentioning locations (Knossos, Phaistos) and quantities of stored goods or trade items.",
+      context_notes: "Linear A remains undeciphered, but likely records Minoan economic transactions from the Bronze Age."
+    },
+    'babylonian_stars': {
+      quip: "Babylonian astronomers observed: Time is the universe's way of making sure everything doesn't happen at once.",
+      translation: "Records the position of the Pleiades star cluster, used for agricultural and religious calendar keeping.",
+      context_notes: "Babylonian astronomy was advanced for its time, with detailed records dating back to 7th century BCE."
+    },
+    'rongorongo': {
+      quip: "Rapa Nui insight: A society that forgets how to read its own history is already carving its obituary in stone.",
+      translation: "The glyphs likely record genealogical information or astronomical knowledge important to Easter Island's civilization.",
+      context_notes: "Rongorongo is an undeciphered script unique to Easter Island, with only 25 surviving wooden tablets."
+    }
+  };
   
+  const response = responses[textData.id] || {
+    quip: "Ancient wisdom: Some mysteries aren't meant to be solved, only contemplated.",
+    translation: "This text contains cultural knowledge that has been lost to time. Translation remains partial.",
+    context_notes: "Many ancient scripts remain undeciphered, preserving their mysteries for future generations."
+  };
+  
+  return {
+    ...response,
+    method: 'Simulated AI',
+    success: true,
+    rawResponse: JSON.stringify(response)
+  };
+}
+
 async function getFallbackTranslation(textData) {
   // Ultimate fallback
   const wisdoms = [
@@ -715,8 +720,10 @@ async function getFallbackTranslation(textData) {
   return {
     quip: wisdoms[Math.floor(Math.random() * wisdoms.length)],
     translation: `The ${textData.language} text "${textData.text}" from ${textData.era} contains wisdom about ${textData.subject}.`,
+    context: 'Translation unavailable - using fallback wisdom generator.',
     method: 'Fallback Generator',
-    success: true
+    success: true,
+    rawResponse: 'Fallback activated'
   };
 }
 
@@ -811,13 +818,14 @@ function toggleBackendView() {
   }
 }
 
-// Update source material with potential link
-const sourceWithLink = {
-  ...textData,
-  // Add placeholder for AI-provided source
-  ai_provided_source: "(AI will provide source link here in future)"
-};
-document.getElementById('sourceMaterial').textContent = JSON.stringify(sourceWithLink, null, 2);
+function updateBackendView(stage, textData, result) {
+  // Update source material with potential link
+  const sourceWithLink = {
+    ...textData,
+    // Add placeholder for AI-provided source
+    ai_provided_source: "(AI will provide source link here in future)"
+  };
+  document.getElementById('sourceMaterial').textContent = JSON.stringify(sourceWithLink, null, 2);
   
   // Update process log
   const now = new Date().toLocaleTimeString();
@@ -847,8 +855,8 @@ document.getElementById('sourceMaterial').textContent = JSON.stringify(sourceWit
       // Update proof of work
       document.getElementById('timestamp').textContent = now;
       document.getElementById('aiProvider').textContent = result.method;
-      document.getElementById('proofOfWork').innerHTML += 
-        `\nHash: ${generateRandomHash()}`;
+      document.getElementById('proofOfWork').innerHTML = 
+        `Timestamp: ${now}<br>AI Provider: ${result.method}<br>Hash: ${generateRandomHash()}`;
       break;
   }
   
