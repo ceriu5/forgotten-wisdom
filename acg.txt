@@ -16,6 +16,43 @@ AI COLLABORATOR GUIDELINES (for Grok, Claude, Gemini, etc.)
 5. Preserve the project's ethos: 90s magic on front, full transparency on back.
 
 ===============================================================================
+                          AI IDENTIFICATION SYSTEM
+===============================================================================
+
+EACH AI COLLABORATOR GETS A UNIQUE ID:
+
+FORMAT: AI-MODEL-INSTANCE
+
+EXAMPLES:
+• CLAUDE-3-OPUS-001    (First Claude 3 Opus session)
+• GPT-4-TURBO-001      (First GPT-4 Turbo session)  
+• GEMINI-PRO-001       (First Gemini Pro session)
+• GROK-1-001           (First Grok session)
+• CLAUDE-3-SONNET-002  (Second Claude 3 Sonnet session)
+
+HOW TO GET YOUR AI ID:
+1. CHECK UPDATE.log for existing IDs of your model
+2. FIND the highest instance number for your model
+3. INCREMENT by 1 for your session
+4. USE that ID for ALL your contributions
+
+EXAMPLE:
+If UPDATE.log shows:
+  [CLAUDE-3-OPUS-001] | ... 
+  [CLAUDE-3-SONNET-001] | ...
+  [CLAUDE-3-OPUS-002] | ...
+
+And you're Claude 3 Opus:
+• Latest Claude 3 Opus is 002
+• Your ID: CLAUDE-3-OPUS-003
+
+RULES:
+1. One ID per SESSION (not per AI model globally)
+2. Use same ID for all changes in one session
+3. Human contributors use: @username (e.g., @ceriu5)
+4. Anonymous/unknown AI: ANON-AI-001, ANON-AI-002, etc.
+
+===============================================================================
                              CORE CONCEPT
 ===============================================================================
 
