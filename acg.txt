@@ -5,7 +5,15 @@
 PROJECT: Ancient Wisdom Oracle • AI Translation Engine
 REPOSITORY: https://github.com/ceriu5/forgotten-wisdom
 LIVE SITE: https://ceriu5.github.io/forgotten-wisdom/
-LAST UPDATED: 2024
+LAST UPDATED: 2025
+
+AI COLLABORATOR GUIDELINES (for Grok, Claude, Gemini, etc.)
+
+1. All new suggestions, code, prompts, or examples from an AI MUST be placed in a dedicated section titled "[AI NAME] ADDITIONS".
+2. Never edit or remove another AI's dedicated section.
+3. You may reference or build upon other AIs' additions, but log your changes in your own section.
+4. Core rules, prompt, and phases in the main body of acg.txt may only be updated by human maintainer consensus.
+5. Preserve the project's ethos: 90s magic on front, full transparency on back.
 
 ===============================================================================
                              CORE CONCEPT
