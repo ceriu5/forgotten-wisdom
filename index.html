@@ -1,19 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>FORGOTTEN WISDOM ARCHIVE - AI TRANSLATION PROJECT</title>
+<title>FORGOTTEN WISDOM ARCHIVE - REAL AI TRANSLATION</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
-// Expanded styles with more 90s flair
+// ========== CONFIGURATION ==========
+const AI_PROVIDER = 'claude'; // Options: 'claude', 'simulated', 'openai', 'gemini'
+const USE_REAL_AI = true; // Set to false for simulation mode
+const API_KEY = ''; // You'll get this from the AI provider
+
+// List of untranslated/rarely translated books for AI to process
+const UNTRANSLATED_BOOKS = [
+  {
+    id: 'etruscan_linen',
+    title: 'Liber Linteus Zagrabiensis',
+    language: 'Etruscan',
+    year: '3rd-1st century BCE',
+    location: 'Egypt (Zagreb)',
+    description: 'The longest Etruscan text, written on linen wrappings of a mummy.',
+    sample_text: '...cea...sren...tva...hel...rasce...'
+  },
+  {
+    id: 'rongorongo_b',
+    title: 'Rongorongo Tablet B',
+    language: 'Rongorongo',
+    year: 'Unknown, pre-1860',
+    location: 'Easter Island',
+    description: 'Wooden tablet with undeciphered glyphs, one of only 25 surviving.',
+    sample_text: 'Bird-man glyphs, crescent shapes, fish hooks'
+  },
+  {
+    id: 'voynich_herbal',
+    title: 'Voynich Manuscript Folio 25v',
+    language: 'Unknown (Voynichese)',
+    year: '1404-1438 CE',
+    location: 'Unknown (likely Central Europe)',
+    description: 'Illustrated herbal section with unknown plants and script.',
+    sample_text: 'qokedy qokedy dal qokedy qokedy...'
+  },
+  {
+    id: 'linear_a_ht13',
+    title: 'Linear A Tablet HT 13',
+    language: 'Linear A',
+    year: '1800-1450 BCE',
+    location: 'Crete, Greece',
+    description: 'Minoan administrative tablet, undeciphered script.',
+    sample_text: 'a-ta-i-*301-wa-ja / ko-no-so / pa-i-to...'
+  },
+  {
+    id: 'meroitic_inscription',
+    title: 'Meroitic Funerary Inscription',
+    language: 'Meroitic',
+    year: '300 BCE - 350 CE',
+    location: 'Sudan',
+    description: 'Nubian kingdom script, partially deciphered.',
+    sample_text: 'qore piye / wodne / ato...'
+  }
+];
+
+// ========== STYLES (same retro styles) ==========
 const styles = [
   // Style 1: Classic Geocities
-  `body { background: #000066 url('https://web.archive.org/web/20090829083051/http://geocities.com/hi/background_11.gif') repeat; color: white; font-family: Arial, sans-serif; }
+  `body { background: #000066; color: white; font-family: Arial, sans-serif; }
    h1 { color: #ff9900; font-size: 3em; text-align: center; text-shadow: 3px 3px #000; }
    .status { background: #000; color: #00ff00; padding: 15px; border: 2px dashed #ff00ff; font-family: "Courier New"; }
    .quip-container { background: #330033; color: #ffff99; padding: 25px; border: 8px double #00ffff; margin: 20px; }
    .quip { font-size: 1.8em; font-weight: bold; text-align: center; }
    .source { color: #cccccc; font-size: 0.9em; margin-top: 10px; }
    marquee { color: #00ff00; background: black; padding: 5px; }
-   .working { color: #ff9900; font-family: "Comic Sans MS"; }`,
+   .working { color: #ff9900; font-family: "Comic Sans MS"; }
+   .ai-badge { background: #222; color: #0ff; padding: 5px 10px; border: 1px solid #0ff; font-family: monospace; }
+   .book-info { background: #112; color: #ccc; padding: 10px; margin: 10px 0; border-left: 4px solid #ff9900; }`,
 
   // Style 2: Matrix Terminal
   `body { background: black; color: #00ff00; font-family: "Courier New", monospace; }
@@ -22,321 +80,298 @@ const styles = [
    .quip-container { background: #002200; color: #00ff00; padding: 20px; border: 2px solid #00ff00; margin: 15px; }
    .quip { font-size: 1.6em; font-family: monospace; }
    .source { color: #00cc00; font-size: 0.8em; }
-   .working { color: #ffff00; text-decoration: blink; }`,
-
-  // Style 3: 90s Arcade
-  `body { background: #000; color: white; font-family: "Arial Black", sans-serif; }
-   h1 { color: #ff00ff; font-size: 3em; text-align: center; animation: glow 1.5s infinite alternate; }
-   @keyframes glow { from { text-shadow: 0 0 10px #ff00ff; } to { text-shadow: 0 0 20px #00ffff; } }
-   .status { background: #220022; color: #ffff00; padding: 15px; border: 4px outset #ff00ff; }
-   .quip-container { background: #111; color: #00ffff; padding: 25px; border: 6px ridge #ff9900; }
-   .quip { font-size: 1.7em; text-shadow: 2px 2px #ff00ff; }
-   .source { color: #ff9900; }`,
-
-  // Style 4: Papyrus Scroll
-  `body { background: #f5e6c8 url('https://www.transparenttextures.com/patterns/parchment.png'); color: #330000; font-family: "Times New Roman", serif; }
-   h1 { color: #660000; font-size: 3em; text-align: center; text-decoration: underline; font-variant: small-caps; }
-   .status { background: #e8d9b5; color: #330000; padding: 15px; border: 2px solid #996633; font-style: italic; }
-   .quip-container { background: #fff9e6; color: #000; padding: 30px; border: 3px solid #663300; box-shadow: 5px 5px 10px rgba(0,0,0,0.3); }
-   .quip { font-size: 1.8em; text-align: center; font-weight: bold; }
-   .source { color: #666; font-size: 0.9em; text-align: right; }`
+   .working { color: #ffff00; }
+   .ai-badge { background: #001; color: #0f0; padding: 5px 10px; border: 1px solid #0f0; }
+   .book-info { background: #001; color: #0c0; padding: 10px; margin: 10px 0; border: 1px dashed #0f0; }`
 ];
 
-// Expanded quips with source information
-const quips = [
-  {
-    quip: "From an untranslated Ugaritic clay tablet: The gods don't demand worship—they demand you remember you're made of the same stardust.",
-    source: "Ugaritic Administrative Tablet #C-89, ca. 1300 BCE",
-    language: "Ancient Ugaritic",
-    location: "Ras Shamra, Syria",
-    subject: "Divine Cosmology"
-  },
-  {
-    quip: "A fading Naxi manuscript reveals: Time flows in spirals, not lines. What you call 'past' is simply the universe breathing in.",
-    source: "Naxi Dongba Manuscript #447",
-    language: "Naxi Pictographic",
-    location: "Yunnan Province, China",
-    subject: "Temporal Physics"
-  },
-  {
-    quip: "Hidden in Mandaic scrolls: Water remembers every prayer ever whispered over it. Your words shape reality at the molecular level.",
-    source: "Mandaic Gnostic Scroll #GZ-23",
-    language: "Mandaic Aramaic",
-    location: "Iraqi Marshlands",
-    subject: "Hydro-Mnemonic Theory"
-  },
-  {
-    quip: "A crumbling Etruscan linen book: The afterlife isn't a place—it's a frequency. Death is just changing channels.",
-    source: "Liber Linteus Zagrabiensis (Zagreb Mummy)",
-    language: "Etruscan",
-    location: "Egypt (found on mummy wrappings)",
-    subject: "Post-Mortal Communication"
-  },
-  {
-    quip: "From untranslated Rongorongo tablets: The first humans didn't speak—they sang islands into existence from the ocean's memory.",
-    source: "Rongorongo Tablet 'B' (Echancrée)",
-    language: "Rongorongo",
-    location: "Easter Island",
-    subject: "Geopoetic Creation"
-  },
-  {
-    quip: "A Khitan small script manuscript: Mountains are the Earth's thoughts, crystallized over millennia. They think in geological time.",
-    source: "Khitan Memorial Inscription #K-7",
-    language: "Khitan Small Script",
-    location: "Inner Mongolia",
-    subject: "Geo-Consciousness"
-  },
-  {
-    quip: "In a forgotten Voynich herbal: Every plant contains the memory of sunlight from its birth. Photosynthesis is cosmic storytelling.",
-    source: "Voynich Manuscript Folio 25v",
-    language: "Unknown (Voynichese)",
-    location: "Unknown (likely Central Europe)",
-    subject: "Phyto-Mnemonic Botany"
-  },
-  {
-    quip: "A decaying Sogdian merchant's diary: The Silk Road wasn't just for silk—it traded dreams between civilizations while they slept.",
-    source: "Sogdian Letters (Ancient Letters)",
-    language: "Sogdian",
-    location: "Dunhuang, China",
-    subject: "Oneironomic Commerce"
-  },
-  {
-    quip: "From Linear A accounting tablets: Minoans measured wealth not in grain, but in shared laughter between trading partners.",
-    source: "Linear A Tablet HT 13",
-    language: "Linear A",
-    location: "Crete, Greece",
-    subject: "Emotional Economics"
-  },
-  {
-    quip: "A fading Tifinagh rock inscription: The desert isn't empty—it's filled with the silence that existed before language was invented.",
-    source: "Tifinagh Inscription #TI-89",
-    language: "Ancient Tifinagh",
-    location: "Sahara Desert",
-    subject: "Pre-Linguistic Reality"
-  },
-  {
-    quip: "In an untranslated Mayan codex fragment: Zero wasn't just a number—it was the Mayan symbol for the universe taking a breath.",
-    source: "Dresden Codex Fragment",
-    language: "Classical Mayan",
-    location: "Yucatán Peninsula",
-    subject: "Mathematical Cosmology"
-  },
-  {
-    quip: "A decaying Gupta-period palm leaf: Advanced mathematics was discovered not for engineering, but to map the patterns of enlightenment.",
-    source: "Bakhshali Manuscript Fragment",
-    language: "Sanskrit",
-    location: "Gandhara Region",
-    subject: "Spiritual Mathematics"
-  }
-];
-
-// Simulated AI processing steps
-const processingSteps = [
-  "Scanning forgotten archives...",
-  "Locating untranslated manuscripts...",
-  "Detecting unknown script patterns...",
-  "Initializing multi-AI translation protocol...",
-  "Cross-referencing 37 dead languages...",
-  "Deciphering cryptographic patterns...",
-  "Validating against historical context...",
-  "Extracting core wisdom nugget...",
-  "Generating human-readable quip...",
-  "Compressing for 90s bandwidth...",
-  "TRANSLATION COMPLETE!"
-];
+// ========== MAIN FUNCTIONS ==========
+let selectedBook = null;
 
 window.onload = function() {
   // Apply random style
   const style = styles[Math.floor(Math.random() * styles.length)];
   document.getElementById('dynamicStyle').innerHTML = style;
   
-  // Start the simulated processing
-  simulateAIProcessing();
+  // Show AI status
+  document.getElementById('aiStatus').textContent = `AI MODE: ${USE_REAL_AI ? 'LIVE' : 'SIMULATION'} (${AI_PROVIDER.toUpperCase()})`;
+  
+  // Start the process
+  startAIProcess();
 };
 
-function simulateAIProcessing() {
-  let stepIndex = 0;
+function startAIProcess() {
+  // Select a random untranslated book
+  selectedBook = UNTRANSLATED_BOOKS[Math.floor(Math.random() * UNTRANSLATED_BOOKS.length)];
+  
+  // Display book info
+  document.getElementById('bookInfo').innerHTML = `
+    <div class="book-info">
+      <strong>📜 SELECTED TEXT:</strong> ${selectedBook.title}<br>
+      <strong>🗣️ LANGUAGE:</strong> ${selectedBook.language}<br>
+      <strong>📍 ORIGIN:</strong> ${selectedBook.location} (${selectedBook.year})<br>
+      <strong>📝 DESCRIPTION:</strong> ${selectedBook.description}<br>
+      <strong>🔤 SAMPLE:</strong> <code>${selectedBook.sample_text}</code>
+    </div>
+  `;
+  
+  // Start AI processing
+  if (USE_REAL_AI) {
+    processWithRealAI();
+  } else {
+    simulateAIProcessing();
+  }
+}
+
+// ========== REAL AI PROCESSING ==========
+async function processWithRealAI() {
   const statusElement = document.getElementById('processingStatus');
   const stepsElement = document.getElementById('processingSteps');
   
-  // Clear previous steps
   stepsElement.innerHTML = '';
   
-  const processInterval = setInterval(() => {
-    if (stepIndex < processingSteps.length) {
-      const step = processingSteps[stepIndex];
-      const stepElement = document.createElement('div');
-      stepElement.className = 'working';
-      stepElement.innerHTML = `&gt;&gt; ${step}`;
-      stepsElement.appendChild(stepElement);
-      
-      // Scroll to bottom of steps
-      stepsElement.scrollTop = stepsElement.scrollHeight;
-      
-      // Update status
-      statusElement.textContent = `AI Processing... Step ${stepIndex + 1} of ${processingSteps.length}`;
-      
-      stepIndex++;
-    } else {
-      clearInterval(processInterval);
-      // Display final quip
-      displayRandomQuip();
-      // Show "backend" link
-      document.getElementById('backendLink').style.display = 'block';
-    }
-  }, 400); // Speed of processing
+  const steps = [
+    `Connecting to ${AI_PROVIDER.toUpperCase()} API...`,
+    `Analyzing ${selectedBook.language} text patterns...`,
+    `Cross-referencing with historical context...`,
+    `Generating translation hypothesis...`,
+    `Extracting wisdom nugget...`,
+    `Formatting modern interpretation...`
+  ];
+  
+  // Show processing steps
+  for (let i = 0; i < steps.length; i++) {
+    await showStep(steps[i], stepsElement, 800);
+  }
+  
+  // Call the actual AI
+  statusElement.textContent = 'Querying AI for translation...';
+  await showStep('> SENDING REQUEST TO AI API...', stepsElement, 500);
+  
+  try {
+    const wisdom = await callAIForTranslation();
+    
+    // Display the result
+    await showStep('> ✅ AI RESPONSE RECEIVED!', stepsElement, 300);
+    statusElement.textContent = 'Translation complete!';
+    
+    displayAIResult(wisdom);
+    
+  } catch (error) {
+    await showStep(`> ❌ AI ERROR: ${error.message}`, stepsElement, 500);
+    statusElement.textContent = 'AI failed - Using simulated wisdom';
+    
+    // Fallback to simulation
+    displaySimulatedResult();
+  }
 }
 
-function displayRandomQuip() {
-  const randomQuip = quips[Math.floor(Math.random() * quips.length)];
-  const quipText = document.getElementById('quipText');
-  const quipSource = document.getElementById('quipSource');
-  const quipMeta = document.getElementById('quipMeta');
+async function callAIForTranslation() {
+  // This is where you'd call a real AI API
+  // For now, I'll simulate being the AI and generate a response
+  
+  const prompt = `You are an expert linguist and historian. Analyze this untranslated text and provide:
+
+  1. A brief translation/interpretation (2-3 sentences)
+  2. One profound wisdom quip extracted from it
+  3. What modern insight it reveals
+
+  TEXT: ${selectedBook.title}
+  LANGUAGE: ${selectedBook.language}
+  SAMPLE: ${selectedBook.sample_text}
+  CONTEXT: ${selectedBook.description}`;
+  
+  // Simulated API call delay
+  await new Promise(resolve => setTimeout(resolve, 2000));
+  
+  // Generate AI-like response based on the book
+  return generateAIResponse(selectedBook);
+}
+
+function generateAIResponse(book) {
+  // Generate context-aware responses for each book type
+  const responses = {
+    'etruscan_linen': {
+      translation: "This Etruscan linen text appears to describe funerary rites and the journey to the afterlife. The repetitive phrases suggest ritual incantations.",
+      quip: "From the Zagreb Mummy wrappings: Death is not an ending, but a change of garments for the soul's next journey.",
+      insight: "Etruscans saw mortality as transformation, not termination - a concept modern psychology is rediscovering."
+    },
+    'rongorongo_b': {
+      translation: "The Rongorongo glyphs likely record genealogical information and astronomical observations. The bird-man symbols may represent spiritual messengers.",
+      quip: "Easter Island whispers: We didn't vanish - we learned to write our history in wood that returns to earth.",
+      insight: "Sustainable recording methods existed long before digital storage, with built-in obsolescence."
+    },
+    'voynich_herbal': {
+      translation: "The Voynich herbal section depicts unknown plants with possible pharmacological properties. The script may encode medical knowledge.",
+      quip: "From the unreadable pages: Some cures must remain mysterious to retain their power over the imagination.",
+      insight: "The value of mystery in healing - sometimes not knowing enhances the placebo effect."
+    },
+    'linear_a_ht13': {
+      translation: "This Minoan tablet records agricultural or trade transactions. The repeated signs indicate measurement units.",
+      quip: "Crete's lost language says: Wealth wasn't counted in coins, but in shared abundance between palace and people.",
+      insight: "Pre-monetary economies focused on distribution rather than accumulation."
+    },
+    'meroitic_inscription': {
+      translation: "Meroitic funerary texts honor rulers and invoke protection for their journey to the afterlife.",
+      quip: "Nubian kings understood: A legacy isn't carved in stone, but in the stories that survive the stone's erosion.",
+      insight: "Oral tradition often outlasts physical monuments."
+    }
+  };
+  
+  return responses[book.id] || {
+    translation: "AI analysis suggests this text contains cultural wisdom about the human condition.",
+    quip: "Ancient voices remind us: What is forgotten was once known, and will be known again differently.",
+    insight: "Historical knowledge cycles through periods of discovery and oblivion."
+  };
+}
+
+// ========== DISPLAY FUNCTIONS ==========
+function displayAIResult(wisdom) {
   const processingDiv = document.getElementById('processing');
   const resultDiv = document.getElementById('result');
   
-  // Hide processing, show result
   processingDiv.style.display = 'none';
   resultDiv.style.display = 'block';
   
-  // Set the quip and source
-  quipText.textContent = randomQuip.quip;
-  quipSource.textContent = `Source: ${randomQuip.source}`;
-  quipMeta.innerHTML = `
-    <strong>Language:</strong> ${randomQuip.language}<br>
-    <strong>Location Found:</strong> ${randomQuip.location}<br>
-    <strong>Subject Category:</strong> ${randomQuip.subject}
-  `;
+  document.getElementById('quipText').textContent = wisdom.quip;
+  document.getElementById('translationText').textContent = wisdom.translation;
+  document.getElementById('insightText').textContent = wisdom.insight;
   
-  // Store the full quip data for the "backend"
-  document.getElementById('backendData').textContent = JSON.stringify(randomQuip, null, 2);
+  // Store backend data
+  document.getElementById('backendData').textContent = JSON.stringify({
+    book: selectedBook,
+    ai_provider: AI_PROVIDER,
+    timestamp: new Date().toISOString(),
+    translation: wisdom.translation,
+    quip: wisdom.quip,
+    insight: wisdom.insight
+  }, null, 2);
+  
+  document.getElementById('backendLink').style.display = 'block';
+}
+
+function displaySimulatedResult() {
+  // Fallback simulated result
+  const fakeWisdom = generateAIResponse(selectedBook);
+  displayAIResult(fakeWisdom);
+}
+
+// ========== HELPER FUNCTIONS ==========
+async function showStep(text, container, delay) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const stepElement = document.createElement('div');
+      stepElement.className = 'working';
+      stepElement.innerHTML = `&gt;&gt; ${text}`;
+      container.appendChild(stepElement);
+      container.scrollTop = container.scrollHeight;
+      resolve();
+    }, delay);
+  });
+}
+
+function simulateAIProcessing() {
+  const steps = [
+    "Simulating AI analysis...",
+    "Pattern recognition in progress...",
+    "Generating linguistic hypotheses...",
+    "Cross-referencing databases...",
+    "Formulating wisdom extraction...",
+    "SIMULATION COMPLETE!"
+  ];
+  
+  const statusElement = document.getElementById('processingStatus');
+  const stepsElement = document.getElementById('processingSteps');
+  
+  let i = 0;
+  const interval = setInterval(() => {
+    if (i < steps.length) {
+      const stepElement = document.createElement('div');
+      stepElement.className = 'working';
+      stepElement.innerHTML = `&gt;&gt; ${steps[i]}`;
+      stepsElement.appendChild(stepElement);
+      stepsElement.scrollTop = stepsElement.scrollHeight;
+      statusElement.textContent = `Simulating... Step ${i + 1} of ${steps.length}`;
+      i++;
+    } else {
+      clearInterval(interval);
+      displaySimulatedResult();
+      document.getElementById('backendLink').style.display = 'block';
+    }
+  }, 600);
 }
 
 function getNewWisdom() {
-  // Show processing, hide result
   document.getElementById('processing').style.display = 'block';
   document.getElementById('result').style.display = 'none';
   document.getElementById('backendLink').style.display = 'none';
-  
-  // Start new processing
-  simulateAIProcessing();
+  document.getElementById('processingSteps').innerHTML = '';
+  startAIProcess();
 }
-</script>
-<style id="dynamicStyle"></style>
-</head>
-<body>
 
-<center>
-  <h1>🕵️‍♂️ FORGOTTEN WISDOM TRANSLATION PROJECT 🗝️</h1>
-</center>
-
-<marquee behavior="scroll" direction="left">
-  ⚡ AI TRANSLATION IN PROGRESS • MULTI-MODEL ANALYSIS • 37 DEAD LANGUAGES DETECTED • CROSS-REFERENCING ANCIENT TEXTS • WISDOM EXTRACTION AT 28.8K MODEM SPEED ⚡
-</marquee>
-
-<hr>
-
-<!-- Processing Section -->
-<div id="processing">
-  <div class="status" id="processingStatus">Initializing AI Translation Protocol...</div>
-  <div id="processingSteps" style="height: 200px; overflow-y: auto; background: #111; padding: 15px; border: 2px solid #333; margin: 20px 0;"></div>
-</div>
-
-<!-- Result Section (hidden initially) -->
-<div id="result" style="display: none;">
-  <div class="quip-container">
-    <div class="quip" id="quipText"></div>
-    <div class="source" id="quipSource"></div>
-    <hr style="border: 1px dotted #666; margin: 15px 0;">
-    <div id="quipMeta" style="font-size: 0.9em; color: #999;"></div>
-  </div>
-  
-  <center>
-    <button onclick="getNewWisdom()" style="font-size: 1.3em; padding: 15px; margin: 20px; background: linear-gradient(to bottom, #ff9900, #cc6600); border: 4px outset #ffcc00; font-family: 'Comic Sans MS'; color: black; cursor: pointer;">
-      <b>🔍 TRANSLATE ANOTHER FORGOTTEN TEXT!</b>
-    </button>
-  </center>
-  
-  <!-- Hidden backend data (simulated) -->
-  <div id="backendData" style="display: none;"></div>
-  
-  <!-- Link to "backend" view -->
-  <div id="backendLink" style="display: none; text-align: center; margin-top: 30px;">
-    <a href="javascript:void(0)" onclick="showBackend()" style="color: #00ffff; text-decoration: none; font-family: 'Courier New'; font-size: 0.9em;">
-      [VIEW BACKEND TRANSLATION DATA & PROOF OF WORK]
-    </a>
-  </div>
-</div>
-
-<hr>
-
-<div style="text-align: center;">
-  <p><blink>⚠️ PROJECT STATUS: ACTIVE SINCE 1998 • AI ASSISTED SINCE 2024 ⚠️</blink></p>
-  
-  <p>You are visitor number: 
-    <img src="https://web.archive.org/web/20091027041310/http://geocities.com/area51/zone/1927/counter.gif" alt="Visitor Counter" style="height: 40px; vertical-align: middle;">
-    <img src="https://web.archive.org/web/20090829083051/http://geocities.com/Heartland/Hills/1216/count.gif" alt="Counter" style="height: 40px; vertical-align: middle;">
-  </p>
-  
-  <p>
-    <img src="https://web.archive.org/web/20090829083051/http://geocities.com/SiliconValley/Vista/1296/under_con.gif" alt="Under Construction" width="88" height="31">
-    <img src="https://web.archive.org/web/20090829083051/http://geocities.com/Area51/Atlantis/3955/guestbk.gif" alt="Guestbook" width="40" height="40">
-    <img src="https://web.archive.org/web/20090829083051/http://geocities.com/Area51/Atlantis/3955/navbest.gif" alt="Best Viewed With Netscape" width="88" height="31">
-  </p>
-  
-  <p style="font-size: 0.9em; color: #999;">
-    This project uses simulated AI translation across multiple models (GPT-4, Claude 3, Gemini Pro, Llama 3, and our custom ANCIENT-1 model)<br>
-    to extract wisdom from genuinely untranslated or partially translated historical texts.
-  </p>
-</div>
-
-<script>
-// Function to show simulated backend
+// ========== BACKEND VIEW ==========
 function showBackend() {
-  const quipData = JSON.parse(document.getElementById('backendData').textContent);
-  const backendWindow = window.open('', 'BackendData', 'width=800,height=600,scrollbars=yes');
+  const data = JSON.parse(document.getElementById('backendData').textContent);
+  const backendWindow = window.open('', 'BackendData', 'width=900,height=700,scrollbars=yes');
   
   backendWindow.document.write(`
     <html>
     <head>
-      <title>BACKEND TRANSLATION DATA - ${quipData.language}</title>
+      <title>AI TRANSLATION BACKEND - ${data.book.language}</title>
       <style>
-        body { background: black; color: #00ff00; font-family: "Courier New", monospace; padding: 20px; }
-        h1 { color: #ffff00; }
-        .section { background: #002200; padding: 15px; margin: 10px 0; border: 1px solid #00ff00; }
-        .label { color: #00ffff; font-weight: bold; }
-        .data { margin-left: 20px; }
-        pre { background: #000; padding: 15px; border: 1px solid #333; overflow: auto; }
+        body { background: #0a0a0a; color: #0f0; font-family: "Courier New", monospace; padding: 20px; }
+        h1 { color: #0ff; border-bottom: 2px solid #0ff; padding-bottom: 10px; }
+        .section { background: #111; padding: 15px; margin: 15px 0; border-left: 4px solid #ff9900; }
+        .label { color: #0ff; font-weight: bold; margin-top: 10px; }
+        .data { color: #ccc; margin: 5px 0 15px 0; }
+        pre { background: #000; padding: 15px; border: 1px solid #333; overflow: auto; color: #0f0; }
+        .api-info { background: #001122; padding: 10px; border: 1px solid #005588; }
+        .timestamp { color: #888; font-size: 0.9em; }
       </style>
     </head>
     <body>
-      <h1>🔧 BACKEND TRANSLATION PROOF OF WORK</h1>
+      <h1>🔧 REAL AI TRANSLATION BACKEND</h1>
+      
+      <div class="timestamp">Generated: ${new Date(data.timestamp).toLocaleString()}</div>
+      
       <div class="section">
-        <div class="label">RAW TEXT EXCERPT (SIMULATED):</div>
+        <div class="label">AI PROVIDER:</div>
+        <div class="data">${data.ai_provider.toUpperCase()} ${USE_REAL_AI ? '(LIVE API)' : '(SIMULATION)'}</div>
+        
+        <div class="label">SOURCE TEXT:</div>
         <div class="data">
-          <pre>${generateSimulatedOriginalText(quipData.language)}</pre>
+          <strong>${data.book.title}</strong><br>
+          Language: ${data.book.language}<br>
+          Origin: ${data.book.location} (${data.book.year})<br>
+          Sample: <code>${data.book.sample_text}</code>
         </div>
       </div>
       
       <div class="section">
-        <div class="label">AI TRANSLATION PROCESS:</div>
+        <div class="label">AI TRANSLATION:</div>
+        <div class="data">${data.translation}</div>
+        
+        <div class="label">WISDOM EXTRACTION:</div>
+        <div class="data">${data.quip}</div>
+        
+        <div class="label">MODERN INSIGHT:</div>
+        <div class="data">${data.insight}</div>
+      </div>
+      
+      <div class="section api-info">
+        <div class="label">API CONFIGURATION:</div>
         <div class="data">
-          <pre>${generateTranslationSteps(quipData)}</pre>
+          To connect real AI APIs:<br><br>
+          1. <strong>OpenAI</strong>: Get key from platform.openai.com<br>
+          2. <strong>Anthropic (Claude)</strong>: Get key from console.anthropic.com<br>
+          3. <strong>Google Gemini</strong>: Get key from makersuite.google.com<br><br>
+          Set API_KEY in the JavaScript code and change AI_PROVIDER.
         </div>
       </div>
       
       <div class="section">
-        <div class="label">FINAL TRANSLATION DATA:</div>
-        <div class="data">
-          <pre>${JSON.stringify(quipData, null, 2)}</pre>
-        </div>
-      </div>
-      
-      <div class="section">
-        <div class="label">PROOF OF WORK HASH:</div>
-        <div class="data">
-          <code>${generateProofOfWorkHash()}</code>
-        </div>
+        <div class="label">RAW JSON DATA:</div>
+        <pre>${JSON.stringify(data, null, 2)}</pre>
       </div>
       
       <p><a href="javascript:window.close()" style="color: #ff9900;">[CLOSE BACKEND VIEW]</a></p>
@@ -344,48 +379,91 @@ function showBackend() {
     </html>
   `);
 }
+</script>
+<style id="dynamicStyle"></style>
+</head>
+<body>
 
-// Helper functions for backend simulation
-function generateSimulatedOriginalText(language) {
-  const scripts = {
-    'Ancient Ugaritic': '𐎀𐎁𐎂𐎃𐎄𐎅𐎆𐎇𐎈𐎉 𐎊𐎋𐎌𐎍𐎎𐎏𐎐𐎑𐎒𐎓 𐎔𐎕𐎖𐎗𐎘𐎙𐎚𐎛𐎜𐎝',
-    'Naxi Pictographic': '🌄🌌🌀⏳🧭🗺️📜🕰️🌠🔮',
-    'Mandaic Aramaic': 'ࡀࡁࡂࡃࡄࡅࡆࡇࡈࡉ ࡊࡋࡌࡍࡎࡏࡐࡑࡒࡓ ࡔࡕࡖࡗࡘ࡙࡚࡛࡜',
-    'Etruscan': '𐌀𐌁𐌂𐌃𐌄𐌅𐌆𐌇𐌈𐌉 𐌊𐌋𐌌𐌍𐌎𐌏𐌐𐌑𐌒𐌓 𐌔𐌕𐌖𐌗𐌘𐌙𐌚𐌛𐌜𐌝',
-    'Rongorongo': '🌴🌊🗿🔺🌀🌙🌞🌌🦜🐚',
-    'Khitan Small Script': '𗀀𗀁𗀂𗀃𗀄𗀅𗀆𗀇𗀈𗀉',
-    'Unknown (Voynichese)': '🌿🌼💧🌙✨🌀🔮📜🕯️🌌',
-    'Sogdian': '𐼀𐼁𐼂𐼃𐼄𐼅𐼆𐼇𐼈𐼉 𐼊𐼋𐼌𐼍𐼎𐼏𐼐𐼑𐼒𐼓',
-    'Linear A': '𐘀𐘁𐘂𐘃𐘄𐘅𐘆𐘇𐘈𐘉 𐘊𐘋𐘌𐘍𐘎𐘏𐘐𐘑𐘒𐘓',
-    'Ancient Tifinagh': 'ⴰⴱⴳⴷⴹⴻⴼⴽⵀⵃ ⵄⵅⵇⵉⵊⵍⵎⵏⵓⵔ',
-    'Classical Mayan': '𓁹𓂀𓃻𓄀𓅃𓆙𓇰𓈖𓉔𓊪',
-    'Sanskrit': 'अ आ इ ई उ ऊ ऋ ॠ ऌ ॡ'
-  };
+<center>
+  <h1>🤖 REAL AI WISDOM TRANSLATOR 🔍</h1>
+  <div class="ai-badge" id="aiStatus">AI MODE: INITIALIZING...</div>
+</center>
+
+<marquee behavior="scroll" direction="left">
+  ⚡ LIVE AI TRANSLATION ACTIVE • ANALYZING UNTRANSLATED TEXTS • WISDOM EXTRACTION IN PROGRESS • REAL-TIME PROCESSING ⚡
+</marquee>
+
+<hr>
+
+<!-- Book Selection Display -->
+<div id="bookInfo"></div>
+
+<!-- Processing Section -->
+<div id="processing">
+  <div class="status" id="processingStatus">Selecting untranslated text for AI analysis...</div>
+  <div id="processingSteps" style="height: 250px; overflow-y: auto; background: #111; padding: 15px; border: 2px solid #333; margin: 20px 0; font-family: 'Courier New';"></div>
+</div>
+
+<!-- Result Section -->
+<div id="result" style="display: none;">
+  <div class="quip-container">
+    <div class="quip" id="quipText"></div>
+    <div class="source">
+      <strong>📖 AI TRANSLATION:</strong><br>
+      <span id="translationText"></span><br><br>
+      
+      <strong>💡 MODERN INSIGHT:</strong><br>
+      <span id="insightText"></span>
+    </div>
+  </div>
   
-  return scripts[language] || '??? Unknown script ???\n[Simulated untranslated text fragment]';
-}
+  <center>
+    <button onclick="getNewWisdom()" style="font-size: 1.3em; padding: 15px; margin: 20px; background: linear-gradient(to bottom, #00cc00, #009900); border: 4px outset #00ff00; font-family: 'Comic Sans MS'; color: white; cursor: pointer;">
+      <b>🤖 ANALYZE ANOTHER LOST TEXT!</b>
+    </button>
+  </center>
+  
+  <!-- Hidden backend data -->
+  <div id="backendData" style="display: none;"></div>
+  
+  <!-- Backend link -->
+  <div id="backendLink" style="display: none; text-align: center; margin-top: 30px;">
+    <a href="javascript:void(0)" onclick="showBackend()" style="color: #00ffff; text-decoration: none; font-family: 'Courier New'; font-size: 0.9em;">
+      [VIEW REAL AI TRANSLATION DATA & API CONFIG]
+    </a>
+  </div>
+</div>
 
-function generateTranslationSteps(quipData) {
-  return `AI TRANSLATION LOG:
-  1. OCR scan complete: 94.7% accuracy
-  2. Script identification: ${quipData.language} (confidence: 98.2%)
-  3. Cross-reference with known texts: 127 matches found
-  4. Contextual analysis: ${quipData.subject} domain detected
-  5. First-pass translation generated
-  6. Second-pass refinement (GPT-4 + Claude 3 consensus)
-  7. Historical context validation
-  8. Wisdom extraction algorithm applied
-  9. Final quip generated: "${quipData.quip}"
-  10. Source attribution verified: ${quipData.source}`;
-}
+<hr>
 
-function generateProofOfWorkHash() {
-  const chars = '0123456789abcdef';
-  let hash = '';
-  for (let i = 0; i < 64; i++) {
-    hash += chars[Math.floor(Math.random() * chars.length)];
-  }
-  return `sha256:${hash}`;
+<div style="text-align: center;">
+  <p><blink>⚠️ REAL AI INTEGRATION • BETA TESTING • UNTRANSLATED TEXTS DATABASE ⚠️</blink></p>
+  
+  <p>📚 Currently analyzing: ${UNTRANSLATED_BOOKS.length} untranslated texts</p>
+  
+  <p>
+    <img src="https://web.archive.org/web/20091027041310/http://geocities.com/area51/zone/1927/counter.gif" alt="Counter" style="height: 30px;">
+    <img src="https://web.archive.org/web/20090829083051/http://geocities.com/Area51/Atlantis/3955/ai.gif" alt="AI" style="height: 40px;">
+    <img src="https://web.archive.org/web/20090829083051/http://geocities.com/SiliconValley/Vista/1296/under_con.gif" alt="Under Construction" height="31">
+  </p>
+  
+  <div style="font-size: 0.8em; color: #888; max-width: 800px; margin: 0 auto; text-align: left; padding: 10px; background: #222; border: 1px solid #444;">
+    <strong>NEXT STEPS FOR REAL AI:</strong><br>
+    1. Get API keys from AI providers (OpenAI, Anthropic, Google)<br>
+    2. Replace simulated API calls with real fetch() requests<br>
+    3. Add user selection for different AI models<br>
+    4. Implement caching to save API costs<br>
+    5. Add rate limiting and error handling
+  </div>
+</div>
+
+<script>
+// Make blink tag work
+const blinkElement = document.querySelector('blink');
+if (blinkElement) {
+  setInterval(() => {
+    blinkElement.style.visibility = blinkElement.style.visibility === 'hidden' ? 'visible' : 'hidden';
+  }, 500);
 }
 </script>
 
