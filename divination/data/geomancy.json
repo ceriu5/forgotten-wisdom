@@ -1,0 +1,132 @@
+{
+  "figures": {
+    "1111": {
+      "name": "Via",
+      "binary": "1111",
+      "meaning": "The Way. A path, journey, or process. It indicates movement, change, and the need to follow a particular course.",
+      "planet": "Moon",
+      "element": "Water",
+      "astrological": "Cancer"
+    },
+    "1110": {
+      "name": "Cauda Draconis",
+      "binary": "1110",
+      "meaning": "The Tail of the Dragon. An ending, closure, or release. It can indicate a necessary sacrifice or the completion of a cycle.",
+      "planet": "Saturn",
+      "element": "Earth",
+      "astrological": "Capricorn"
+    },
+    "1101": {
+      "name": "Puer",
+      "binary": "1101",
+      "meaning": "The Boy. Youthful energy, impulsiveness, courage, and sometimes recklessness. Represents the masculine principle.",
+      "planet": "Mars",
+      "element": "Fire",
+      "astrological": "Aries"
+    },
+    "1100": {
+      "name": "Amissio",
+      "binary": "1100",
+      "meaning": "Loss. Financial or emotional loss, but sometimes loss of negative attachments. Can indicate what needs to be released.",
+      "planet": "Venus",
+      "element": "Earth",
+      "astrological": "Taurus"
+    },
+    "1011": {
+      "name": "Fortuna Major",
+      "binary": "1011",
+      "meaning": "Greater Fortune. Success, protection, and blessings that come through effort. Divine favor and significant achievement.",
+      "planet": "Sun",
+      "element": "Fire",
+      "astrological": "Leo"
+    },
+    "1010": {
+      "name": "Fortuna Minor",
+      "binary": "1010",
+      "meaning": "Lesser Fortune. Small successes, luck in minor matters, and opportunities that require recognition to be seized.",
+      "planet": "Sun",
+      "element": "Fire",
+      "astrological": "Leo"
+    },
+    "1001": {
+      "name": "Conjunctio",
+      "binary": "1001",
+      "meaning": "The Conjunction. Meetings, partnerships, agreements, and the coming together of forces. Also indicates recovery of lost items.",
+      "planet": "Mercury",
+      "element": "Air",
+      "astrological": "Gemini"
+    },
+    "1000": {
+      "name": "Carcer",
+      "binary": "1000",
+      "meaning": "The Prison. Limitations, restrictions, delays, or isolation. Can indicate necessary boundaries or things that need containment.",
+      "planet": "Saturn",
+      "element": "Earth",
+      "astrological": "Capricorn"
+    },
+    "0111": {
+      "name": "Acquisitio",
+      "binary": "0111",
+      "meaning": "Acquisition. Gain, profit, increase, and success in material matters. The gathering of resources and favorable outcomes.",
+      "planet": "Jupiter",
+      "element": "Air",
+      "astrological": "Sagittarius"
+    },
+    "0110": {
+      "name": "Laetitia",
+      "binary": "0110",
+      "meaning": "Joy. Happiness, celebration, emotional fulfillment, and positive news. Lightness of spirit and optimistic outcomes.",
+      "planet": "Jupiter",
+      "element": "Water",
+      "astrological": "Pisces"
+    },
+    "0101": {
+      "name": "Tristitia",
+      "binary": "0101",
+      "meaning": "Sorrow. Sadness, grief, depression, or heaviness of spirit. Can indicate necessary purification through difficulty.",
+      "planet": "Saturn",
+      "element": "Earth",
+      "astrological": "Aquarius"
+    },
+    "0100": {
+      "name": "Populus",
+      "binary": "0100",
+      "meaning": "The People. Community, groups, social situations, and collective energies. Can indicate anonymity or blending in.",
+      "planet": "Moon",
+      "element": "Water",
+      "astrological": "Cancer"
+    },
+    "0011": {
+      "name": "Puella",
+      "binary": "0011",
+      "meaning": "The Girl. Feminine energy, receptivity, beauty, harmony, and diplomacy. Represents the feminine principle and relationships.",
+      "planet": "Venus",
+      "element": "Water",
+      "astrological": "Libra"
+    },
+    "0010": {
+      "name": "Rubeus",
+      "binary": "0010",
+      "meaning": "Redness. Passion, anger, danger, or scandal. Can indicate strong emotions that need careful management.",
+      "planet": "Mars",
+      "element": "Fire",
+      "astrological": "Scorpio"
+    },
+    "0001": {
+      "name": "Albus",
+      "binary": "0001",
+      "meaning": "White. Purity, clarity, wisdom, and spiritual insight. Intellectual understanding and the pursuit of truth.",
+      "planet": "Mercury",
+      "element": "Air",
+      "astrological": "Virgo"
+    },
+    "0000": {
+      "name": "Caput Draconis",
+      "binary": "0000",
+      "meaning": "The Head of the Dragon. New beginnings, opportunities, favorable starts, and karmic initiations.",
+      "planet": "Jupiter",
+      "element": "Earth",
+      "astrological": "Sagittarius"
+    }
+  }
+}

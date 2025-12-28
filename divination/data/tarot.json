@@ -1,0 +1,794 @@
+{
+  "major_arcana": [
+    {
+      "name": "The Fool",
+      "number": 0,
+      "meaning": "New beginnings, innocence, spontaneity, a free spirit. The Fool represents unlimited potential and the journey ahead.",
+      "element": "Air",
+      "planet": "Uranus",
+      "symbols": ["white rose", "dog", "bag", "cliff"],
+      "upright_keywords": ["innocence", "new beginnings", "free spirit", "faith"],
+      "reversed_keywords": ["recklessness", "risk-taking", "holding back", "poor judgment"]
+    },
+    {
+      "name": "The Magician",
+      "number": 1,
+      "meaning": "Manifestation, resourcefulness, power, skill. The Magician represents the power to transform reality and manifest desires.",
+      "element": "Mercury",
+      "planet": "Mercury",
+      "symbols": ["infinity symbol", "wand", "cup", "sword", "pentacle"],
+      "upright_keywords": ["willpower", "desire", "creation", "manifestation"],
+      "reversed_keywords": ["trickery", "illusions", "unscrupulous", "inaction"]
+    },
+    {
+      "name": "The High Priestess",
+      "number": 2,
+      "meaning": "Intuition, unconscious knowledge, divine feminine, mystery. The High Priestess represents hidden knowledge and spiritual insight.",
+      "element": "Water",
+      "planet": "Moon",
+      "symbols": ["veil", "pomegranates", "moon crown", "scroll"],
+      "upright_keywords": ["intuition", "unconscious", "inner voice", "divine feminine"],
+      "reversed_keywords": ["secrets", "disconnected from intuition", "withdrawal", "silence"]
+    },
+    {
+      "name": "The Empress",
+      "number": 3,
+      "meaning": "Femininity, beauty, nature, abundance, fertility. The Empress represents creation, beauty, and the nurturing aspects of the universe.",
+      "element": "Earth",
+      "planet": "Venus",
+      "symbols": ["throne", "crown of stars", "scepter", "heart shield"],
+      "upright_keywords": ["motherhood", "fertility", "nature", "abundance"],
+      "reversed_keywords": ["dependence", "smothering", "infertility", "neglect"]
+    },
+    {
+      "name": "The Emperor",
+      "number": 4,
+      "meaning": "Authority, structure, control, stability, fatherhood. The Emperor represents structure, power, and established order.",
+      "element": "Fire",
+      "planet": "Mars",
+      "symbols": ["throne", "rams", "scepter", "armor"],
+      "upright_keywords": ["authority", "structure", "control", "foundation"],
+      "reversed_keywords": ["domination", "rigidity", "lack of discipline", "immaturity"]
+    },
+    {
+      "name": "The Hierophant",
+      "number": 5,
+      "meaning": "Tradition, conformity, morality, ethics, spiritual wisdom. The Hierophant represents religious beliefs and conformity to tradition.",
+      "element": "Earth",
+      "planet": "Jupiter",
+      "symbols": ["tiara", "staff", "keys", "monks"],
+      "upright_keywords": ["conformity", "tradition", "beliefs", "spirituality"],
+      "reversed_keywords": ["rebellion", "subversion", "new approaches", "freedom"]
+    },
+    {
+      "name": "The Lovers",
+      "number": 6,
+      "meaning": "Love, harmony, relationships, choices, alignment. The Lovers represent relationships and choices based on values.",
+      "element": "Air",
+      "planet": "Venus",
+      "symbols": ["angel", "man and woman", "tree of life", "snake"],
+      "upright_keywords": ["love", "harmony", "relationships", "choices"],
+      "reversed_keywords": ["disharmony", "imbalance", "misalignment", "poor choices"]
+    },
+    {
+      "name": "The Chariot",
+      "number": 7,
+      "meaning": "Willpower, determination, action, control, victory. The Chariot represents overcoming conflicts and moving forward in harmony.",
+      "element": "Water",
+      "planet": "Moon",
+      "symbols": ["chariot", "sphinxes", "canopy of stars", "wings"],
+      "upright_keywords": ["control", "willpower", "victory", "assertion"],
+      "reversed_keywords": ["lack of control", "aggression", "directionless", "opposition"]
+    },
+    {
+      "name": "Strength",
+      "number": 8,
+      "meaning": "Courage, strength, patience, compassion, inner power. Strength represents inner strength, compassion, and courage.",
+      "element": "Fire",
+      "planet": "Sun",
+      "symbols": ["woman and lion", "infinity symbol", "flowers", "robes"],
+      "upright_keywords": ["courage", "bravery", "patience", "control"],
+      "reversed_keywords": ["weakness", "self-doubt", "lack of patience", "raw power"]
+    },
+    {
+      "name": "The Hermit",
+      "number": 9,
+      "meaning": "Soul-searching, introspection, inner guidance, solitude. The Hermit represents introspection, searching for truth, and inner guidance.",
+      "element": "Earth",
+      "planet": "Mercury",
+      "symbols": ["lantern", "staff", "mountain", "robe"],
+      "upright_keywords": ["introspection", "solitude", "search for truth", "inner guidance"],
+      "reversed_keywords": ["isolation", "loneliness", "withdrawal", "ignoring guidance"]
+    },
+    {
+      "name": "Wheel of Fortune",
+      "number": 10,
+      "meaning": "Cycles, fate, turning points, luck, destiny. The Wheel represents the cyclical nature of life and destiny.",
+      "element": "Fire",
+      "planet": "Jupiter",
+      "symbols": ["wheel", "sphinx", "snake", "angel", "eagle", "bull", "lion"],
+      "upright_keywords": ["change", "cycles", "fate", "turning point"],
+      "reversed_keywords": ["bad luck", "resistance to change", "broken cycles", "downward turn"]
+    },
+    {
+      "name": "Justice",
+      "number": 11,
+      "meaning": "Justice, fairness, truth, cause and effect, law. Justice represents fairness, truth, and the law of cause and effect.",
+      "element": "Air",
+      "planet": "Venus",
+      "symbols": ["scales", "sword", "crown", "throne"],
+      "upright_keywords": ["justice", "fairness", "truth", "cause and effect"],
+      "reversed_keywords": ["injustice", "unfairness", "dishonesty", "wrong decisions"]
+    },
+    {
+      "name": "The Hanged Man",
+      "number": 12,
+      "meaning": "Surrender, letting go, new perspective, enlightenment. The Hanged Man represents surrender, sacrifice, and seeing things differently.",
+      "element": "Water",
+      "planet": "Neptune",
+      "symbols": ["hanged man", "tree", "halo", "crossed legs"],
+      "upright_keywords": ["surrender", "new perspective", "enlightenment", "sacrifice"],
+      "reversed_keywords": ["stalling", "needless sacrifice", "fear of sacrifice", "selfishness"]
+    },
+    {
+      "name": "Death",
+      "number": 13,
+      "meaning": "Transformation, endings, change, transition, rebirth. Death represents transformation, endings, and new beginnings.",
+      "element": "Water",
+      "planet": "Pluto",
+      "symbols": ["skeleton", "horse", "flag", "sunrise", "river"],
+      "upright_keywords": ["transformation", "endings", "change", "transition"],
+      "reversed_keywords": ["fear of change", "stagnation", "holding on", "slow change"]
+    },
+    {
+      "name": "Temperance",
+      "number": 14,
+      "meaning": "Balance, moderation, patience, purpose, alchemy. Temperance represents balance, moderation, and harmony.",
+      "element": "Fire",
+      "planet": "Jupiter",
+      "symbols": ["angel", "chalices", "water", "path", "crown"],
+      "upright_keywords": ["balance", "moderation", "patience", "purpose"],
+      "reversed_keywords": ["imbalance", "excess", "lack of harmony", "impatience"]
+    },
+    {
+      "name": "The Devil",
+      "number": 15,
+      "meaning": "Bondage, addiction, materialism, playfulness, shadow self. The Devil represents bondage, addiction, and exploring the shadow self.",
+      "element": "Earth",
+      "planet": "Saturn",
+      "symbols": ["devil", "chains", "torch", "inverted pentagram"],
+      "upright_keywords": ["bondage", "addiction", "materialism", "shadow self"],
+      "reversed_keywords": ["freedom", "release", "restoring control", "recovery"]
+    },
+    {
+      "name": "The Tower",
+      "number": 16,
+      "meaning": "Sudden change, upheaval, chaos, revelation, awakening. The Tower represents sudden change, upheaval, and revelation.",
+      "element": "Fire",
+      "planet": "Mars",
+      "symbols": ["tower", "lightning", "falling figures", "crown", "flames"],
+      "upright_keywords": ["sudden change", "upheaval", "chaos", "revelation"],
+      "reversed_keywords": ["fear of change", "avoiding disaster", "resistance", "delay"]
+    },
+    {
+      "name": "The Star",
+      "number": 17,
+      "meaning": "Hope, faith, purpose, renewal, spirituality. The Star represents hope, inspiration, and renewal.",
+      "element": "Air",
+      "planet": "Uranus",
+      "symbols": ["star", "naked woman", "water", "birds", "land"],
+      "upright_keywords": ["hope", "faith", "renewal", "inspiration"],
+      "reversed_keywords": ["hopelessness", "faithlessness", "despair", "lack of inspiration"]
+    },
+    {
+      "name": "The Moon",
+      "number": 18,
+      "meaning": "Illusion, fear, anxiety, subconscious, intuition. The Moon represents illusions, anxiety, and the subconscious.",
+      "element": "Water",
+      "planet": "Moon",
+      "symbols": ["moon", "dog", "wolf", "crayfish", "towers", "path"],
+      "upright_keywords": ["illusion", "fear", "anxiety", "subconscious"],
+      "reversed_keywords": ["release of fear", "repressed emotions", "clarity", "understanding"]
+    },
+    {
+      "name": "The Sun",
+      "number": 19,
+      "meaning": "Joy, success, celebration, positivity, vitality. The Sun represents joy, success, and vitality.",
+      "element": "Fire",
+      "planet": "Sun",
+      "symbols": ["sun", "child", "white horse", "sunflowers", "wall"],
+      "upright_keywords": ["joy", "success", "celebration", "positivity"],
+      "reversed_keywords": ["negativity", "depression", "sadness", "lack of success"]
+    },
+    {
+      "name": "Judgment",
+      "number": 20,
+      "meaning": "Judgment, rebirth, inner calling, absolution. Judgment represents judgment, rebirth, and inner calling.",
+      "element": "Fire",
+      "planet": "Pluto",
+      "symbols": ["angel", "trumpet", "cross", "graves", "people"],
+      "upright_keywords": ["judgment", "rebirth", "inner calling", "absolution"],
+      "reversed_keywords": ["self-doubt", "lack of self-awareness", "fear of judgment", "ignoring the call"]
+    },
+    {
+      "name": "The World",
+      "number": 21,
+      "meaning": "Completion, integration, accomplishment, travel, fulfillment. The World represents completion, integration, and accomplishment.",
+      "element": "Earth",
+      "planet": "Saturn",
+      "symbols": ["wreath", "woman", "animals", "clouds", "ribbons"],
+      "upright_keywords": ["completion", "integration", "accomplishment", "fulfillment"],
+      "reversed_keywords": ["lack of completion", "lack of closure", "feeling incomplete", "delay"]
+    }
+  ],
+  "minor_arcana": {
+    "wands": [
+      {
+        "name": "Ace of Wands",
+        "number": 1,
+        "suit": "Wands",
+        "meaning": "Inspiration, new opportunities, growth, potential. The seed of a new venture or creative project.",
+        "element": "Fire",
+        "planet": "Sun",
+        "upright_keywords": ["creation", "willpower", "inspiration", "desire"],
+        "reversed_keywords": ["lack of energy", "lack of passion", "delays", "creative blocks"]
+      },
+      {
+        "name": "Two of Wands",
+        "number": 2,
+        "suit": "Wands",
+        "meaning": "Future planning, progress, decisions, discovery. Standing at a crossroads with world at your feet.",
+        "element": "Fire",
+        "planet": "Mars",
+        "upright_keywords": ["planning", "making decisions", "leaving home", "discovery"],
+        "reversed_keywords": ["fear of change", "playing safe", "bad planning", "delays"]
+      },
+      {
+        "name": "Three of Wands",
+        "number": 3,
+        "suit": "Wands",
+        "meaning": "Expansion, foresight, overseas opportunities, collaboration. Looking to the future with confidence.",
+        "element": "Fire",
+        "planet": "Sun",
+        "upright_keywords": ["expansion", "foresight", "overseas opportunities", "collaboration"],
+        "reversed_keywords": ["lack of foresight", "delays", "obstacles", "narrow-mindedness"]
+      },
+      {
+        "name": "Four of Wands",
+        "number": 4,
+        "suit": "Wands",
+        "meaning": "Celebration, harmony, marriage, home, community. A time of stability, happiness, and celebration.",
+        "element": "Fire",
+        "planet": "Venus",
+        "upright_keywords": ["celebration", "harmony", "marriage", "home", "community"],
+        "reversed_keywords": ["lack of support", "transience", "home conflicts", "postponed celebrations"]
+      },
+      {
+        "name": "Five of Wands",
+        "number": 5,
+        "suit": "Wands",
+        "meaning": "Conflict, disagreements, competition, tension. Struggles that lead to growth and change.",
+        "element": "Fire",
+        "planet": "Saturn",
+        "upright_keywords": ["conflict", "disagreements", "competition", "tension"],
+        "reversed_keywords": ["avoiding conflict", "truce", "conflict resolution", "end of competition"]
+      },
+      {
+        "name": "Six of Wands",
+        "number": 6,
+        "suit": "Wands",
+        "meaning": "Victory, success, public recognition, progress, self-confidence. Achieving victory and recognition.",
+        "element": "Fire",
+        "planet": "Jupiter",
+        "upright_keywords": ["victory", "success", "public recognition", "progress"],
+        "reversed_keywords": ["excess pride", "lack of recognition", "fall from grace", "punishment"]
+      },
+      {
+        "name": "Seven of Wands",
+        "number": 7,
+        "suit": "Wands",
+        "meaning": "Perseverance, defensive, protecting position, asserting beliefs. Standing up for your beliefs.",
+        "element": "Fire",
+        "planet": "Mars",
+        "upright_keywords": ["perseverance", "defensive", "protecting position", "asserting beliefs"],
+        "reversed_keywords": ["giving up", "overwhelmed", "exhaustion", "yielding"]
+      },
+      {
+        "name": "Eight of Wands",
+        "number": 8,
+        "suit": "Wands",
+        "meaning": "Movement, travel, speed, sudden changes, quick decisions. Rapid movement and swift change.",
+        "element": "Fire",
+        "planet": "Mercury",
+        "upright_keywords": ["movement", "travel", "speed", "sudden changes"],
+        "reversed_keywords": ["delays", "frustration", "resistance", "slowing down"]
+      },
+      {
+        "name": "Nine of Wands",
+        "number": 9,
+        "suit": "Wands",
+        "meaning": "Resilience, courage, persistence, test of faith, boundaries. The final test before victory.",
+        "element": "Fire",
+        "planet": "Moon",
+        "upright_keywords": ["resilience", "courage", "persistence", "test of faith"],
+        "reversed_keywords": ["stubbornness", "defensiveness", "paranoia", "giving up"]
+      },
+      {
+        "name": "Ten of Wands",
+        "number": 10,
+        "suit": "Wands",
+        "meaning": "Burden, extra responsibility, hard work, completion, accomplishment. Carrying a heavy load.",
+        "element": "Fire",
+        "planet": "Saturn",
+        "upright_keywords": ["burden", "extra responsibility", "hard work", "completion"],
+        "reversed_keywords": ["release of burden", "shirking responsibility", "collapse", "overwhelm"]
+      },
+      {
+        "name": "Page of Wands",
+        "number": 11,
+        "suit": "Wands",
+        "meaning": "Exploration, excitement, freedom, youthful energy, message. The spark of an idea or opportunity.",
+        "element": "Fire",
+        "planet": "Mercury",
+        "upright_keywords": ["exploration", "excitement", "freedom", "youthful energy"],
+        "reversed_keywords": ["lack of direction", "immaturity", "procrastination", "rash decisions"]
+      },
+      {
+        "name": "Knight of Wands",
+        "number": 12,
+        "suit": "Wands",
+        "meaning": "Energy, passion, adventure, impulsiveness, free spirit. Charging ahead with passion.",
+        "element": "Fire",
+        "planet": "Jupiter",
+        "upright_keywords": ["energy", "passion", "adventure", "impulsiveness"],
+        "reversed_keywords": ["haste", "frustration", "recklessness", "arrogance"]
+      },
+      {
+        "name": "Queen of Wands",
+        "number": 13,
+        "suit": "Wands",
+        "meaning": "Courage, confidence, independence, social butterfly, determination. A charismatic, confident leader.",
+        "element": "Fire",
+        "planet": "Sun",
+        "upright_keywords": ["courage", "confidence", "independence", "determination"],
+        "reversed_keywords": ["jealousy", "insecurity", "selfishness", "demanding"]
+      },
+      {
+        "name": "King of Wands",
+        "number": 14,
+        "suit": "Wands",
+        "meaning": "Natural-born leader, vision, entrepreneur, honor, big picture. A charismatic, visionary leader.",
+        "element": "Fire",
+        "planet": "Mars",
+        "upright_keywords": ["natural-born leader", "vision", "entrepreneur", "honor"],
+        "reversed_keywords": ["impulsiveness", "harshness", "dominance", "tyranny"]
+      }
+    ],
+    "cups": [
+      {
+        "name": "Ace of Cups",
+        "number": 1,
+        "suit": "Cups",
+        "meaning": "New feelings, spirituality, intuition, love. The beginning of emotional or spiritual fulfillment.",
+        "element": "Water",
+        "planet": "Venus",
+        "upright_keywords": ["new feelings", "spirituality", "intuition", "love"],
+        "reversed_keywords": ["emotional loss", "blocked creativity", "emptiness", "unfulfilled"]
+      },
+      {
+        "name": "Two of Cups",
+        "number": 2,
+        "suit": "Cups",
+        "meaning": "Unity, partnership, connection, mutual attraction. The start of a new relationship or partnership.",
+        "element": "Water",
+        "planet": "Venus",
+        "upright_keywords": ["unity", "partnership", "connection", "mutual attraction"],
+        "reversed_keywords": ["imbalance", "broken communication", "tension", "separation"]
+      },
+      {
+        "name": "Three of Cups",
+        "number": 3,
+        "suit": "Cups",
+        "meaning": "Celebration, friendship, creativity, collaborations. Joyful gatherings and celebrations.",
+        "element": "Water",
+        "planet": "Mercury",
+        "upright_keywords": ["celebration", "friendship", "creativity", "collaborations"],
+        "reversed_keywords": ["overindulgence", "gossip", "isolation", "third party"]
+      },
+      {
+        "name": "Four of Cups",
+        "number": 4,
+        "suit": "Cups",
+        "meaning": "Meditation, contemplation, apathy, reevaluation. A period of introspection and contemplation.",
+        "element": "Water",
+        "planet": "Moon",
+        "upright_keywords": ["meditation", "contemplation", "apathy", "reevaluation"],
+        "reversed_keywords": ["retreat", "withdrawal", "boredom", "missed opportunity"]
+      },
+      {
+        "name": "Five of Cups",
+        "number": 5,
+        "suit": "Cups",
+        "meaning": "Loss, grief, disappointment, regret, focus on the negative. Dealing with loss and disappointment.",
+        "element": "Water",
+        "planet": "Mars",
+        "upright_keywords": ["loss", "grief", "disappointment", "regret"],
+        "reversed_keywords": ["acceptance", "moving on", "finding peace", "forgiveness"]
+      },
+      {
+        "name": "Six of Cups",
+        "number": 6,
+        "suit": "Cups",
+        "meaning": "Reunion, nostalgia, childhood memories, innocence. Reconnecting with the past or childhood.",
+        "element": "Water",
+        "planet": "Sun",
+        "upright_keywords": ["reunion", "nostalgia", "childhood memories", "innocence"],
+        "reversed_keywords": ["living in the past", "stuck", "moving forward", "independence"]
+      },
+      {
+        "name": "Seven of Cups",
+        "number": 7,
+        "suit": "Cups",
+        "meaning": "Choices, illusions, fantasy, wishful thinking. Many options and possibilities.",
+        "element": "Water",
+        "planet": "Venus",
+        "upright_keywords": ["choices", "illusions", "fantasy", "wishful thinking"],
+        "reversed_keywords": ["lack of purpose", "disarray", "confusion", "clarity"]
+      },
+      {
+        "name": "Eight of Cups",
+        "number": 8,
+        "suit": "Cups",
+        "meaning": "Walking away, disillusionment, leaving behind, search for truth. Abandoning something to seek deeper meaning.",
+        "element": "Water",
+        "planet": "Saturn",
+        "upright_keywords": ["walking away", "disillusionment", "leaving behind", "search for truth"],
+        "reversed_keywords": ["avoidance", "fear of change", "stagnation", "returning"]
+      },
+      {
+        "name": "Nine of Cups",
+        "number": 9,
+        "suit": "Cups",
+        "meaning": "Contentment, satisfaction, gratitude, wish fulfilled. The wish card - satisfaction and contentment.",
+        "element": "Water",
+        "planet": "Jupiter",
+        "upright_keywords": ["contentment", "satisfaction", "gratitude", "wish fulfilled"],
+        "reversed_keywords": ["smugness", "dissatisfaction", "unachieved goals", "arrogance"]
+      },
+      {
+        "name": "Ten of Cups",
+        "number": 10,
+        "suit": "Cups",
+        "meaning": "Divine love, blissful relationships, harmony, alignment. Perfect happiness and emotional fulfillment.",
+        "element": "Water",
+        "planet": "Mars",
+        "upright_keywords": ["divine love", "blissful relationships", "harmony", "alignment"],
+        "reversed_keywords": ["broken family", "disharmony", "misaligned values", "separation"]
+      },
+      {
+        "name": "Page of Cups",
+        "number": 11,
+        "suit": "Cups",
+        "meaning": "Creative opportunities, intuitive messages, curiosity, dreamer. A messenger of creativity and intuition.",
+        "element": "Water",
+        "planet": "Mercury",
+        "upright_keywords": ["creative opportunities", "intuitive messages", "curiosity", "dreamer"],
+        "reversed_keywords": ["emotional immaturity", "creative block", "disappointment", "unrealistic"]
+      },
+      {
+        "name": "Knight of Cups",
+        "number": 12,
+        "suit": "Cups",
+        "meaning": "Romance, charm, imagination, beauty, following the heart. The romantic and charming suitor.",
+        "element": "Water",
+        "planet": "Venus",
+        "upright_keywords": ["romance", "charm", "imagination", "beauty"],
+        "reversed_keywords": ["moodiness", "disappointment", "unrealistic", "manipulation"]
+      },
+      {
+        "name": "Queen of Cups",
+        "number": 13,
+        "suit": "Cups",
+        "meaning": "Compassion, calm, comfort, emotional security, intuition. The nurturing, intuitive counselor.",
+        "element": "Water",
+        "planet": "Moon",
+        "upright_keywords": ["compassion", "calm", "comfort", "emotional security"],
+        "reversed_keywords": ["martyrdom", "insecurity", "dependency", "smothering"]
+      },
+      {
+        "name": "King of Cups",
+        "number": 14,
+        "suit": "Cups",
+        "meaning": "Emotional balance, compassion, diplomacy, counselor. The emotionally balanced and compassionate advisor.",
+        "element": "Water",
+        "planet": "Neptune",
+        "upright_keywords": ["emotional balance", "compassion", "diplomacy", "counselor"],
+        "reversed_keywords": ["emotional manipulation", "moodiness", "coldness", "hidden emotions"]
+      }
+    ],
+    "swords": [
+      {
+        "name": "Ace of Swords",
+        "number": 1,
+        "suit": "Swords",
+        "meaning": "Breakthrough, clarity, sharp mind, truth. A moment of brilliant insight or clear understanding.",
+        "element": "Air",
+        "planet": "Mercury",
+        "upright_keywords": ["breakthrough", "clarity", "sharp mind", "truth"],
+        "reversed_keywords": ["confusion", "brutality", "chaos", "misinformation"]
+      },
+      {
+        "name": "Two of Swords",
+        "number": 2,
+        "suit": "Swords",
+        "meaning": "Difficult choices, indecision, stalemate, blocked emotions. At a crossroads, unable to decide.",
+        "element": "Air",
+        "planet": "Moon",
+        "upright_keywords": ["difficult choices", "indecision", "stalemate", "blocked emotions"],
+        "reversed_keywords": ["indecision", "confusion", "release", "information overload"]
+      },
+      {
+        "name": "Three of Swords",
+        "number": 3,
+        "suit": "Swords",
+        "meaning": "Heartbreak, emotional pain, sorrow, grief, betrayal. Painful separation and heartache.",
+        "element": "Air",
+        "planet": "Saturn",
+        "upright_keywords": ["heartbreak", "emotional pain", "sorrow", "grief"],
+        "reversed_keywords": ["recovery", "forgiveness", "moving on", "healing"]
+      },
+      {
+        "name": "Four of Swords",
+        "number": 4,
+        "suit": "Swords",
+        "meaning": "Rest, restoration, contemplation, recuperation, mental recharge. A time for rest and recuperation.",
+        "element": "Air",
+        "planet": "Jupiter",
+        "upright_keywords": ["rest", "restoration", "contemplation", "recuperation"],
+        "reversed_keywords": ["restlessness", "burnout", "stress", "exhaustion"]
+      },
+      {
+        "name": "Five of Swords",
+        "number": 5,
+        "suit": "Swords",
+        "meaning": "Conflict, tension, defeat, winning at all costs, betrayal. Winning a battle but losing the war.",
+        "element": "Air",
+        "planet": "Venus",
+        "upright_keywords": ["conflict", "tension", "defeat", "winning at all costs"],
+        "reversed_keywords": ["reconciliation", "forgiveness", "resolution", "compromise"]
+      },
+      {
+        "name": "Six of Swords",
+        "number": 6,
+        "suit": "Swords",
+        "meaning": "Transition, change, rite of passage, releasing baggage. Moving away from difficulty to calmer waters.",
+        "element": "Air",
+        "planet": "Mercury",
+        "upright_keywords": ["transition", "change", "rite of passage", "releasing baggage"],
+        "reversed_keywords": ["resistance to change", "stagnation", "unresolved issues", "baggage"]
+      },
+      {
+        "name": "Seven of Swords",
+        "number": 7,
+        "suit": "Swords",
+        "meaning": "Betrayal, deception, getting away with something, stealth. Taking risks and possibly being deceitful.",
+        "element": "Air",
+        "planet": "Moon",
+        "upright_keywords": ["betrayal", "deception", "getting away with something", "stealth"],
+        "reversed_keywords": ["confession", "conscience", "regret", "reparation"]
+      },
+      {
+        "name": "Eight of Swords",
+        "number": 8,
+        "suit": "Swords",
+        "meaning": "Restriction, confusion, powerlessness, victim mentality. Feeling trapped and restricted.",
+        "element": "Air",
+        "planet": "Jupiter",
+        "upright_keywords": ["restriction", "confusion", "powerlessness", "victim mentality"],
+        "reversed_keywords": ["self-awareness", "release", "new perspective", "freedom"]
+      },
+      {
+        "name": "Nine of Swords",
+        "number": 9,
+        "suit": "Swords",
+        "meaning": "Anxiety, worry, fear, depression, nightmares. Dealing with worry and anxiety.",
+        "element": "Air",
+        "planet": "Mars",
+        "upright_keywords": ["anxiety", "worry", "fear", "depression"],
+        "reversed_keywords": ["hope", "reaching out", "recovery", "overcoming"]
+      },
+      {
+        "name": "Ten of Swords",
+        "number": 10,
+        "suit": "Swords",
+        "meaning": "Painful endings, deep wounds, betrayal, loss, crisis. Hitting rock bottom, the end of a cycle.",
+        "element": "Air",
+        "planet": "Sun",
+        "upright_keywords": ["painful endings", "deep wounds", "betrayal", "loss"],
+        "reversed_keywords": ["recovery", "regeneration", "resurrection", "new beginning"]
+      },
+      {
+        "name": "Page of Swords",
+        "number": 11,
+        "suit": "Swords",
+        "meaning": "Curiosity, restlessness, mental energy, vigilance. A curious, watchful energy, gathering information.",
+        "element": "Air",
+        "planet": "Mercury",
+        "upright_keywords": ["curiosity", "restlessness", "mental energy", "vigilance"],
+        "reversed_keywords": ["deception", "manipulation", "all talk", "immaturity"]
+      },
+      {
+        "name": "Knight of Swords",
+        "number": 12,
+        "suit": "Swords",
+        "meaning": "Ambition, action, assertiveness, aggression. Charging ahead with intellectual pursuits.",
+        "element": "Air",
+        "planet": "Mars",
+        "upright_keywords": ["ambition", "action", "assertiveness", "aggression"],
+        "reversed_keywords": ["haste", "scattered energy", "impulsiveness", "burnout"]
+      },
+      {
+        "name": "Queen of Swords",
+        "number": 13,
+        "suit": "Swords",
+        "meaning": "Independent, unbiased judgment, clear boundaries, perceptive. The sharp, perceptive judge.",
+        "element": "Air",
+        "planet": "Venus",
+        "upright_keywords": ["independent", "unbiased judgment", "clear boundaries", "perceptive"],
+        "reversed_keywords": ["bitterness", "cruelty", "isolation", "manipulation"]
+      },
+      {
+        "name": "King of Swords",
+        "number": 14,
+        "suit": "Swords",
+        "meaning": "Mental clarity, intellectual power, authority, truth. The intellectual authority and judge.",
+        "element": "Air",
+        "planet": "Mercury",
+        "upright_keywords": ["mental clarity", "intellectual power", "authority", "truth"],
+        "reversed_keywords": ["manipulative", "cruel", "tyrannical", "abuse of power"]
+      }
+    ],
+    "pentacles": [
+      {
+        "name": "Ace of Pentacles",
+        "number": 1,
+        "suit": "Pentacles",
+        "meaning": "New financial opportunity, prosperity, manifestation. The seed of material gain and abundance.",
+        "element": "Earth",
+        "planet": "Saturn",
+        "upright_keywords": ["opportunity", "prosperity", "new venture", "riches"],
+        "reversed_keywords": ["lost opportunity", "missed chance", "bad investment", "lack of planning"]
+      },
+      {
+        "name": "Two of Pentacles",
+        "number": 2,
+        "suit": "Pentacles",
+        "meaning": "Balance, adaptability, time management, prioritization. Juggling resources and responsibilities.",
+        "element": "Earth",
+        "planet": "Jupiter",
+        "upright_keywords": ["balance", "adaptability", "time management", "prioritization"],
+        "reversed_keywords": ["imbalance", "disorganization", "overwhelm", "repayment"]
+      },
+      {
+        "name": "Three of Pentacles",
+        "number": 3,
+        "suit": "Pentacles",
+        "meaning": "Teamwork, collaboration, learning, implementation. Working together to achieve a common goal.",
+        "element": "Earth",
+        "planet": "Mars",
+        "upright_keywords": ["teamwork", "collaboration", "learning", "implementation"],
+        "reversed_keywords": ["lack of teamwork", "poor collaboration", "disorganization", "apathy"]
+      },
+      {
+        "name": "Four of Pentacles",
+        "number": 4,
+        "suit": "Pentacles",
+        "meaning": "Conservation, frugality, security, possessiveness. Holding tightly to resources and security.",
+        "element": "Earth",
+        "planet": "Sun",
+        "upright_keywords": ["conservation", "frugality", "security", "possessiveness"],
+        "reversed_keywords": ["greed", "materialism", "self-protection", "hoarding"]
+      },
+      {
+        "name": "Five of Pentacles",
+        "number": 5,
+        "suit": "Pentacles",
+        "meaning": "Financial loss, poverty, isolation, worry. Experiencing hardship and feeling left out in the cold.",
+        "element": "Earth",
+        "planet": "Mercury",
+        "upright_keywords": ["financial loss", "poverty", "isolation", "worry"],
+        "reversed_keywords": ["recovery", "charity", "pulling together", "new approach"]
+      },
+      {
+        "name": "Six of Pentacles",
+        "number": 6,
+        "suit": "Pentacles",
+        "meaning": "Generosity, charity, giving, receiving, sharing wealth. Sharing resources and giving to others.",
+        "element": "Earth",
+        "planet": "Moon",
+        "upright_keywords": ["generosity", "charity", "giving", "receiving"],
+        "reversed_keywords": ["strings attached", "stinginess", "power dynamics", "debt"]
+      },
+      {
+        "name": "Seven of Pentacles",
+        "number": 7,
+        "suit": "Pentacles",
+        "meaning": "Patience, reward, investment, long-term view. Assessing progress and waiting for results.",
+        "element": "Earth",
+        "planet": "Saturn",
+        "upright_keywords": ["patience", "reward", "investment", "long-term view"],
+        "reversed_keywords": ["lack of reward", "impatience", "poor investment", "laziness"]
+      },
+      {
+        "name": "Eight of Pentacles",
+        "number": 8,
+        "suit": "Pentacles",
+        "meaning": "Apprenticeship, education, skill development, craftsmanship. Dedication to craft and skill-building.",
+        "element": "Earth",
+        "planet": "Sun",
+        "upright_keywords": ["apprenticeship", "education", "skill development", "craftsmanship"],
+        "reversed_keywords": ["perfectionism", "lack of ambition", "mediocrity", "money issues"]
+      },
+      {
+        "name": "Nine of Pentacles",
+        "number": 9,
+        "suit": "Pentacles",
+        "meaning": "Luxury, self-sufficiency, financial independence, rewards. Enjoying the fruits of your labor.",
+        "element": "Earth",
+        "planet": "Venus",
+        "upright_keywords": ["luxury", "self-sufficiency", "financial independence", "rewards"],
+        "reversed_keywords": ["self-worth", "over-investment", "financial loss", "recklessness"]
+      },
+      {
+        "name": "Ten of Pentacles",
+        "number": 10,
+        "suit": "Pentacles",
+        "meaning": "Wealth, family, establishment, retirement, abundance. Legacy, family wealth, and long-term success.",
+        "element": "Earth",
+        "planet": "Mercury",
+        "upright_keywords": ["wealth", "family", "establishment", "retirement"],
+        "reversed_keywords": ["family conflict", "financial failure", "loss of security", "broken home"]
+      },
+      {
+        "name": "Page of Pentacles",
+        "number": 11,
+        "suit": "Pentacles",
+        "meaning": "Manifestation, financial opportunity, skill development. A messenger of practical opportunity.",
+        "element": "Earth",
+        "planet": "Mercury",
+        "upright_keywords": ["manifestation", "financial opportunity", "skill development", "apprenticeship"],
+        "reversed_keywords": ["lack of progress", "procrastination", "greed", "immaturity"]
+      },
+      {
+        "name": "Knight of Pentacles",
+        "number": 12,
+        "suit": "Pentacles",
+        "meaning": "Hard work, productivity, routine, conservatism. The diligent, reliable worker.",
+        "element": "Earth",
+        "planet": "Saturn",
+        "upright_keywords": ["hard work", "productivity", "routine", "conservatism"],
+        "reversed_keywords": ["laziness", "boredom", "stagnation", "carelessness"]
+      },
+      {
+        "name": "Queen of Pentacles",
+        "number": 13,
+        "suit": "Pentacles",
+        "meaning": "Nurturing, practical, providing financially, comfortable. The nurturing provider and practical caretaker.",
+        "element": "Earth",
+        "planet": "Moon",
+        "upright_keywords": ["nurturing", "practical", "providing financially", "comfortable"],
+        "reversed_keywords": ["self-centeredness", "materialism", "smothering", "financial anxiety"]
+      },
+      {
+        "name": "King of Pentacles",
+        "number": 14,
+        "suit": "Pentacles",
+        "meaning": "Abundance, prosperity, security, leadership, provider. The wealthy, successful provider and leader.",
+        "element": "Earth",
+        "planet": "Saturn",
+        "upright_keywords": ["abundance", "prosperity", "security", "leadership"],
+        "reversed_keywords": ["greed", "materialism", "corruption", "poor management"]
+      }
+    ]
+  }
+}

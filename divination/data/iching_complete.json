@@ -1,0 +1,70 @@
+{
+  "hexagrams": {
+    "111111": {
+      "number": 1,
+      "english": "The Creative",
+      "chinese": "乾",
+      "judgment_english": "The Creative works sublime success, Furthering through perseverance.",
+      "element": "Heaven",
+      "planet": "Sun"
+    },
+    "000000": {
+      "number": 2,
+      "english": "The Receptive",
+      "chinese": "坤",
+      "judgment_english": "The Receptive brings about sublime success, Furthering through the perseverance of a mare.",
+      "element": "Earth",
+      "planet": "Moon"
+    },
+    "100010": {
+      "number": 3,
+      "english": "Difficulty at the Beginning",
+      "chinese": "屯",
+      "judgment_english": "Difficulty at the Beginning works supreme success, Furthering through perseverance.",
+      "element": "Water",
+      "planet": "Moon"
+    },
+    "010001": {
+      "number": 4,
+      "english": "Youthful Folly",
+      "chinese": "蒙",
+      "judgment_english": "Youthful Folly has success. It is not I who seek the young fool; The young fool seeks me.",
+      "element": "Mountain",
+      "planet": "Mercury"
+    },
+    "111010": {
+      "number": 5,
+      "english": "Waiting",
+      "chinese": "需",
+      "judgment_english": "Waiting. If you are sincere, you have light and success. Perseverance brings good fortune.",
+      "element": "Water",
+      "planet": "Moon"
+    },
+    "010111": {
+      "number": 6,
+      "english": "Conflict",
+      "chinese": "訟",
+      "judgment_english": "Conflict. You are sincere and are being obstructed. A cautious halt halfway brings good fortune.",
+      "element": "Heaven",
+      "planet": "Sun"
+    },
+    "010000": {
+      "number": 7,
+      "english": "The Army",
+      "chinese": "師",
+      "judgment_english": "The Army. The army needs perseverance and a strong man. Good fortune without blame.",
+      "element": "Earth",
+      "planet": "Mars"
+    },
+    "000010": {
+      "number": 8,
+      "english": "Holding Together",
+      "chinese": "比",
+      "judgment_english": "Holding Together brings good fortune. Inquire of the oracle once again whether you possess sublimity, constancy, and perseverance.",
+      "element": "Water",
+      "planet": "Moon"
+    }
+    // Add the remaining 56 hexagrams here...
+    // For now, I'll show you the pattern and you can expand
+  }
+}

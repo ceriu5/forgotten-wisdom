@@ -1,0 +1,1028 @@
+{
+  "hexagrams": {
+    "111111": {
+      "number": 1,
+      "english": "The Creative",
+      "chinese": "乾",
+      "judgment_english": "The Creative works sublime success, Furthering through perseverance.",
+      "lines_english": [
+        "Hidden dragon. Do not act.",
+        "Dragon appearing in the field. It furthers one to see the great man.",
+        "All day long the superior man is creatively active.",
+        "Wavering flight over the depths. No blame.",
+        "Flying dragon in the heavens. It furthers one to see the great man.",
+        "Arrogant dragon will have cause to repent."
+      ],
+      "element": "Heaven",
+      "planet": "Sun"
+    },
+    "000000": {
+      "number": 2,
+      "english": "The Receptive",
+      "chinese": "坤",
+      "judgment_english": "The Receptive brings about sublime success, Furthering through the perseverance of a mare.",
+      "lines_english": [
+        "When there is hoarfrost underfoot, solid ice is not far off.",
+        "Straight, square, great. Without purpose, yet nothing remains unfurthered.",
+        "Hidden lines. One is able to remain persevering.",
+        "A tied-up sack. No blame, no praise.",
+        "A yellow lower garment brings supreme good fortune.",
+        "Dragons fight in the meadow. Their blood is black and yellow."
+      ],
+      "element": "Earth",
+      "planet": "Moon"
+    },
+    "100010": {
+      "number": 3,
+      "english": "Difficulty at the Beginning",
+      "chinese": "屯",
+      "judgment_english": "Difficulty at the Beginning works supreme success, Furthering through perseverance.",
+      "lines_english": [
+        "Hesitation and hindrance. It furthers one to remain persevering.",
+        "Difficulties pile up. Horse and wagon part.",
+        "Whoever hunts deer without the forester loses his way in the forest.",
+        "Horse and wagon part. Strive for union.",
+        "Difficulties in blessing. A little perseverance brings good fortune.",
+        "Horse and wagon part. Bloody tears flow."
+      ],
+      "element": "Water",
+      "planet": "Moon"
+    },
+    "010001": {
+      "number": 4,
+      "english": "Youthful Folly",
+      "chinese": "蒙",
+      "judgment_english": "Youthful Folly has success. It is not I who seek the young fool; The young fool seeks me.",
+      "lines_english": [
+        "To make a fool develop. The fetters should be removed.",
+        "To bear with fools in kindliness brings good fortune.",
+        "Take not a maiden who loses possession of herself.",
+        "Entangled folly brings humiliation.",
+        "Childlike folly brings good fortune.",
+        "In punishing folly, prevent transgressions."
+      ],
+      "element": "Mountain",
+      "planet": "Mercury"
+    },
+    "010111": {
+      "number": 5,
+      "english": "Waiting",
+      "chinese": "需",
+      "judgment_english": "Waiting. If you are sincere, you have light and success. Perseverance brings good fortune.",
+      "lines_english": [
+        "Waiting in the meadow. It furthers one to abide in what endures.",
+        "Waiting on the sand. There is some gossip. The end brings good fortune.",
+        "Waiting in the mud. Brings about the arrival of the enemy.",
+        "Waiting in blood. Get out of the pit.",
+        "Waiting at meat and drink. Perseverance brings good fortune.",
+        "One falls into the pit. Three uninvited guests arrive."
+      ],
+      "element": "Water",
+      "planet": "Moon"
+    },
+    "111010": {
+      "number": 6,
+      "english": "Conflict",
+      "chinese": "訟",
+      "judgment_english": "Conflict. You are sincere and are being obstructed. A cautious halt halfway brings good fortune.",
+      "lines_english": [
+        "If one does not perpetuate the affair, there is a little gossip.",
+        "One cannot engage in conflict; one returns home, gives way.",
+        "To nourish oneself on ancient virtue induces perseverance. Danger.",
+        "One cannot engage in conflict; one turns back and submits to fate.",
+        "Conflict before him. Supreme good fortune.",
+        "Even if by chance a leather belt is bestowed on one, by the end of a morning it will have been snatched away three times."
+      ],
+      "element": "Heaven",
+      "planet": "Sun"
+    },
+    "010000": {
+      "number": 7,
+      "english": "The Army",
+      "chinese": "師",
+      "judgment_english": "The Army. The army needs perseverance and a strong man. Good fortune without blame.",
+      "lines_english": [
+        "An army must set forth in proper order.",
+        "In the midst of the army. Good fortune. No blame.",
+        "Perchance the army carries corpses in the wagon. Misfortune.",
+        "The army retreats. No blame.",
+        "There is game in the field. It furthers one to capture it.",
+        "The great prince issues commands, founds states, rewards with fiefs."
+      ],
+      "element": "Earth",
+      "planet": "Mars"
+    },
+    "000010": {
+      "number": 8,
+      "english": "Holding Together",
+      "chinese": "比",
+      "judgment_english": "Holding Together brings good fortune. Inquire of the oracle once again whether you possess sublimity, constancy, and perseverance.",
+      "lines_english": [
+        "Hold to him in truth and loyalty; this is without blame.",
+        "Hold to him inwardly. Perseverance brings good fortune.",
+        "You hold together with the wrong people.",
+        "Hold to him outwardly also. Perseverance brings good fortune.",
+        "Manifestation of holding together. The king uses him to hunt.",
+        "He finds no head for holding together. Misfortune."
+      ],
+      "element": "Water",
+      "planet": "Moon"
+    },
+    "111011": {
+      "number": 9,
+      "english": "Small Taming",
+      "chinese": "小畜",
+      "judgment_english": "Small Taming. Dense clouds, no rain from our western region.",
+      "lines_english": [
+        "Return by the way. How could there be blame in this? Good fortune.",
+        "He allows himself to be drawn into returning. Good fortune.",
+        "The spokes burst out of the wagon wheels. Man and wife roll their eyes.",
+        "If you are sincere, blood vanishes and fear gives way. No blame.",
+        "If you are sincere and loyally attached, you are rich in your neighbor.",
+        "The rain comes, there is rest. This is due to the lasting effect of character."
+      ],
+      "element": "Wind",
+      "planet": "Mercury"
+    },
+    "110111": {
+      "number": 10,
+      "english": "Treading",
+      "chinese": "履",
+      "judgment_english": "Treading. Treading upon the tail of the tiger. It does not bite the man. Success.",
+      "lines_english": [
+        "Simple conduct. Progress without blame.",
+        "Treading a smooth, level course. The perseverance of a dark man brings good fortune.",
+        "A one-eyed man is able to see, a lame man is able to tread.",
+        "He treads on the tail of the tiger. Caution and circumspection lead ultimately to good fortune.",
+        "Resolute conduct. Perseverance with awareness of danger.",
+        "Look to your conduct and weigh the favorable signs."
+      ],
+      "element": "Heaven",
+      "planet": "Sun"
+    },
+    "111000": {
+      "number": 11,
+      "english": "Peace",
+      "chinese": "泰",
+      "judgment_english": "Peace. The small departs, the great approaches. Good fortune. Success.",
+      "lines_english": [
+        "When ribbon grass is pulled up, the sod comes with it.",
+        "Bearing with the uncultured in gentleness, fording the river with resolution.",
+        "No plain not followed by a slope. No going not followed by a return.",
+        "He flutters down, not boasting of his wealth, together with his neighbor.",
+        "The sovereign I gives his daughter in marriage. This brings blessing and supreme good fortune.",
+        "The wall falls back into the moat. Use no army now."
+      ],
+      "element": "Earth",
+      "planet": "Earth"
+    },
+    "000111": {
+      "number": 12,
+      "english": "Standstill",
+      "chinese": "否",
+      "judgment_english": "Standstill. Evil people do not further the perseverance of the superior man. The great departs; the small approaches.",
+      "lines_english": [
+        "When ribbon grass is pulled up, the sod comes with it.",
+        "They bear and endure; this means good fortune for inferior people.",
+        "They bear shame.",
+        "He who acts at the command of the highest remains without blame.",
+        "Standstill is giving way. Good fortune for the great man.",
+        "The standstill comes to an end. First standstill, then good fortune."
+      ],
+      "element": "Heaven",
+      "planet": "Sun"
+    },
+    "101111": {
+      "number": 13,
+      "english": "Fellowship with Men",
+      "chinese": "同人",
+      "judgment_english": "Fellowship with Men in the open. Success. It furthers one to cross the great water. The perseverance of the superior man furthers.",
+      "lines_english": [
+        "Fellowship with men at the gate. No blame.",
+        "Fellowship with men in the clan. Humiliation.",
+        "He hides weapons in the thicket; he climbs the high hill in front.",
+        "He climbs up on his wall; he cannot attack. Good fortune.",
+        "Men bound in fellowship first weep and lament, but afterward they laugh.",
+        "Fellowship with men in the meadow. No remorse."
+      ],
+      "element": "Fire",
+      "planet": "Mars"
+    },
+    "111101": {
+      "number": 14,
+      "english": "Great Possession",
+      "chinese": "大有",
+      "judgment_english": "Great Possession. Supreme success.",
+      "lines_english": [
+        "No relationship with what is harmful; there is no blame in this.",
+        "A big wagon for loading. One may undertake something. No blame.",
+        "A prince offers it to the Son of Heaven. A petty man cannot do this.",
+        "He makes a difference between himself and his neighbor. No blame.",
+        "He whose truth is accessible, yet dignified, has good fortune.",
+        "He is blessed by heaven. Good fortune. Nothing that does not further."
+      ],
+      "element": "Fire",
+      "planet": "Sun"
+    },
+    "001000": {
+      "number": 15,
+      "english": "Modesty",
+      "chinese": "謙",
+      "judgment_english": "Modesty creates success. The superior man carries things through.",
+      "lines_english": [
+        "A superior man modest about his modesty may cross the great water. Good fortune.",
+        "Modesty that comes to expression. Perseverance brings good fortune.",
+        "A superior man of modesty and merit carries things to conclusion. Good fortune.",
+        "Nothing that would not further modesty in movement.",
+        "No boasting of wealth before one's neighbor. It is favorable to attack with force.",
+        "Modesty that comes to expression. It is favorable to set armies marching."
+      ],
+      "element": "Earth",
+      "planet": "Saturn"
+    },
+    "000100": {
+      "number": 16,
+      "english": "Enthusiasm",
+      "chinese": "豫",
+      "judgment_english": "Enthusiasm. It furthers one to install helpers and to set armies marching.",
+      "lines_english": [
+        "Enthusiasm that expresses itself brings misfortune.",
+        "Firm as a rock. Not a whole day. Perseverance brings good fortune.",
+        "Enthusiasm that looks upward creates remorse.",
+        "The source of enthusiasm. He achieves great things.",
+        "Persistently ill, and still does not die.",
+        "Deluded enthusiasm. But if after completion one changes, there is no blame."
+      ],
+      "element": "Earth",
+      "planet": "Jupiter"
+    },
+    "100110": {
+      "number": 17,
+      "english": "Following",
+      "chinese": "隨",
+      "judgment_english": "Following has supreme success. Perseverance furthers. No blame.",
+      "lines_english": [
+        "The standard is changing. Perseverance brings good fortune.",
+        "Tied to a little child, one loses the strong man.",
+        "Tied to a strong man, one loses a little child.",
+        "Following creates success. Perseverance brings misfortune.",
+        "Sincere in the good. Good fortune.",
+        "He meets with firm allegiance and is still further bound."
+      ],
+      "element": "Thunder",
+      "planet": "Mercury"
+    },
+    "011001": {
+      "number": 18,
+      "english": "Work on the Decayed",
+      "chinese": "蠱",
+      "judgment_english": "Work on what has been spoiled has supreme success. It furthers one to cross the great water.",
+      "lines_english": [
+        "Setting right what has been spoiled by the father.",
+        "Setting right what has been spoiled by the mother.",
+        "Setting right what has been spoiled by the father. There will be a little remorse.",
+        "Tolerating what has been spoiled by the father. In continuing one sees humiliation.",
+        "Setting right what has been spoiled by the father. One meets with praise.",
+        "He does not serve kings and princes, sets himself higher goals."
+      ],
+      "element": "Wind",
+      "planet": "Saturn"
+    },
+    "000011": {
+      "number": 19,
+      "english": "Approach",
+      "chinese": "臨",
+      "judgment_english": "Approach has supreme success. Perseverance furthers. When the eighth month comes, there will be misfortune.",
+      "lines_english": [
+        "Joint approach. Perseverance brings good fortune.",
+        "Joint approach. Good fortune. Everything furthers.",
+        "Comfortable approach. Nothing that would further.",
+        "Complete approach. No blame.",
+        "Wise approach. This is right for a great prince. Good fortune.",
+        "Greathearted approach. Good fortune. No blame."
+      ],
+      "element": "Earth",
+      "planet": "Moon"
+    },
+    "110000": {
+      "number": 20,
+      "english": "Contemplation",
+      "chinese": "觀",
+      "judgment_english": "Contemplation. The ablution has been made, but not yet the offering. Full of trust they look up to him.",
+      "lines_english": [
+        "Boylike contemplation. For an inferior man, no blame. For a superior man, humiliation.",
+        "Contemplation through the crack of the door. Furthering for the perseverance of a woman.",
+        "Contemplation of my life decides the choice between advance and retreat.",
+        "Contemplation of the light of the kingdom. It furthers one to employ him as a guest of the king.",
+        "Contemplation of my life. The superior man is without blame.",
+        "Contemplation of his life. The superior man is without blame."
+      ],
+      "element": "Wind",
+      "planet": "Mercury"
+    },
+    "100101": {
+      "number": 21,
+      "english": "Biting Through",
+      "chinese": "噬嗑",
+      "judgment_english": "Biting Through has success. It is favorable to let justice be administered.",
+      "lines_english": [
+        "His feet are fastened in the stocks, so that his toes disappear. No blame.",
+        "Bites through tender meat, so that his nose disappears. No blame.",
+        "Bites on old dried meat and strikes on something poisonous.",
+        "Bites on dried gristly meat. Receives metal arrows.",
+        "Bites on dried lean meat. Receives yellow gold. Perseveringly aware of danger.",
+        "His neck is fastened in the wooden cangue, so that his ears disappear. Misfortune."
+      ],
+      "element": "Fire",
+      "planet": "Mars"
+    },
+    "101001": {
+      "number": 22,
+      "english": "Grace",
+      "chinese": "賁",
+      "judgment_english": "Grace has success. In small matters it is favorable to undertake something.",
+      "lines_english": [
+        "He lends grace to his toes, leaves the carriage, and walks.",
+        "Lends grace to the beard on his chin.",
+        "Graceful and moist. Constant perseverance brings good fortune.",
+        "Grace or simplicity? A white horse comes as if on wings.",
+        "Grace in hills and gardens. The roll of silk is meager and small.",
+        "Simple grace. No blame."
+      ],
+      "element": "Fire",
+      "planet": "Venus"
+    },
+    "100000": {
+      "number": 23,
+      "english": "Splitting Apart",
+      "chinese": "剝",
+      "judgment_english": "Splitting Apart. It does not further one to go anywhere.",
+      "lines_english": [
+        "The leg of the bed is split. Those who persevere are destroyed. Misfortune.",
+        "The bed is split at the edge. Those who persevere are destroyed. Misfortune.",
+        "He splits with them. No blame.",
+        "The bed is split up to the skin. Misfortune.",
+        "A shoal of fishes. Favor comes through the court ladies. Everything acts to further.",
+        "There is a large fruit still uneaten. The superior man receives a carriage."
+      ],
+      "element": "Earth",
+      "planet": "Saturn"
+    },
+    "000001": {
+      "number": 24,
+      "english": "Return",
+      "chinese": "復",
+      "judgment_english": "Return. Success. Going out and coming in without error. Friends come without blame.",
+      "lines_english": [
+        "Return from a short distance. No need for remorse. Great good fortune.",
+        "Quiet return. Good fortune.",
+        "Repeated return. Danger. No blame.",
+        "Walking in the midst of others, one returns alone.",
+        "Noblehearted return. No remorse.",
+        "Missing the return. Misfortune."
+      ],
+      "element": "Earth",
+      "planet": "Sun"
+    },
+    "100111": {
+      "number": 25,
+      "english": "Innocence",
+      "chinese": "无妄",
+      "judgment_english": "Innocence. Supreme success. Perseverance furthers. If someone is not as he should be, he has misfortune.",
+      "lines_english": [
+        "Innocent behavior brings good fortune.",
+        "If one does not count on the harvest while plowing, nor on the use of the ground while clearing it, it furthers one to undertake something.",
+        "Undeserved misfortune. The cow that was tethered by someone is the wanderer's gain, the citizen's loss.",
+        "He who can be persevering remains without blame.",
+        "Use no medicine in an illness incurred through no fault of your own. It will pass of itself.",
+        "Innocent action brings misfortune. Nothing furthers."
+      ],
+      "element": "Heaven",
+      "planet": "Sun"
+    },
+    "111001": {
+      "number": 26,
+      "english": "Great Taming",
+      "chinese": "大畜",
+      "judgment_english": "Great Taming. Perseverance furthers. Not eating at home brings good fortune. It furthers one to cross the great water.",
+      "lines_english": [
+        "Danger is at hand. It furthers one to desist.",
+        "The axletrees are taken from the wagon.",
+        "A good horse that follows others. Awareness of danger, with perseverance, furthers.",
+        "The headboard of a young bull. Great good fortune.",
+        "The tusk of a gelded boar. Good fortune.",
+        "One attains the way of heaven. Success."
+      ],
+      "element": "Mountain",
+      "planet": "Jupiter"
+    },
+    "100001": {
+      "number": 27,
+      "english": "Nourishment",
+      "chinese": "頤",
+      "judgment_english": "Nourishment. Perseverance brings good fortune. Pay heed to the providing of nourishment and to what a man seeks to fill his own mouth with.",
+      "lines_english": [
+        "You let your magic tortoise go, and look at me with the corners of your mouth drooping. Misfortune.",
+        "Turning to the summit for nourishment, deviating from the path to seek nourishment from the hill.",
+        "Turning away from nourishment. Perseverance brings misfortune.",
+        "Turning to the summit for provision of nourishment brings good fortune.",
+        "Turning away from the path. To remain persevering brings good fortune.",
+        "The source of nourishment. Awareness of danger brings good fortune."
+      ],
+      "element": "Mountain",
+      "planet": "Saturn"
+    },
+    "011110": {
+      "number": 28,
+      "english": "Preponderance of the Great",
+      "chinese": "大過",
+      "judgment_english": "Preponderance of the Great. The ridgepole sags to the breaking point. It furthers one to have somewhere to go. Success.",
+      "lines_english": [
+        "To spread white rushes underneath. No blame.",
+        "A dry poplar sprouts at the root. An older man takes a young wife. Everything furthers.",
+        "The ridgepole sags to the breaking point. Misfortune.",
+        "The ridgepole is braced. Good fortune. If there are ulterior motives, it is humiliating.",
+        "A withered poplar puts forth flowers. An older woman takes a husband. No blame, no praise.",
+        "One must go through the water. It goes over one's head. Misfortune. No blame."
+      ],
+      "element": "Wind",
+      "planet": "Jupiter"
+    },
+    "010010": {
+      "number": 29,
+      "english": "The Abysmal",
+      "chinese": "坎",
+      "judgment_english": "The Abysmal repeated. If you are sincere, you have success in your heart, and whatever you do succeeds.",
+      "lines_english": [
+        "Repetition of the Abysmal. In the abyss one falls into a pit. Misfortune.",
+        "The abyss is dangerous. One should strive to attain small things only.",
+        "Forward and backward, abyss on abyss. In danger like this, pause at first and wait.",
+        "A jug of wine, a bowl of rice with it; earthen vessels simply handed in through the window.",
+        "The abyss is not filled to overflowing, it is filled only to the rim. No blame.",
+        "Bound with cords and ropes, shut in between thorn-hedged prison walls."
+      ],
+      "element": "Water",
+      "planet": "Moon"
+    },
+    "101010": {
+      "number": 30,
+      "english": "The Clinging",
+      "chinese": "離",
+      "judgment_english": "The Clinging. Perseverance furthers. It brings success. Care of the cow brings good fortune.",
+      "lines_english": [
+        "The footprints run crisscross. If one is seriously intent, no blame.",
+        "Yellow light. Supreme good fortune.",
+        "In the light of the setting sun, men either beat the pot and sing or loudly bewail the approach of old age. Misfortune.",
+        "Its coming is sudden; it flames up, dies down, is thrown away.",
+        "Tears in floods, sighing and lamenting. Good fortune.",
+        "The king uses him to march forth and chastise. Then it is best to kill the leaders and take captive the followers. No blame."
+      ],
+      "element": "Fire",
+      "planet": "Sun"
+    },
+    "011011": {
+      "number": 31,
+      "english": "Influence",
+      "chinese": "咸",
+      "judgment_english": "Influence. Success. Perseverance furthers. To take a maiden to wife brings good fortune.",
+      "lines_english": [
+        "Influence shows itself in the big toe.",
+        "Influence shows itself in the calves of the legs. Misfortune. Tarrying brings good fortune.",
+        "Influence shows itself in the thighs. Holds to that which follows it. To continue is humiliating.",
+        "Perseverance brings good fortune. Remorse disappears. If a man is agitated in mind, and his thoughts go hither and thither, only those friends on whom he fixes his conscious thoughts will follow.",
+        "Influence shows itself in the back muscles. No remorse.",
+        "Influence shows itself in the jaws, cheeks, and tongue."
+      ],
+      "element": "Lake",
+      "planet": "Venus"
+    },
+    "110110": {
+      "number": 32,
+      "english": "Duration",
+      "chinese": "恆",
+      "judgment_english": "Duration. Success. No blame. Perseverance furthers. It furthers one to have somewhere to go.",
+      "lines_english": [
+        "Seeking duration too hastily brings misfortune persistently. Nothing that would further.",
+        "Remorse disappears.",
+        "He who does not give duration to his character meets with disgrace. Persistent humiliation.",
+        "No game in the field.",
+        "Giving duration to one's character through perseverance. This is good fortune for a woman, misfortune for a man.",
+        "Restlessness as an enduring condition brings misfortune."
+      ],
+      "element": "Thunder",
+      "planet": "Saturn"
+    },
+    "001111": {
+      "number": 33,
+      "english": "Retreat",
+      "chinese": "遯",
+      "judgment_english": "Retreat. Success. In what is small, perseverance furthers.",
+      "lines_english": [
+        "At the tail in retreat. There is danger. Do not act.",
+        "He holds him fast with yellow oxhide. No one can tear him loose.",
+        "A halted retreat is nerve-wracking and dangerous. To retain people as men- and maidservants brings good fortune.",
+        "Voluntary retreat brings good fortune to the superior man and downfall to the inferior man.",
+        "Friendly retreat. Perseverance brings good fortune.",
+        "Cheerful retreat. Everything serves to further."
+      ],
+      "element": "Heaven",
+      "planet": "Mercury"
+    },
+    "111100": {
+      "number": 34,
+      "english": "Great Power",
+      "chinese": "大壯",
+      "judgment_english": "Great Power. Perseverance furthers.",
+      "lines_english": [
+        "Power in the toes. Continuing brings misfortune. This is certainly true.",
+        "Perseverance brings good fortune.",
+        "The inferior man works through power. The superior man does not act thus. To continue is dangerous. A goat butts against a hedge and gets its horns entangled.",
+        "Perseverance brings good fortune. Remorse disappears. The hedge opens; there is no entanglement. Power depends upon the axle of a big cart.",
+        "Loses the goat with ease. No remorse.",
+        "A goat butts against a hedge. It cannot go backward, it cannot go forward. Nothing serves to further. If one notes the difficulty, this brings good fortune."
+      ],
+      "element": "Thunder",
+      "planet": "Mars"
+    },
+    "000101": {
+      "number": 35,
+      "english": "Progress",
+      "chinese": "晉",
+      "judgment_english": "Progress. The powerful prince is honored with horses in large numbers. In a single day he is granted audience three times.",
+      "lines_english": [
+        "Progressing, but turned back. Perseverance brings good fortune. If one meets with no confidence, one should remain calm. No mistake.",
+        "Progressing, but in sorrow. Perseverance brings good fortune. Then one obtains great happiness from one's ancestress.",
+        "All are in accord. Remorse disappears.",
+        "Progress like a hamster. Perseverance brings danger.",
+        "Remorse disappears. Take not gain and loss to heart. Undertakings bring good fortune. Everything serves to further.",
+        "Making progress with the horns is permissible only for the purpose of punishing one's own city. To be conscious of danger brings good fortune. No blame. Perseverance brings humiliation."
+      ],
+      "element": "Fire",
+      "planet": "Sun"
+    },
+    "101000": {
+      "number": 36,
+      "english": "Darkening of the Light",
+      "chinese": "明夷",
+      "judgment_english": "Darkening of the Light. It furthers one to be persevering in difficulty.",
+      "lines_english": [
+        "Darkening of the light during flight. He lowers his wings. The superior man does not eat for three days on his wanderings. But he has somewhere to go. The host has words.",
+        "Darkening of the light injures him in the left thigh. He gives aid with the strength of a horse. Good fortune.",
+        "Darkening of the light during the hunt in the south. Their great leader is captured. One must not expect perseverance too soon.",
+        "He penetrates the left side of the belly. One gets at the very heart of the darkening of the light, and leaves gate and courtyard.",
+        "Darkening of the light as with Prince Chi. Perseverance furthers.",
+        "Not light but darkness. First he climbed up to heaven, then he plunged into the depths of the earth."
+      ],
+      "element": "Earth",
+      "planet": "Moon"
+    },
+    "101011": {
+      "number": 37,
+      "english": "The Family",
+      "chinese": "家人",
+      "judgment_english": "The Family. The perseverance of the woman furthers.",
+      "lines_english": [
+        "Firm seclusion within the family. Remorse disappears.",
+        "She should not follow her whims. She must attend within to the food. Perseverance brings good fortune.",
+        "When tempers flare up in the family, too great severity brings remorse. Good fortune nonetheless. When woman and child dally and laugh, it leads in the end to humiliation.",
+        "She is the treasure of the house. Great good fortune.",
+        "As a king he approaches his family. Fear not. Good fortune.",
+        "His work commands respect. In the end good fortune comes."
+      ],
+      "element": "Wind",
+      "planet": "Moon"
+    },
+    "110101": {
+      "number": 38,
+      "english": "Opposition",
+      "chinese": "睽",
+      "judgment_english": "Opposition. In small matters, good fortune.",
+      "lines_english": [
+        "Remorse disappears. If you lose your horse, do not run after it; it will come back of its own accord. When you see evil people, guard yourself against mistakes.",
+        "One meets his lord in a narrow street. No blame.",
+        "One sees the wagon dragged back, the oxen halted, a man's hair and nose cut off. Not a good beginning, but a good end.",
+        "Isolated through opposition, one meets a like-minded man with whom one can associate in good faith. Despite the danger, no blame.",
+        "Remorse disappears. The companion bites his way through the wrappings. If one goes to him, how could it be a mistake?",
+        "Isolated through opposition, one sees one's companion as a pig covered with dirt, as a wagon full of devils. First one draws a bow against him, then one lays the bow aside. He is not a robber; he will woo at the right time. If one goes, rain will fall; then good fortune comes."
+      ],
+      "element": "Fire",
+      "planet": "Mercury"
+    },
+    "001010": {
+      "number": 39,
+      "english": "Obstruction",
+      "chinese": "蹇",
+      "judgment_english": "Obstruction. The southwest furthers. The northeast does not further. It furthers one to see the great man. Perseverance brings good fortune.",
+      "lines_english": [
+        "Going leads to obstruction, coming meets with praise.",
+        "The king's servant is beset by obstruction upon obstruction, but it is not his own fault.",
+        "Going leads to obstruction; hence he comes back.",
+        "Going leads to obstruction, coming leads to union.",
+        "In the midst of the greatest obstructions, friends come.",
+        "Going leads to obstruction, coming leads to great good fortune. It furthers one to see the great man."
+      ],
+      "element": "Water",
+      "planet": "Saturn"
+    },
+    "010100": {
+      "number": 40,
+      "english": "Deliverance",
+      "chinese": "解",
+      "judgment_english": "Deliverance. The southwest furthers. If there is no longer anything where one has to go, return brings good fortune.",
+      "lines_english": [
+        "Without blame.",
+        "One kills three foxes in the field and receives a yellow arrow. Perseverance brings good fortune.",
+        "If a man carries a burden on his back and nonetheless rides in a carriage, he thereby encourages robbers to draw near. Perseverance leads to humiliation.",
+        "Deliver yourself from your great toe. Then the companion comes, and him you can trust.",
+        "If only the superior man can deliver himself, it brings good fortune. Thus he proves to inferior men that he is in earnest.",
+        "The prince shoots at a hawk on a high wall. He kills it. Everything serves to further."
+      ],
+      "element": "Thunder",
+      "planet": "Jupiter"
+    },
+    "100011": {
+      "number": 41,
+      "english": "Decrease",
+      "chinese": "損",
+      "judgment_english": "Decrease. Combining sincerity brings supreme good fortune without blame. One may be persevering in this. It furthers one to undertake something.",
+      "lines_english": [
+        "Going quickly when one's tasks are finished is without blame. But one must reflect how far one may decrease others.",
+        "Perseverance furthers. To undertake something brings misfortune. Without decreasing oneself, one is able to bring increase to others.",
+        "When three people journey together, their number decreases by one. When one man journeys alone, he finds a companion.",
+        "Decrease your faults. This makes possible a speedy journey without blame. This serves to decrease loss for others.",
+        "Someone does indeed increase him. Ten pairs of tortoises cannot oppose it. Supreme good fortune.",
+        "Without decreasing oneself, one is able to bring increase to others. No blame. Perseverance brings good fortune. It furthers one to undertake something. One obtains servants but no longer has a separate home."
+      ],
+      "element": "Mountain",
+      "planet": "Saturn"
+    },
+    "110001": {
+      "number": 42,
+      "english": "Increase",
+      "chinese": "益",
+      "judgment_english": "Increase. It furthers one to undertake something. It furthers one to cross the great water.",
+      "lines_english": [
+        "It furthers one to accomplish great deeds. Supreme good fortune. No blame.",
+        "Someone does indeed increase him; ten pairs of tortoises cannot oppose it. Constant perseverance brings good fortune. The king presents him before God. Good fortune.",
+        "One is enriched through unfortunate events. No blame, if you are sincere and walk in the middle, and report with a seal to the prince.",
+        "If you walk in the middle and report to the prince, he will follow. It furthers one to be used in the founding of the state.",
+        "If in truth you have a kind heart, ask not. Supreme good fortune. Truly, kindness will be recognized as your virtue.",
+        "He brings increase to no one. Indeed, someone even strikes him. He does not keep his heart constantly steady. Misfortune."
+      ],
+      "element": "Wind",
+      "planet": "Jupiter"
+    },
+    "111110": {
+      "number": 43,
+      "english": "Breakthrough",
+      "chinese": "夬",
+      "judgment_english": "Breakthrough. One must resolutely make the matter known at the court of the king.",
+      "lines_english": [
+        "Mighty in the forward-striding toes. When one goes and is not equal to the task, one makes a mistake.",
+        "A cry of alarm. Arms at evening and at night. Fear nothing.",
+        "To be powerful in the cheekbones brings misfortune. The superior man is firmly resolved. He walks alone and is caught in the rain. He is bespattered, and people murmur against him. No blame.",
+        "There is no skin on his thighs, and walking comes hard. If he were to let himself be led like a sheep, remorse would disappear. But if these words are heard they will not be believed.",
+        "In dealing with weeds, firm resolution is necessary. Walking in the middle remains free of blame.",
+        "No cry. In the end misfortune comes."
+      ],
+      "element": "Lake",
+      "planet": "Mars"
+    },
+    "011111": {
+      "number": 44,
+      "english": "Coming to Meet",
+      "chinese": "姤",
+      "judgment_english": "Coming to Meet. The maiden is powerful. One should not marry such a maiden.",
+      "lines_english": [
+        "It must be checked with a brake of bronze. Perseverance brings good fortune. If one lets it take its course, one experiences misfortune. Even a lean pig has it in him to rage around.",
+        "There is a fish in the tank. No blame. Does not further guests.",
+        "There is no skin on his thighs, and walking comes hard. If one is mindful of the danger, no great mistake is made.",
+        "No fish in the tank. This leads to misfortune.",
+        "A melon covered with willow leaves. Hidden lines. Then it drops down to one from heaven.",
+        "He comes to meet with his horns. Humiliation. No blame."
+      ],
+      "element": "Wind",
+      "planet": "Venus"
+    },
+    "000110": {
+      "number": 45,
+      "english": "Gathering Together",
+      "chinese": "萃",
+      "judgment_english": "Gathering Together. Success. The king approaches his temple.",
+      "lines_english": [
+        "If you are sincere, but not to the end, there will sometimes be confusion, sometimes gathering together. If you call out, then after one grasp of the hand you can laugh again. Regret not. Going is without blame.",
+        "Letting yourself be drawn brings good fortune and remains blameless. If you are sincere, it furthers even to bring a small offering.",
+        "Gathering together amid sighs. Nothing that would further. Going is without blame. Slight humiliation.",
+        "Great good fortune. No blame.",
+        "If in gathering you have position, no blame. If there are some who are not yet sincere in the work, sublime and enduring perseverance is needed. Then remorse disappears.",
+        "Lamenting and sighing, floods of tears. No blame."
+      ],
+      "element": "Lake",
+      "planet": "Moon"
+    },
+    "011000": {
+      "number": 46,
+      "english": "Pushing Upward",
+      "chinese": "升",
+      "judgment_english": "Pushing Upward has supreme success. One must see the great man. Fear not. Departure toward the south brings good fortune.",
+      "lines_english": [
+        "Pushing upward that meets with confidence brings great good fortune.",
+        "If one is sincere, it furthers even to bring a small offering. No blame.",
+        "One pushes upward into an empty city.",
+        "The king offers him Mount Chi. Good fortune. No blame.",
+        "Perseverance brings good fortune. One pushes upward by steps.",
+        "Pushing upward in darkness. It furthers one to be unremittingly persevering."
+      ],
+      "element": "Earth",
+      "planet": "Sun"
+    },
+    "011101": {
+      "number": 47,
+      "english": "Oppression",
+      "chinese": "困",
+      "judgment_english": "Oppression. Success. Perseverance. The great man brings about good fortune. No blame.",
+      "lines_english": [
+        "One sits oppressed under a bare tree and strays into a gloomy valley. For three years one sees nothing.",
+        "Oppressed amid wine and food. The man with the scarlet knee bands is just coming. It furthers one to offer sacrifice. To set forth brings misfortune. No blame.",
+        "A man permits himself to be oppressed by stone, and leans on thorns and thistles. He enters his house and does not see his wife. Misfortune.",
+        "He comes very quietly, oppressed in a golden carriage. Humiliation, but the end is reached.",
+        "His nose and feet are cut off. Oppression at the hands of the man with the purple knee bands. Joy comes softly. It furthers one to make offerings and libations.",
+        "Oppressed by creeping vines. He moves uncertainly and says, 'Movement brings remorse.' If one feels remorse over this and makes a start, good fortune comes."
+      ],
+      "element": "Lake",
+      "planet": "Saturn"
+    },
+    "101110": {
+      "number": 48,
+      "english": "The Well",
+      "chinese": "井",
+      "judgment_english": "The Well. The town may be changed, but the well cannot be changed.",
+      "lines_english": [
+        "One does not drink the mud of the well. No animals come to an old well.",
+        "At the well hole one shoots fishes. The jug is broken and leaks.",
+        "The well is cleaned, but no one drinks from it. This is my heart's sorrow, for one might draw from it. If the king were clear-minded, good fortune might be enjoyed in common.",
+        "The well is being lined. No blame.",
+        "In the well there is a clear, cold spring from which one can drink.",
+        "One draws from the well without hindrance. It is dependable. Supreme good fortune."
+      ],
+      "element": "Water",
+      "planet": "Moon"
+    },
+    "011100": {
+      "number": 49,
+      "english": "Revolution",
+      "chinese": "革",
+      "judgment_english": "Revolution. On your own day you are believed. Supreme success, furthering through perseverance. Remorse disappears.",
+      "lines_english": [
+        "Wrapped in the hide of a yellow cow.",
+        "When one's own day comes, one may create revolution. Starting brings good fortune. No blame.",
+        "Starting brings misfortune. Perseverance brings danger. When talk of revolution has gone the rounds three times, one may commit himself, and men will believe him.",
+        "Remorse disappears. Men believe him. Changing the form of government brings good fortune.",
+        "The great man changes like a tiger. Even before he questions the oracle he is believed.",
+        "The superior man changes like a panther. The inferior man molts in the face. Starting brings misfortune. To remain persevering brings good fortune."
+      ],
+      "element": "Fire",
+      "planet": "Mars"
+    },
+    "001110": {
+      "number": 50,
+      "english": "The Cauldron",
+      "chinese": "鼎",
+      "judgment_english": "The Cauldron. Supreme good fortune. Success.",
+      "lines_english": [
+        "A cauldron with upturned legs. Furthers removal of stagnating stuff. One takes a concubine for the sake of her son. No blame.",
+        "There is food in the cauldron. My comrades are envious, but they cannot harm me. Good fortune.",
+        "The handle of the cauldron is altered. One is impeded in his way of life. The fat of the pheasant is not eaten. Once rain falls, remorse is spent. Good fortune comes in the end.",
+        "The legs of the cauldron are broken. The prince's meal is spilled, and his person is soiled. Misfortune.",
+        "The cauldron has yellow handles, golden carrying rings. Perseverance furthers.",
+        "The cauldron has rings of jade. Great good fortune. Nothing that would not further."
+      ],
+      "element": "Fire",
+      "planet": "Sun"
+    },
+    "100100": {
+      "number": 51,
+      "english": "The Arousing",
+      "chinese": "震",
+      "judgment_english": "The Arousing. Success. The shock comes bringing terror. Laughing words - haha! The shock terrifies for a hundred miles.",
+      "lines_english": [
+        "The shock comes - oh, oh! Then follow laughing words - ha, ha! Good fortune.",
+        "The shock comes bringing danger. A hundred thousand times you lose your treasures and must climb the nine hills. Do not go in pursuit. After seven days you will get them back.",
+        "The shock comes and makes one distraught. If shock spurs to action, one remains free of misfortune.",
+        "The shock is mired.",
+        "Shock goes hither and thither. Danger. However, nothing at all is lost. Yet there are things to be done.",
+        "The shock brings ruin and terrified gazing around. Going ahead brings misfortune. If it has not yet touched one's own body but has reached one's neighbor first, there is no blame. One's comrades have something to talk about."
+      ],
+      "element": "Thunder",
+      "planet": "Jupiter"
+    },
+    "001001": {
+      "number": 52,
+      "english": "Keeping Still",
+      "chinese": "艮",
+      "judgment_english": "Keeping Still. Keeping his back still so that he no longer feels his body. He goes into his courtyard and does not see his people. No blame.",
+      "lines_english": [
+        "Keeping his toes still. No blame. Continued perseverance furthers.",
+        "Keeping his calves still. He cannot rescue him whom he follows. His heart is not glad.",
+        "Keeping his hips still. Making his sacrum stiff. Dangerous. The heart suffocates.",
+        "Keeping his trunk still. No blame.",
+        "Keeping his jaws still. The words have order. Remorse disappears.",
+        "Noblehearted keeping still. Good fortune."
+      ],
+      "element": "Mountain",
+      "planet": "Saturn"
+    },
+    "001011": {
+      "number": 53,
+      "english": "Development",
+      "chinese": "漸",
+      "judgment_english": "Development. The maiden is given in marriage. Good fortune. Perseverance furthers.",
+      "lines_english": [
+        "The wild goose gradually draws near the shore. The young son is in danger. There is talk. No blame.",
+        "The wild goose gradually draws near the cliff. Eating and drinking in peace and concord. Good fortune.",
+        "The wild goose gradually draws near the plateau. The man goes forth and does not return. The woman carries a child but does not bring it forth. Misfortune. It furthers one to fight off robbers.",
+        "The wild goose gradually draws near the tree. Perhaps it will find a flat branch. No blame.",
+        "The wild goose gradually draws near the summit. For three years the woman has no child. In the end nothing can hinder her. Good fortune.",
+        "The wild goose gradually draws near the cloud heights. Its feathers can be used for the sacred dance. Good fortune."
+      ],
+      "element": "Wind",
+      "planet": "Mercury"
+    },
+    "110100": {
+      "number": 54,
+      "english": "The Marrying Maiden",
+      "chinese": "歸妹",
+      "judgment_english": "The Marrying Maiden. Undertakings bring misfortune. Nothing that would further.",
+      "lines_english": [
+        "The marrying maiden as a concubine. A lame man who is able to tread. Undertakings bring good fortune.",
+        "A one-eyed man who is able to see. The perseverance of a solitary man furthers.",
+        "The marrying maiden as a slave. She marries as a concubine.",
+        "The marrying maiden draws out the allotted time. A late marriage comes in due course.",
+        "The sovereign I gave his daughter in marriage. The embroidered garments of the princess were not as gorgeous as those of the serving maid. The moon that is nearly full brings good fortune.",
+        "The woman holds the basket, but there are no fruits in it. The man stabs the sheep, but no blood flows. Nothing that acts to further."
+      ],
+      "element": "Thunder",
+      "planet": "Venus"
+    },
+    "101100": {
+      "number": 55,
+      "english": "Abundance",
+      "chinese": "豐",
+      "judgment_english": "Abundance has success. The king attains abundance. Be not sad. Be like the sun at midday.",
+      "lines_english": [
+        "When a man meets his destined ruler, they can be together ten days, and it is not a mistake. Going meets with recognition.",
+        "The curtain is of such fullness that the polestars can be seen at noon. Through going one meets with mistrust and hate. If one rouses him through truth, good fortune comes.",
+        "The underbrush is of such abundance that the small stars can be seen at noon. He breaks his right arm. No blame.",
+        "The curtain is of such fullness that the polestars can be seen at noon. He meets his ruler, who is of like kind. Good fortune.",
+        "Lines are coming, blessing and fame draw near. Good fortune.",
+        "His house is in a state of abundance. He screens off his family. He peers through the gate and no longer perceives anyone. For three years he sees nothing. Misfortune."
+      ],
+      "element": "Fire",
+      "planet": "Sun"
+    },
+    "001101": {
+      "number": 56,
+      "english": "The Wanderer",
+      "chinese": "旅",
+      "judgment_english": "The Wanderer. Success through smallness. Perseverance brings good fortune to the wanderer.",
+      "lines_english": [
+        "If the wanderer busies himself with trivial things, he draws down misfortune upon himself.",
+        "The wanderer comes to an inn. He has his property with him. He wins the steadfastness of a young servant.",
+        "The wanderer's inn burns down. He loses the steadfastness of his young servant. Danger.",
+        "The wanderer rests in a shelter. He obtains his property and an axe. My heart is not glad.",
+        "He shoots a pheasant. It drops with the first arrow. In the end this brings both praise and office.",
+        "The bird's nest burns up. The wanderer laughs at first, then must needs lament and weep. Through carelessness he loses his cow. Misfortune."
+      ],
+      "element": "Fire",
+      "planet": "Mercury"
+    },
+    "011010": {
+      "number": 57,
+      "english": "The Gentle",
+      "chinese": "巽",
+      "judgment_english": "The Gentle. Success through what is small. It furthers one to have somewhere to go. It furthers one to see the great man.",
+      "lines_english": [
+        "In advancing and in retreating, the perseverance of a warrior furthers.",
+        "Penetration under the bed. Priests and magicians are used in great number. Good fortune. No blame.",
+        "Repeated penetration. Humiliation.",
+        "Remorse vanishes. During the hunt three kinds of game are caught.",
+        "Perseverance brings good fortune. Remorse vanishes. Nothing that does not further. No beginning, but an end. Before the change, three days. After the change, three days. Good fortune.",
+        "Penetration under the bed. He loses his property and his axe. Perseverance brings misfortune."
+      ],
+      "element": "Wind",
+      "planet": "Moon"
+    },
+    "010110": {
+      "number": 58,
+      "english": "The Joyous",
+      "chinese": "兌",
+      "judgment_english": "The Joyous. Success. Perseverance is favorable.",
+      "lines_english": [
+        "Contented joyousness. Good fortune.",
+        "Sincere joyousness. Good fortune. Remorse disappears.",
+        "Coming joyousness. Misfortune.",
+        "Joyousness that is weighed is not at peace. After ridding himself of mistakes a man has joy.",
+        "Sincerity toward disintegrating influences is dangerous.",
+        "Seductive joyousness."
+      ],
+      "element": "Lake",
+      "planet": "Venus"
+    },
+    "010011": {
+      "number": 59,
+      "english": "Dispersion",
+      "chinese": "渙",
+      "judgment_english": "Dispersion. Success. The king approaches his temple. It furthers one to cross the great water. Perseverance furthers.",
+      "lines_english": [
+        "He brings help with the strength of a horse. Good fortune.",
+        "At the dissolution he hurries to that which supports him. Remorse disappears.",
+        "He dissolves his self. No remorse.",
+        "He dissolves his bond with his group. Supreme good fortune. Dispersion leads in turn to accumulation. This is something that ordinary men do not think of.",
+        "His loud cries are as dissolving as sweat. Dissolution! A king abides without blame.",
+        "He dissolves his blood. Departing, keeping at a distance, going out, is without blame."
+      ],
+      "element": "Wind",
+      "planet": "Mercury"
+    },
+    "110010": {
+      "number": 60,
+      "english": "Limitation",
+      "chinese": "節",
+      "judgment_english": "Limitation. Success. Galling limitation must not be persevered in.",
+      "lines_english": [
+        "Not going out of the door and the courtyard is without blame.",
+        "Not going out of the gate and the courtyard brings misfortune.",
+        "He who knows no limitation will have cause to lament. No blame.",
+        "Contented limitation. Success.",
+        "Sweet limitation brings good fortune. Going brings esteem.",
+        "Galling limitation. Perseverance brings misfortune. Remorse disappears."
+      ],
+      "element": "Water",
+      "planet": "Saturn"
+    },
+    "110011": {
+      "number": 61,
+      "english": "Inner Truth",
+      "chinese": "中孚",
+      "judgment_english": "Inner Truth. Pigs and fishes. Good fortune. It furthers one to cross the great water. Perseverance furthers.",
+      "lines_english": [
+        "Being prepared brings good fortune. If there are secret designs, it is disquieting.",
+        "A crane calling in the shade. Its young answers it. I have a good goblet. I will share it with you.",
+        "He finds a comrade. Now he beats the drum, now he stops. Now he sobs, now he sings.",
+        "The moon nearly at the full. The team horse goes astray. No blame.",
+        "He possesses truth, which links together. No blame.",
+        "Cockcrow penetrating to heaven. Perseverance brings misfortune."
+      ],
+      "element": "Wind",
+      "planet": "Jupiter"
+    },
+    "001100": {
+      "number": 62,
+      "english": "Preponderance of the Small",
+      "chinese": "小過",
+      "judgment_english": "Preponderance of the Small. Success. Perseverance furthers. Small things may be done; great things should not be done.",
+      "lines_english": [
+        "The bird meets with misfortune through flying.",
+        "She passes by her ancestor and meets her ancestress. He does not reach his prince and meets the official. No blame.",
+        "If one is not extremely careful, somebody may come up from behind and strike him. Misfortune.",
+        "No blame. He meets him without passing by. Going brings danger. One must be on guard. Do not act. Be constantly persevering.",
+        "Dense clouds, no rain from our western region. The prince shoots and hits him who is in the cave.",
+        "He passes him by, not meeting him. The flying bird leaves him. Misfortune. This means bad luck and injury."
+      ],
+      "element": "Thunder",
+      "planet": "Mercury"
+    },
+    "101101": {
+      "number": 63,
+      "english": "After Completion",
+      "chinese": "既濟",
+      "judgment_english": "After Completion. Success in small matters. Perseverance furthers. At the beginning good fortune, at the end disorder.",
+      "lines_english": [
+        "He brakes his wheels. He gets his tail in the water. No blame.",
+        "The woman loses her curtain. Do not run after it; on the seventh day you will get it.",
+        "The Illustrious Ancestor disciplines the Devil's Country. After three years he conquers it. Inferior people must not be employed.",
+        "The finest clothes turn to rags. Be careful all day long.",
+        "The neighbor in the east who slaughters an ox does not attain as much real happiness as the neighbor in the west with his small offering.",
+        "He gets his head in the water. Danger."
+      ],
+      "element": "Fire",
+      "planet": "Sun"
+    },
+    "010101": {
+      "number": 64,
+      "english": "Before Completion",
+      "chinese": "未濟",
+      "judgment_english": "Before Completion. Success. But if the little fox, after nearly completing the crossing, gets his tail in the water, there is nothing that would further.",
+      "lines_english": [
+        "He gets his tail in the water. Humiliating.",
+        "He brakes his wheels. Perseverance brings good fortune.",
+        "Before completion, attack brings misfortune. It furthers one to cross the great water.",
+        "Perseverance brings good fortune. Remorse disappears. Shock, thus to discipline the Devil's Country. For three years, great realms are awarded.",
+        "Perseverance brings good fortune. No remorse. The light of the superior man is true. Good fortune.",
+        "There is drinking of wine in genuine confidence. No blame. But if one wets his head, he loses it, in truth."
+      ],
+      "element": "Fire",
+      "planet": "Moon"
+    }
+  }
+}
