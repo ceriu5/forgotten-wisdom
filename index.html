@@ -604,57 +604,38 @@ Format as JSON:
 }`;
 }
 
-async function usePublicProxy(textData) {
-  // Try free public endpoint with our new prompt template
-  try {
-    const prompt = generateAIPrompt(textData);
-    
-    const response = await fetch('https://api.openai-proxy.org/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
-        messages: [{
-          role: 'user',
-          content: prompt
-        }],
-        max_tokens: 300
-      })
-    });
-    
-    if (response.ok) {
-      const data = await response.json();
-      const aiText = data.choices[0].message.content;
-      
-      // Try to parse as JSON
-      try {
-        const parsed = JSON.parse(aiText);
-        return {
-          quip: parsed.quip || aiText,
-          fullTranslation: parsed.translation || aiText,
-          context: parsed.context_notes || '',
-          method: 'Public Proxy (GPT-3.5)',
-          success: true,
-          rawResponse: aiText
-        };
-      } catch (e) {
-        // If not JSON, use as-is
-        return {
-          quip: extractWisdomFromText(aiText),
-          fullTranslation: aiText,
-          context: 'AI responded with free text',
-          method: 'Public Proxy (GPT-3.5)',
-          success: true,
-          rawResponse: aiText
-        };
-      }
-    }
-  } catch (error) {
-    console.log('Public proxy failed:', error);
+  function updateBackendLog(message) {
+  const logElement = document.getElementById('processLog');
+  if (logElement) {
+    logElement.innerHTML += `\n> ${message}`;
+    logElement.scrollTop = logElement.scrollHeight;
+  }
+}
+
+function parseAIResponse(aiText) {
+  const cleanText = aiText.trim();
+  
+  // Try JSON first
+  const jsonMatch = cleanText.match(/\{[\s\S]*\}/);
+  if (jsonMatch) {
+    try {
+      const parsed = JSON.parse(jsonMatch[0]);
+      return {
+        quip: parsed.quip || parsed.wisdom_quip || extractWisdomFromText(cleanText),
+        fullTranslation: parsed.translation || cleanText,
+        context: parsed.context_notes || parsed.context || '',
+        wasJson: true
+      };
+    } catch (e) {}
   }
   
-  // Fallback to simulated
-  return await getSimulatedTranslation(textData);
+  // Not JSON
+  return {
+    quip: extractWisdomFromText(cleanText),
+    fullTranslation: cleanText,
+    context: 'AI free-text response',
+    wasJson: false
+  };
 }
 
 // Helper to extract wisdom from free-text AI responses
