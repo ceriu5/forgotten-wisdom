@@ -942,6 +942,18 @@ document.addEventListener('DOMContentLoaded', function() {
   
   console.log('𓁹 Ancient Wisdom Oracle initialized 𓂀');
 });
+ 
+// Query feature toggle
+document.getElementById('queryToggle').onclick = function() {
+  const inputDiv = document.getElementById('queryInput');
+  inputDiv.style.display = (inputDiv.style.display === 'none' || inputDiv.style.display === '') ? 'block' : 'none';
+};
+
+// Temporary test for query button
+function initiateQueryTranslation() {
+  const query = document.getElementById('userQuery').value.trim();
+  alert('Query received: ' + (query || 'none') + '\nFeature coming soon!');
+}
 </script>
 
 </body>
