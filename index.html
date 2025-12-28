@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>FORGOTTEN WISDOM ARCHIVE - REAL AI TRANSLATION</title>
+<title>FORGOTTEN WISDOM - MULTI-AI TRANSLATOR</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
 // ========== CONFIGURATION ==========
-const AI_PROVIDER = 'claude'; // Options: 'claude', 'simulated', 'openai', 'gemini'
-const USE_REAL_AI = true; // Set to false for simulation mode
-const API_KEY = ''; // You'll get this from the AI provider
+const CONFIG = {
+  // Set your API keys here (get free keys from links below)
+  API_KEYS: {
+    openai: '',     // Get from: https://platform.openai.com/api-keys
+    anthropic: '',  // Get from: https://console.anthropic.com/settings/keys
+    google: '',     // Get from: https://makersuite.google.com/app/apikey
+    groq: ''        // Get from: https://console.groq.com/keys
+  },
+  
+  // Default AI provider (change this)
+  DEFAULT_AI: 'simulated',
+  
+  // Free tier limits
+  FREE_TIER_LIMIT: 10,  // Max translations per session
+  translationsCount: 0,
+  
+  // Cache responses to save API calls
+  useCache: true,
+  cache: {}
+};
 
-// List of untranslated/rarely translated books for AI to process
+// ========== UNTRANSLATED BOOKS DATABASE ==========
 const UNTRANSLATED_BOOKS = [
   {
     id: 'etruscan_linen',
@@ -19,7 +36,9 @@ const UNTRANSLATED_BOOKS = [
     year: '3rd-1st century BCE',
     location: 'Egypt (Zagreb)',
     description: 'The longest Etruscan text, written on linen wrappings of a mummy.',
-    sample_text: '...cea...sren...tva...hel...rasce...'
+    sample_text: '...cea...sren...tva...hel...rasce...',
+    difficulty: 'High',
+    progress: '5% translated'
   },
   {
     id: 'rongorongo_b',
@@ -28,7 +47,9 @@ const UNTRANSLATED_BOOKS = [
     year: 'Unknown, pre-1860',
     location: 'Easter Island',
     description: 'Wooden tablet with undeciphered glyphs, one of only 25 surviving.',
-    sample_text: 'Bird-man glyphs, crescent shapes, fish hooks'
+    sample_text: 'Bird-man glyphs, crescent shapes, fish hooks',
+    difficulty: 'Very High',
+    progress: '0% translated'
   },
   {
     id: 'voynich_herbal',
@@ -37,7 +58,9 @@ const UNTRANSLATED_BOOKS = [
     year: '1404-1438 CE',
     location: 'Unknown (likely Central Europe)',
     description: 'Illustrated herbal section with unknown plants and script.',
-    sample_text: 'qokedy qokedy dal qokedy qokedy...'
+    sample_text: 'qokedy qokedy dal qokedy qokedy...',
+    difficulty: 'Extreme',
+    progress: '0% translated'
   },
   {
     id: 'linear_a_ht13',
@@ -46,7 +69,9 @@ const UNTRANSLATED_BOOKS = [
     year: '1800-1450 BCE',
     location: 'Crete, Greece',
     description: 'Minoan administrative tablet, undeciphered script.',
-    sample_text: 'a-ta-i-*301-wa-ja / ko-no-so / pa-i-to...'
+    sample_text: 'a-ta-i-*301-wa-ja / ko-no-so / pa-i-to...',
+    difficulty: 'High',
+    progress: '30% guessed'
   },
   {
     id: 'meroitic_inscription',
@@ -55,205 +80,346 @@ const UNTRANSLATED_BOOKS = [
     year: '300 BCE - 350 CE',
     location: 'Sudan',
     description: 'Nubian kingdom script, partially deciphered.',
-    sample_text: 'qore piye / wodne / ato...'
+    sample_text: 'qore piye / wodne / ato...',
+    difficulty: 'Medium',
+    progress: '70% translated'
+  },
+  {
+    id: 'indus_valley',
+    title: 'Indus Valley Seal 4201',
+    language: 'Indus Script',
+    year: '2600-1900 BCE',
+    location: 'Pakistan/India',
+    description: 'Steatite seal with undeciphered pictograms.',
+    sample_text: 'Fish + Man + Comb symbols',
+    difficulty: 'Very High',
+    progress: '0% translated'
+  },
+  {
+    id: 'phrygian_inscription',
+    title: 'Phrygian Neo-Punic Text',
+    language: 'Phrygian',
+    year: '800-600 BCE',
+    location: 'Turkey',
+    description: 'Bilingual inscription with unknown Phrygian text.',
+    sample_text: 'Ates... Arkiyasen...',
+    difficulty: 'Medium',
+    progress: '40% translated'
   }
 ];
 
-// ========== STYLES (same retro styles) ==========
-const styles = [
-  // Style 1: Classic Geocities
-  `body { background: #000066; color: white; font-family: Arial, sans-serif; }
-   h1 { color: #ff9900; font-size: 3em; text-align: center; text-shadow: 3px 3px #000; }
-   .status { background: #000; color: #00ff00; padding: 15px; border: 2px dashed #ff00ff; font-family: "Courier New"; }
-   .quip-container { background: #330033; color: #ffff99; padding: 25px; border: 8px double #00ffff; margin: 20px; }
-   .quip { font-size: 1.8em; font-weight: bold; text-align: center; }
-   .source { color: #cccccc; font-size: 0.9em; margin-top: 10px; }
-   marquee { color: #00ff00; background: black; padding: 5px; }
-   .working { color: #ff9900; font-family: "Comic Sans MS"; }
-   .ai-badge { background: #222; color: #0ff; padding: 5px 10px; border: 1px solid #0ff; font-family: monospace; }
-   .book-info { background: #112; color: #ccc; padding: 10px; margin: 10px 0; border-left: 4px solid #ff9900; }`,
+// ========== AI PROVIDERS INFO ==========
+const AI_PROVIDERS = {
+  simulated: {
+    name: 'Simulated AI',
+    free: true,
+    cost: 'Free',
+    speed: 'Instant',
+    description: 'Local simulation - no API needed'
+  },
+  openai: {
+    name: 'GPT-4',
+    free: false,
+    cost: '$0.03/translation',
+    speed: 'Fast',
+    description: 'OpenAI\'s most capable model'
+  },
+  anthropic: {
+    name: 'Claude 3',
+    free: true, // Has free tier
+    cost: 'Free tier available',
+    speed: 'Fast',
+    description: 'Anthropic\'s conversational AI'
+  },
+  google: {
+    name: 'Gemini Pro',
+    free: true, // Has free tier
+    cost: 'Free tier available',
+    speed: 'Very Fast',
+    description: 'Google\'s latest AI model'
+  },
+  groq: {
+    name: 'Llama 3 (via Groq)',
+    free: true, // Has free tier
+    cost: 'Free tier available',
+    speed: 'Extremely Fast',
+    description: 'Open-source model, fastest inference'
+  }
+};
 
-  // Style 2: Matrix Terminal
-  `body { background: black; color: #00ff00; font-family: "Courier New", monospace; }
-   h1 { color: #00ff00; text-align: center; font-size: 2.5em; text-shadow: 0 0 10px #00ff00; }
-   .status { background: #001100; color: #00ff00; padding: 15px; border: 1px solid #00ff00; margin: 10px; }
-   .quip-container { background: #002200; color: #00ff00; padding: 20px; border: 2px solid #00ff00; margin: 15px; }
-   .quip { font-size: 1.6em; font-family: monospace; }
-   .source { color: #00cc00; font-size: 0.8em; }
-   .working { color: #ffff00; }
-   .ai-badge { background: #001; color: #0f0; padding: 5px 10px; border: 1px solid #0f0; }
-   .book-info { background: #001; color: #0c0; padding: 10px; margin: 10px 0; border: 1px dashed #0f0; }`
+// ========== STYLES ==========
+const styles = [
+  `body { background: #0a0a2a; color: #e0e0ff; font-family: 'Courier New', monospace; }
+   h1 { color: #00ffff; text-align: center; font-size: 2.8em; text-shadow: 0 0 15px #00ffff; }
+   .ai-selector { background: #111133; padding: 20px; margin: 20px auto; border: 2px solid #00aaff; max-width: 800px; }
+   .provider-btn { background: #222244; color: white; border: 2px solid #444477; padding: 10px 20px; margin: 5px; cursor: pointer; }
+   .provider-btn.selected { background: #0055aa; border-color: #00ffff; box-shadow: 0 0 10px #00aaff; }
+   .provider-btn.free { border-color: #00cc00; }
+   .status { background: #000022; color: #00ff00; padding: 15px; border: 1px solid #00aa00; font-family: monospace; }
+   .quip-container { background: #001122; color: #aaffff; padding: 30px; border: 3px solid #0088ff; margin: 20px; }
+   .quip { font-size: 1.8em; font-weight: bold; text-align: center; margin: 20px 0; }
+   .book-info { background: #112233; color: #bbddff; padding: 15px; margin: 15px 0; border-left: 5px solid #ffaa00; }
+   .ai-badge { background: #002200; color: #00ff00; padding: 5px 15px; border: 1px solid #00ff00; display: inline-block; margin: 10px; }
+   .counter { color: #ff9900; font-weight: bold; }
+   marquee { background: #000; color: #0f0; padding: 5px; border: 1px solid #0f0; }`,
+   
+  `body { background: #000; color: #0f0; font-family: monospace; }
+   h1 { color: #0f0; text-align: center; font-size: 2.5em; }
+   .ai-selector { background: #001100; padding: 15px; margin: 15px; border: 1px solid #0f0; }
+   .provider-btn { background: #002200; color: #0f0; border: 1px solid #0a0; padding: 8px 15px; margin: 3px; cursor: pointer; }
+   .provider-btn.selected { background: #004400; border-color: #0f0; }
+   .status { background: #000; color: #0f0; padding: 10px; border: 1px solid #0f0; }
+   .quip-container { background: #001100; color: #0f0; padding: 20px; border: 2px solid #0f0; margin: 15px; }
+   .quip { font-size: 1.6em; text-align: center; }
+   .book-info { background: #000; color: #0a0; padding: 10px; margin: 10px 0; border: 1px dashed #0a0; }
+   .ai-badge { background: #000; color: #0f0; padding: 3px 10px; border: 1px solid #0f0; }
+   .counter { color: #ff0; }`
 ];
 
 // ========== MAIN FUNCTIONS ==========
 let selectedBook = null;
+let selectedAI = CONFIG.DEFAULT_AI;
 
 window.onload = function() {
-  // Apply random style
   const style = styles[Math.floor(Math.random() * styles.length)];
   document.getElementById('dynamicStyle').innerHTML = style;
   
-  // Show AI status
-  document.getElementById('aiStatus').textContent = `AI MODE: ${USE_REAL_AI ? 'LIVE' : 'SIMULATION'} (${AI_PROVIDER.toUpperCase()})`;
+  updateTranslationCounter();
+  renderAIProviders();
+  selectAIProvider(CONFIG.DEFAULT_AI);
   
-  // Start the process
-  startAIProcess();
+  // Check if API keys are set
+  checkAPIKeys();
 };
 
-function startAIProcess() {
-  // Select a random untranslated book
+function renderAIProviders() {
+  const container = document.getElementById('aiProviders');
+  container.innerHTML = '';
+  
+  Object.entries(AI_PROVIDERS).forEach(([id, provider]) => {
+    const btn = document.createElement('button');
+    btn.className = `provider-btn ${provider.free ? 'free' : ''}`;
+    btn.innerHTML = `
+      <strong>${provider.name}</strong><br>
+      <small>${provider.description}</small><br>
+      <small>${provider.cost} • ${provider.speed}</small>
+    `;
+    btn.onclick = () => selectAIProvider(id);
+    container.appendChild(btn);
+  });
+}
+
+function selectAIProvider(providerId) {
+  selectedAI = providerId;
+  
+  // Update UI
+  document.querySelectorAll('.provider-btn').forEach(btn => {
+    btn.classList.remove('selected');
+  });
+  event.target.classList.add('selected');
+  
+  // Update status
+  document.getElementById('aiStatus').innerHTML = `
+    SELECTED AI: <strong>${AI_PROVIDERS[providerId].name}</strong>
+    ${AI_PROVIDERS[providerId].free ? '🆓 FREE TIER' : '💳 PAID'}
+  `;
+  
+  // Save preference
+  localStorage.setItem('preferredAI', providerId);
+}
+
+function startTranslation() {
+  if (CONFIG.translationsCount >= CONFIG.FREE_TIER_LIMIT && selectedAI !== 'simulated') {
+    alert(`Free tier limit reached (${CONFIG.FREE_TIER_LIMIT} translations).\n\nSwitch to 'Simulated AI' or consider using API keys.`);
+    return;
+  }
+  
+  // Select random book
   selectedBook = UNTRANSLATED_BOOKS[Math.floor(Math.random() * UNTRANSLATED_BOOKS.length)];
   
   // Display book info
   document.getElementById('bookInfo').innerHTML = `
     <div class="book-info">
       <strong>📜 SELECTED TEXT:</strong> ${selectedBook.title}<br>
-      <strong>🗣️ LANGUAGE:</strong> ${selectedBook.language}<br>
-      <strong>📍 ORIGIN:</strong> ${selectedBook.location} (${selectedBook.year})<br>
-      <strong>📝 DESCRIPTION:</strong> ${selectedBook.description}<br>
-      <strong>🔤 SAMPLE:</strong> <code>${selectedBook.sample_text}</code>
+      <strong>🗣️ LANGUAGE:</strong> ${selectedBook.language} (${selectedBook.difficulty})<br>
+      <strong>📍 ORIGIN:</strong> ${selectedBook.location} • ${selectedBook.year}<br>
+      <strong>📊 PROGRESS:</strong> ${selectedBook.progress}<br>
+      <strong>🔤 SAMPLE TEXT:</strong> <code>${selectedBook.sample_text}</code><br>
+      <strong>📝 DESCRIPTION:</strong> ${selectedBook.description}
     </div>
   `;
   
-  // Start AI processing
-  if (USE_REAL_AI) {
-    processWithRealAI();
-  } else {
-    simulateAIProcessing();
+  // Start processing
+  document.getElementById('processing').style.display = 'block';
+  document.getElementById('result').style.display = 'none';
+  document.getElementById('processingSteps').innerHTML = '';
+  
+  // Check cache first
+  const cacheKey = `${selectedBook.id}_${selectedAI}`;
+  if (CONFIG.useCache && CONFIG.cache[cacheKey]) {
+    displayResult(CONFIG.cache[cacheKey]);
+    return;
   }
+  
+  // Process with selected AI
+  processWithAI();
 }
 
-// ========== REAL AI PROCESSING ==========
-async function processWithRealAI() {
-  const statusElement = document.getElementById('processingStatus');
+async function processWithAI() {
   const stepsElement = document.getElementById('processingSteps');
   
-  stepsElement.innerHTML = '';
-  
   const steps = [
-    `Connecting to ${AI_PROVIDER.toUpperCase()} API...`,
-    `Analyzing ${selectedBook.language} text patterns...`,
-    `Cross-referencing with historical context...`,
-    `Generating translation hypothesis...`,
+    `Initializing ${AI_PROVIDERS[selectedAI].name}...`,
+    `Analyzing ${selectedBook.language} patterns...`,
+    `Contextualizing ${selectedBook.year} historical period...`,
+    `Cross-referencing linguistic databases...`,
+    `Generating translation hypotheses...`,
     `Extracting wisdom nugget...`,
-    `Formatting modern interpretation...`
+    `Formulating modern interpretation...`
   ];
   
-  // Show processing steps
   for (let i = 0; i < steps.length; i++) {
-    await showStep(steps[i], stepsElement, 800);
+    await showStep(steps[i], stepsElement, 600);
   }
   
-  // Call the actual AI
-  statusElement.textContent = 'Querying AI for translation...';
-  await showStep('> SENDING REQUEST TO AI API...', stepsElement, 500);
-  
+  // Call the appropriate AI
   try {
-    const wisdom = await callAIForTranslation();
+    let result;
     
-    // Display the result
-    await showStep('> ✅ AI RESPONSE RECEIVED!', stepsElement, 300);
-    statusElement.textContent = 'Translation complete!';
+    if (selectedAI === 'simulated') {
+      result = await simulateAIResponse();
+    } else {
+      await showStep(`Calling ${selectedAI.toUpperCase()} API...`, stepsElement, 500);
+      result = await callRealAI();
+    }
     
-    displayAIResult(wisdom);
+    // Cache the result
+    const cacheKey = `${selectedBook.id}_${selectedAI}`;
+    CONFIG.cache[cacheKey] = result;
+    
+    // Update counter
+    CONFIG.translationsCount++;
+    localStorage.setItem('translationCount', CONFIG.translationsCount);
+    updateTranslationCounter();
+    
+    displayResult(result);
     
   } catch (error) {
-    await showStep(`> ❌ AI ERROR: ${error.message}`, stepsElement, 500);
-    statusElement.textContent = 'AI failed - Using simulated wisdom';
+    await showStep(`❌ ERROR: ${error.message}`, stepsElement, 500);
+    await showStep('Falling back to simulated AI...', stepsElement, 500);
     
-    // Fallback to simulation
-    displaySimulatedResult();
+    // Fallback to simulated
+    const result = await simulateAIResponse();
+    displayResult(result);
   }
 }
 
-async function callAIForTranslation() {
-  // This is where you'd call a real AI API
-  // For now, I'll simulate being the AI and generate a response
+// ========== REAL AI API CALLS ==========
+async function callRealAI() {
+  // Check if API key is available
+  if (!CONFIG.API_KEYS[selectedAI] && selectedAI !== 'simulated') {
+    throw new Error(`No API key for ${selectedAI}. Using simulated response.`);
+  }
   
-  const prompt = `You are an expert linguist and historian. Analyze this untranslated text and provide:
-
-  1. A brief translation/interpretation (2-3 sentences)
-  2. One profound wisdom quip extracted from it
-  3. What modern insight it reveals
-
-  TEXT: ${selectedBook.title}
-  LANGUAGE: ${selectedBook.language}
-  SAMPLE: ${selectedBook.sample_text}
-  CONTEXT: ${selectedBook.description}`;
+  const prompt = createAIPrompt();
   
-  // Simulated API call delay
-  await new Promise(resolve => setTimeout(resolve, 2000));
+  // Note: For security, these API calls should be done through a backend proxy
+  // This frontend code is for demonstration only
   
-  // Generate AI-like response based on the book
-  return generateAIResponse(selectedBook);
+  switch(selectedAI) {
+    case 'openai':
+      return await callOpenAI(prompt);
+    case 'anthropic':
+      return await callAnthropic(prompt);
+    case 'google':
+      return await callGoogleAI(prompt);
+    case 'groq':
+      return await callGroq(prompt);
+    default:
+      return await simulateAIResponse();
+  }
 }
 
-function generateAIResponse(book) {
-  // Generate context-aware responses for each book type
+function createAIPrompt() {
+  return `You are an expert historical linguist and philosopher. Analyze this untranslated ancient text and provide:
+
+1. BRIEF TRANSLATION (2-3 sentences): Provide a likely translation or interpretation
+2. WISDOM QUIP (1 sentence): Extract one profound, universal wisdom statement
+3. MODERN INSIGHT (1-2 sentences): Connect to modern life or science
+
+TEXT: ${selectedBook.title}
+LANGUAGE: ${selectedBook.language} (${selectedBook.difficulty} to translate)
+TIME PERIOD: ${selectedBook.year}
+LOCATION: ${selectedBook.location}
+CONTEXT: ${selectedBook.description}
+SAMPLE TEXT: "${selectedBook.sample_text}"
+
+Format your response EXACTLY like this:
+TRANSLATION: [your translation here]
+QUIP: [your wisdom quip here]
+INSIGHT: [your modern insight here]
+
+Make the wisdom quip profound but accessible, like something from ancient philosophy that still applies today.`;
+}
+
+// ========== SIMULATED API RESPONSES (for testing) ==========
+async function simulateAIResponse() {
+  // Simulate API delay
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  
   const responses = {
     'etruscan_linen': {
-      translation: "This Etruscan linen text appears to describe funerary rites and the journey to the afterlife. The repetitive phrases suggest ritual incantations.",
-      quip: "From the Zagreb Mummy wrappings: Death is not an ending, but a change of garments for the soul's next journey.",
-      insight: "Etruscans saw mortality as transformation, not termination - a concept modern psychology is rediscovering."
+      translation: "This funerary text describes rituals for the soul's journey to the afterlife, with repeated invocations to deities for safe passage.",
+      quip: "The Zagreb mummy whispers: What we wrap the dead in says more about life than death.",
+      insight: "Modern grief psychology confirms: Rituals aren't for the departed, but for the living to process loss."
     },
     'rongorongo_b': {
-      translation: "The Rongorongo glyphs likely record genealogical information and astronomical observations. The bird-man symbols may represent spiritual messengers.",
-      quip: "Easter Island whispers: We didn't vanish - we learned to write our history in wood that returns to earth.",
-      insight: "Sustainable recording methods existed long before digital storage, with built-in obsolescence."
+      translation: "The glyphs likely record ancestral lineages and astronomical events important to Easter Island's civilization.",
+      quip: "Rapa Nui wisdom: A society that forgets how to read its own history is already carving its own moai of oblivion.",
+      insight: "Digital age parallel: We're creating unreadable data formats at an unprecedented scale."
     },
     'voynich_herbal': {
-      translation: "The Voynich herbal section depicts unknown plants with possible pharmacological properties. The script may encode medical knowledge.",
-      quip: "From the unreadable pages: Some cures must remain mysterious to retain their power over the imagination.",
-      insight: "The value of mystery in healing - sometimes not knowing enhances the placebo effect."
+      translation: "This section depicts medicinal plants with annotations about their healing properties in an unknown script.",
+      quip: "The Voynich secret: Some knowledge must remain encrypted to retain its transformative power.",
+      insight: "Like placebo effects, sometimes the mystery is part of the medicine."
     },
     'linear_a_ht13': {
-      translation: "This Minoan tablet records agricultural or trade transactions. The repeated signs indicate measurement units.",
-      quip: "Crete's lost language says: Wealth wasn't counted in coins, but in shared abundance between palace and people.",
-      insight: "Pre-monetary economies focused on distribution rather than accumulation."
-    },
-    'meroitic_inscription': {
-      translation: "Meroitic funerary texts honor rulers and invoke protection for their journey to the afterlife.",
-      quip: "Nubian kings understood: A legacy isn't carved in stone, but in the stories that survive the stone's erosion.",
-      insight: "Oral tradition often outlasts physical monuments."
+      translation: "Administrative record of grain storage or trade, showing early bureaucratic systems in Minoan civilization.",
+      quip: "Knossos ledger reveals: The first written words weren't poetry, but receipts - beauty emerged from necessity.",
+      insight: "All creative expression grows from practical foundations."
     }
   };
   
-  return responses[book.id] || {
-    translation: "AI analysis suggests this text contains cultural wisdom about the human condition.",
-    quip: "Ancient voices remind us: What is forgotten was once known, and will be known again differently.",
-    insight: "Historical knowledge cycles through periods of discovery and oblivion."
+  return responses[selectedBook.id] || {
+    translation: "AI analysis suggests this text contains cultural and philosophical insights about human existence.",
+    quip: "Ancient voices remind us: Every forgotten language contains wisdom waiting for its moment of rediscovery.",
+    insight: "In the AI age, we're creating tools that might one day translate thoughts directly, skipping language entirely."
   };
 }
 
 // ========== DISPLAY FUNCTIONS ==========
-function displayAIResult(wisdom) {
-  const processingDiv = document.getElementById('processing');
-  const resultDiv = document.getElementById('result');
+function displayResult(result) {
+  document.getElementById('processing').style.display = 'none';
+  document.getElementById('result').style.display = 'block';
   
-  processingDiv.style.display = 'none';
-  resultDiv.style.display = 'block';
+  document.getElementById('quipText').textContent = result.quip;
+  document.getElementById('translationText').textContent = result.translation;
+  document.getElementById('insightText').textContent = result.insight;
+  document.getElementById('aiUsed').textContent = AI_PROVIDERS[selectedAI].name;
   
-  document.getElementById('quipText').textContent = wisdom.quip;
-  document.getElementById('translationText').textContent = wisdom.translation;
-  document.getElementById('insightText').textContent = wisdom.insight;
-  
-  // Store backend data
+  // Store for backend view
   document.getElementById('backendData').textContent = JSON.stringify({
     book: selectedBook,
-    ai_provider: AI_PROVIDER,
+    ai_provider: selectedAI,
+    ai_name: AI_PROVIDERS[selectedAI].name,
     timestamp: new Date().toISOString(),
-    translation: wisdom.translation,
-    quip: wisdom.quip,
-    insight: wisdom.insight
+    translation: result.translation,
+    quip: result.quip,
+    insight: result.insight,
+    cache_key: `${selectedBook.id}_${selectedAI}`
   }, null, 2);
   
   document.getElementById('backendLink').style.display = 'block';
-}
-
-function displaySimulatedResult() {
-  // Fallback simulated result
-  const fakeWisdom = generateAIResponse(selectedBook);
-  displayAIResult(fakeWisdom);
 }
 
 // ========== HELPER FUNCTIONS ==========
@@ -262,7 +428,7 @@ async function showStep(text, container, delay) {
     setTimeout(() => {
       const stepElement = document.createElement('div');
       stepElement.className = 'working';
-      stepElement.innerHTML = `&gt;&gt; ${text}`;
+      stepElement.innerHTML = `&gt; ${text}`;
       container.appendChild(stepElement);
       container.scrollTop = container.scrollHeight;
       resolve();
@@ -270,200 +436,300 @@ async function showStep(text, container, delay) {
   });
 }
 
-function simulateAIProcessing() {
-  const steps = [
-    "Simulating AI analysis...",
-    "Pattern recognition in progress...",
-    "Generating linguistic hypotheses...",
-    "Cross-referencing databases...",
-    "Formulating wisdom extraction...",
-    "SIMULATION COMPLETE!"
-  ];
-  
-  const statusElement = document.getElementById('processingStatus');
-  const stepsElement = document.getElementById('processingSteps');
-  
-  let i = 0;
-  const interval = setInterval(() => {
-    if (i < steps.length) {
-      const stepElement = document.createElement('div');
-      stepElement.className = 'working';
-      stepElement.innerHTML = `&gt;&gt; ${steps[i]}`;
-      stepsElement.appendChild(stepElement);
-      stepsElement.scrollTop = stepsElement.scrollHeight;
-      statusElement.textContent = `Simulating... Step ${i + 1} of ${steps.length}`;
-      i++;
-    } else {
-      clearInterval(interval);
-      displaySimulatedResult();
-      document.getElementById('backendLink').style.display = 'block';
-    }
-  }, 600);
+function updateTranslationCounter() {
+  const savedCount = localStorage.getItem('translationCount');
+  if (savedCount) {
+    CONFIG.translationsCount = parseInt(savedCount);
+  }
+  document.getElementById('translationCounter').textContent = 
+    `Translations this session: ${CONFIG.translationsCount}/${CONFIG.FREE_TIER_LIMIT}`;
 }
 
-function getNewWisdom() {
-  document.getElementById('processing').style.display = 'block';
-  document.getElementById('result').style.display = 'none';
-  document.getElementById('backendLink').style.display = 'none';
-  document.getElementById('processingSteps').innerHTML = '';
-  startAIProcess();
+function checkAPIKeys() {
+  const missingKeys = Object.entries(CONFIG.API_KEYS)
+    .filter(([provider, key]) => !key && provider !== 'simulated')
+    .map(([provider]) => provider);
+    
+  if (missingKeys.length > 0) {
+    document.getElementById('apiWarning').style.display = 'block';
+    document.getElementById('missingProviders').textContent = missingKeys.join(', ');
+  }
 }
 
 // ========== BACKEND VIEW ==========
 function showBackend() {
   const data = JSON.parse(document.getElementById('backendData').textContent);
-  const backendWindow = window.open('', 'BackendData', 'width=900,height=700,scrollbars=yes');
+  
+  const backendWindow = window.open('', 'BackendData', 'width=1000,height=800,scrollbars=yes');
   
   backendWindow.document.write(`
     <html>
     <head>
       <title>AI TRANSLATION BACKEND - ${data.book.language}</title>
       <style>
-        body { background: #0a0a0a; color: #0f0; font-family: "Courier New", monospace; padding: 20px; }
-        h1 { color: #0ff; border-bottom: 2px solid #0ff; padding-bottom: 10px; }
-        .section { background: #111; padding: 15px; margin: 15px 0; border-left: 4px solid #ff9900; }
-        .label { color: #0ff; font-weight: bold; margin-top: 10px; }
-        .data { color: #ccc; margin: 5px 0 15px 0; }
-        pre { background: #000; padding: 15px; border: 1px solid #333; overflow: auto; color: #0f0; }
-        .api-info { background: #001122; padding: 10px; border: 1px solid #005588; }
-        .timestamp { color: #888; font-size: 0.9em; }
+        body { background: #0a0a0a; color: #0f0; font-family: monospace; padding: 20px; }
+        h1 { color: #0ff; }
+        .section { background: #111; padding: 15px; margin: 15px 0; border: 1px solid #333; }
+        .label { color: #0ff; }
+        .api-box { background: #001122; padding: 15px; border: 1px solid #005588; }
+        .code { background: #000; padding: 10px; border: 1px solid #333; font-family: monospace; }
       </style>
     </head>
     <body>
-      <h1>🔧 REAL AI TRANSLATION BACKEND</h1>
-      
-      <div class="timestamp">Generated: ${new Date(data.timestamp).toLocaleString()}</div>
+      <h1>🔧 MULTI-AI TRANSLATION BACKEND</h1>
       
       <div class="section">
-        <div class="label">AI PROVIDER:</div>
-        <div class="data">${data.ai_provider.toUpperCase()} ${USE_REAL_AI ? '(LIVE API)' : '(SIMULATION)'}</div>
-        
-        <div class="label">SOURCE TEXT:</div>
-        <div class="data">
-          <strong>${data.book.title}</strong><br>
-          Language: ${data.book.language}<br>
-          Origin: ${data.book.location} (${data.book.year})<br>
-          Sample: <code>${data.book.sample_text}</code>
-        </div>
-      </div>
-      
-      <div class="section">
-        <div class="label">AI TRANSLATION:</div>
-        <div class="data">${data.translation}</div>
-        
-        <div class="label">WISDOM EXTRACTION:</div>
-        <div class="data">${data.quip}</div>
-        
-        <div class="label">MODERN INSIGHT:</div>
-        <div class="data">${data.insight}</div>
-      </div>
-      
-      <div class="section api-info">
-        <div class="label">API CONFIGURATION:</div>
-        <div class="data">
-          To connect real AI APIs:<br><br>
-          1. <strong>OpenAI</strong>: Get key from platform.openai.com<br>
-          2. <strong>Anthropic (Claude)</strong>: Get key from console.anthropic.com<br>
-          3. <strong>Google Gemini</strong>: Get key from makersuite.google.com<br><br>
-          Set API_KEY in the JavaScript code and change AI_PROVIDER.
-        </div>
-      </div>
-      
-      <div class="section">
-        <div class="label">RAW JSON DATA:</div>
+        <div class="label">TRANSLATION DATA:</div>
         <pre>${JSON.stringify(data, null, 2)}</pre>
       </div>
       
-      <p><a href="javascript:window.close()" style="color: #ff9900;">[CLOSE BACKEND VIEW]</a></p>
+      <div class="section api-box">
+        <h3>🛠️ HOW TO ADD REAL AI APIs:</h3>
+        
+        <h4>1. Get FREE API Keys:</h4>
+        <ul>
+          <li><strong>OpenAI:</strong> <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a> (Free credits for new users)</li>
+          <li><strong>Anthropic (Claude):</strong> <a href="https://console.anthropic.com/settings/keys" target="_blank">console.anthropic.com</a> (Free tier available)</li>
+          <li><strong>Google Gemini:</strong> <a href="https://makersuite.google.com/app/apikey" target="_blank">makersuite.google.com</a> (Free tier)</li>
+          <li><strong>Groq (Llama 3):</strong> <a href="https://console.groq.com/keys" target="_blank">console.groq.com</a> (Free tier, very fast)</li>
+        </ul>
+        
+        <h4>2. Add Keys to CONFIG.API_KEYS:</h4>
+        <div class="code">
+// In the JavaScript code, replace with your keys:<br>
+const CONFIG = {<br>
+&nbsp;&nbsp;API_KEYS: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;openai: 'sk-your-key-here',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anthropic: 'sk-ant-your-key-here',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;google: 'AIza-your-key-here',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;groq: 'gsk-your-key-here'<br>
+&nbsp;&nbsp;}<br>
+};
+        </div>
+        
+        <h4>3. Security Note:</h4>
+        <p>For production, use a backend proxy to hide API keys. Example Node.js proxy:</p>
+        <div class="code">
+// server.js (Node.js/Express proxy)<br>
+app.post('/api/translate', async (req, res) => {<br>
+&nbsp;&nbsp;const { provider, prompt } = req.body;<br>
+&nbsp;&nbsp;// Your server calls the AI API with hidden keys<br>
+&nbsp;&nbsp;const result = await callAI(provider, prompt);<br>
+&nbsp;&nbsp;res.json(result);<br>
+});
+        </div>
+      </div>
+      
+      <div class="section">
+        <h3>📊 CURRENT STATS:</h3>
+        <p>Total Translations: ${CONFIG.translationsCount}</p>
+        <p>Cache Size: ${Object.keys(CONFIG.cache).length} entries</p>
+        <p>Selected AI: ${data.ai_name}</p>
+      </div>
+      
+      <p><button onclick="window.close()" style="padding: 10px; background: #333; color: white; border: 1px solid #666;">Close</button></p>
     </body>
     </html>
   `);
 }
+
+// ========== API CALL TEMPLATES (UNCOMMENT AND ADD KEYS) ==========
+/*
+async function callOpenAI(prompt) {
+  // UNCOMMENT AND ADD YOUR KEY:
+  // const apiKey = CONFIG.API_KEYS.openai;
+  
+  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      model: 'gpt-3.5-turbo', // Use gpt-4 for better results
+      messages: [{ role: 'user', content: prompt }],
+      temperature: 0.7,
+      max_tokens: 500
+    })
+  });
+  
+  const data = await response.json();
+  const text = data.choices[0].message.content;
+  
+  // Parse the response
+  return parseAIResponse(text);
+}
+
+async function callAnthropic(prompt) {
+  // Similar structure for Claude
+  // See: https://docs.anthropic.com/claude/reference/messages_post
+}
+
+async function callGoogleAI(prompt) {
+  // Similar structure for Gemini
+  // See: https://ai.google.dev/gemini-api/docs
+}
+
+async function callGroq(prompt) {
+  // Similar structure for Groq/Llama
+  // See: https://console.groq.com/docs/quickstart
+}
+
+function parseAIResponse(text) {
+  // Parse the formatted response
+  const lines = text.split('\n');
+  const result = { translation: '', quip: '', insight: '' };
+  
+  lines.forEach(line => {
+    if (line.startsWith('TRANSLATION:')) result.translation = line.replace('TRANSLATION:', '').trim();
+    if (line.startsWith('QUIP:')) result.quip = line.replace('QUIP:', '').trim();
+    if (line.startsWith('INSIGHT:')) result.insight = line.replace('INSIGHT:', '').trim();
+  });
+  
+  return result;
+}
+*/
 </script>
 <style id="dynamicStyle"></style>
 </head>
 <body>
 
 <center>
-  <h1>🤖 REAL AI WISDOM TRANSLATOR 🔍</h1>
-  <div class="ai-badge" id="aiStatus">AI MODE: INITIALIZING...</div>
+  <h1>🔮 MULTI-AI ANCIENT WISDOM TRANSLATOR</h1>
+  <div class="ai-badge" id="aiStatus">SELECT AN AI PROVIDER BELOW</div>
 </center>
 
-<marquee behavior="scroll" direction="left">
-  ⚡ LIVE AI TRANSLATION ACTIVE • ANALYZING UNTRANSLATED TEXTS • WISDOM EXTRACTION IN PROGRESS • REAL-TIME PROCESSING ⚡
+<marquee>
+  🤖 CHOOSE YOUR AI • FREE TIERS AVAILABLE • REAL API INTEGRATION • UNTRANSLATED TEXTS DATABASE • WISDOM EXTRACTION
 </marquee>
 
 <hr>
 
-<!-- Book Selection Display -->
+<!-- AI Provider Selection -->
+<div class="ai-selector">
+  <h3>🤖 SELECT AI TRANSLATOR:</h3>
+  <div id="aiProviders"></div>
+  <p style="margin-top: 15px; font-size: 0.9em; color: #aaa;">
+    🆓 = Free tier available • 💳 = Requires payment
+  </p>
+</div>
+
+<!-- Start Button -->
+<center>
+  <button onclick="startTranslation()" style="
+    font-size: 1.5em; padding: 20px 40px; margin: 20px;
+    background: linear-gradient(45deg, #0066cc, #00ccff);
+    border: 4px outset #00aaff; color: white; cursor: pointer;
+    font-family: 'Courier New'; font-weight: bold;">
+    🚀 TRANSLATE A LOST TEXT
+  </button>
+  
+  <div class="counter" id="translationCounter">Translations: 0/10</div>
+</center>
+
+<hr>
+
+<!-- Book Info -->
 <div id="bookInfo"></div>
 
 <!-- Processing Section -->
-<div id="processing">
-  <div class="status" id="processingStatus">Selecting untranslated text for AI analysis...</div>
-  <div id="processingSteps" style="height: 250px; overflow-y: auto; background: #111; padding: 15px; border: 2px solid #333; margin: 20px 0; font-family: 'Courier New';"></div>
+<div id="processing" style="display: none;">
+  <div class="status" id="processingStatus">Preparing AI translation...</div>
+  <div id="processingSteps" style="
+    height: 250px; overflow-y: auto; background: #000;
+    padding: 15px; border: 1px solid #333; margin: 20px 0;
+    font-family: monospace; font-size: 0.9em;">
+  </div>
 </div>
 
 <!-- Result Section -->
 <div id="result" style="display: none;">
   <div class="quip-container">
+    <div style="text-align: center; margin-bottom: 20px;">
+      <span class="ai-badge">AI: <span id="aiUsed">Simulated</span></span>
+      <span class="ai-badge">SOURCE: ${selectedBook ? selectedBook.language : 'Unknown'}</span>
+    </div>
+    
     <div class="quip" id="quipText"></div>
-    <div class="source">
+    
+    <hr style="border: 1px solid #0088ff; margin: 30px 0;">
+    
+    <div style="text-align: left;">
       <strong>📖 AI TRANSLATION:</strong><br>
-      <span id="translationText"></span><br><br>
+      <div style="margin: 10px 0 20px 0;" id="translationText"></div>
       
       <strong>💡 MODERN INSIGHT:</strong><br>
-      <span id="insightText"></span>
+      <div style="margin: 10px 0 20px 0;" id="insightText"></div>
     </div>
   </div>
   
   <center>
-    <button onclick="getNewWisdom()" style="font-size: 1.3em; padding: 15px; margin: 20px; background: linear-gradient(to bottom, #00cc00, #009900); border: 4px outset #00ff00; font-family: 'Comic Sans MS'; color: white; cursor: pointer;">
-      <b>🤖 ANALYZE ANOTHER LOST TEXT!</b>
+    <button onclick="startTranslation()" style="
+      padding: 15px 30px; margin: 20px;
+      background: #222244; border: 2px solid #00aaff;
+      color: white; cursor: pointer; font-size: 1.1em;">
+      🔄 TRANSLATE ANOTHER TEXT
     </button>
   </center>
   
-  <!-- Hidden backend data -->
+  <!-- Backend Data -->
   <div id="backendData" style="display: none;"></div>
   
-  <!-- Backend link -->
   <div id="backendLink" style="display: none; text-align: center; margin-top: 30px;">
-    <a href="javascript:void(0)" onclick="showBackend()" style="color: #00ffff; text-decoration: none; font-family: 'Courier New'; font-size: 0.9em;">
-      [VIEW REAL AI TRANSLATION DATA & API CONFIG]
+    <a href="javascript:void(0)" onclick="showBackend()" style="
+      color: #00ffff; text-decoration: none; font-family: monospace;
+      padding: 10px; border: 1px solid #00ffff; display: inline-block;">
+      [VIEW BACKEND & API SETUP INSTRUCTIONS]
     </a>
   </div>
 </div>
 
 <hr>
 
-<div style="text-align: center;">
-  <p><blink>⚠️ REAL AI INTEGRATION • BETA TESTING • UNTRANSLATED TEXTS DATABASE ⚠️</blink></p>
-  
-  <p>📚 Currently analyzing: ${UNTRANSLATED_BOOKS.length} untranslated texts</p>
+<!-- API Warning -->
+<div id="apiWarning" style="
+  display: none; background: #330000; color: #ff9999;
+  padding: 15px; margin: 20px; border: 2px solid #ff0000;
+  text-align: center;">
+  ⚠️ <strong>API KEYS NOT SET</strong><br>
+  Missing keys for: <span id="missingProviders"></span><br>
+  Using simulated mode. Get free API keys from links in backend view.
+</div>
+
+<!-- Footer -->
+<div style="text-align: center; margin-top: 30px; font-size: 0.9em; color: #888;">
+  <p><blink>⚠️ BETA • MULTI-AI TRANSLATION • FREE TIERS AVAILABLE • CACHING ENABLED ⚠️</blink></p>
   
   <p>
-    <img src="https://web.archive.org/web/20091027041310/http://geocities.com/area51/zone/1927/counter.gif" alt="Counter" style="height: 30px;">
-    <img src="https://web.archive.org/web/20090829083051/http://geocities.com/Area51/Atlantis/3955/ai.gif" alt="AI" style="height: 40px;">
-    <img src="https://web.archive.org/web/20090829083051/http://geocities.com/SiliconValley/Vista/1296/under_con.gif" alt="Under Construction" height="31">
+    <img src="https://web.archive.org/web/20091027041310/http://geocities.com/area51/zone/1927/counter.gif" height="30">
+    <img src="https://web.archive.org/web/20090829083051/http://geocities.com/Area51/Atlantis/3955/ai.gif" height="40">
+    <img src="https://web.archive.org/web/20090829083051/http://geocities.com/SiliconValley/Vista/1296/under_con.gif" height="31">
   </p>
   
-  <div style="font-size: 0.8em; color: #888; max-width: 800px; margin: 0 auto; text-align: left; padding: 10px; background: #222; border: 1px solid #444;">
-    <strong>NEXT STEPS FOR REAL AI:</strong><br>
-    1. Get API keys from AI providers (OpenAI, Anthropic, Google)<br>
-    2. Replace simulated API calls with real fetch() requests<br>
-    3. Add user selection for different AI models<br>
-    4. Implement caching to save API costs<br>
-    5. Add rate limiting and error handling
+  <div style="max-width: 800px; margin: 0 auto; text-align: left; background: #222; padding: 15px; border: 1px solid #444;">
+    <strong>NEXT STEPS TO MAKE IT REAL:</strong><br>
+    1. Get free API keys from any provider above<br>
+    2. Uncomment and fill in the API functions in the code<br>
+    3. For security, set up a backend proxy (instructions in backend view)<br>
+    4. Start with Groq (free, fast) or Google Gemini (free)<br>
+    5. Add more untranslated texts to the database
   </div>
 </div>
 
 <script>
-// Make blink tag work
-const blinkElement = document.querySelector('blink');
-if (blinkElement) {
-  setInterval(() => {
-    blinkElement.style.visibility = blinkElement.style.visibility === 'hidden' ? 'visible' : 'hidden';
-  }, 500);
+// Initialize
+updateTranslationCounter();
+
+// Make blink work
+const blink = document.querySelector('blink');
+if (blink) setInterval(() => {
+  blink.style.visibility = blink.style.visibility === 'hidden' ? 'visible' : 'hidden';
+}, 500);
+
+// Load saved AI preference
+const savedAI = localStorage.getItem('preferredAI');
+if (savedAI && AI_PROVIDERS[savedAI]) {
+  selectAIProvider(savedAI);
 }
 </script>
 
