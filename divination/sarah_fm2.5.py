@@ -2549,51 +2549,21 @@ class QuadrupleGoddessSystem:
     
     # ============ SYSTEM INFO AND HELP ============
     
-    def system_info(self):
-        """Display comprehensive system information"""
-        print("\n" + "="*60)
-        print("📊 SYSTEM INFORMATION")
-        print("="*60)
-        
-        print(f"\nVersion: {self.version}")
-        print(f"Framework: {self.framework}")
-        print(f"Build Date: {self.build_date}")
-        
-        print(f"\nPython Version: {platform.python_version()}")
-        print(f"Platform: {platform.system()} {platform.release()}")
-        
-        print(f"\n📁 DATA STATUS:")
-        print(f"  Geomancy Figures: {len(self.geomancy_figures.get('figures', {}))}/16")
-        print(f"  I Ching Hexagrams: {len(self.iching_hexagrams.get('hexagrams', {}))}/64")
-        tarot_major = len(self.tarot_major.get('major_arcana', []))
-        tarot_minor = sum(len(cards) for cards in self.tarot_major.get('minor_arcana', {}).values())
-        print(f"  Tarot Cards: {tarot_major + tarot_minor}/78 ({tarot_major} Major, {tarot_minor} Minor)")
-        print(f"  Jafr Correspondences: {len(self.jafr_correspondences)}")
-        
-        print(f"\n📚 READING HISTORY:")
-        print(f"  Total Readings: {len(self.history_manager.history)}")
-        
-        print(f"\n🛠️  FEATURES:")
-        features = [
-            "✓ Geomancy with 16 figures",
-            "✓ I Ching with coin/yarrow methods",
-            "✓ Tarot (Major & Minor Arcana)",
-            "✓ Jafr talisman generation",
-            "✓ Planetary hour calculator",
-            "✓ Magic squares (3x3 to 9x9)",
-            "✓ Reading history & export",
-            "✓ Cross-system synthesis"
-        ]
-        for feature in features:
-            print(f"  {feature}")
+def display_help(self):
+    """Display help and instructions"""
+    print("\n" + "="*60)
+    print("❓ HELP & INSTRUCTIONS")
+    print("="*60)
     
-    def display_help(self):
-        """Display help and instructions"""
-        print("\n" + "="*60)
-        print("❓ HELP & INSTRUCTIONS")
-        print("="*60)
-        
-        help_text = """
+    help_text = """
+    QUADRUPLE GODDESS IMPLEMENTATION GUIDE:
+    1. Save the Python code as 'sarah.py'
+    2. Run: python sarah.py
+    3. Follow the menu options
+    4. Readings save automatically to timestamped files
+    
+    =====================================================
+    
     HOW TO USE QUADRUPLE GODDESS SYSTEM:
     
     1. 🧿 FULL READINGS:
@@ -2636,9 +2606,38 @@ class QuadrupleGoddessSystem:
     - Keep a journal of your readings
     - Use timing features for ritual work
     - Export important readings for reference
+    
+    =====================================================
+    
+    MAIN MENU NAVIGATION:
+    • 1. Run Divination Reading (Full system integration)
+    • 2. System Information (Version & data status)
+    • 3. Help & Instructions (This guide)
+    • 4. Verify System (Check data integrity)
+    • 5. Reference Tables (All correspondences)
+    • 6. Planetary Hours Calculator (Optimal timing)
+    • 7. Magic Square Generator (Planetary mathematics)
+    • 8. Reading History (View & manage past readings)
+    • 9. Settings (Data management & preferences)
+    • 0. Exit (Close the program)
+    
+    =====================================================
+    
+    SYSTEM ARCHITECTURE:
+    • Geomancy: Earth/Microcosm foundation
+    • I Ching: Heaven/Macrocosm principles  
+    • Tarot: Archetypal mediation
+    • Jafr: Practical talismanic action
+    • Hermetic Synthesis: Thoth/Ogdoad framework integration
+    
+    DATA STRUCTURE:
+    • Readings saved in: readings/ (timestamped JSON & TXT)
+    • Data files in: data/ (JSON format)
+    • Exports in: exports/ (multiple formats)
+    • Backups in: backups/ (automatic & manual)
     """
-        
-        print(help_text)
+    
+    print(help_text)
     
     def verify_system(self):
         """Verify system integrity"""
